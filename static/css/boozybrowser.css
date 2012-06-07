@@ -1,0 +1,78 @@
+.black {
+    background-color: black;
+}
+/* this is where the buttons classes live */
+.button-container {
+    position: relative;
+    width: auto;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px;
+}
+    .button {
+        display: inline-block;
+        position: relative;
+        -webkit-box-shadow: 1px 1px 3px #CCC;
+           -moz-box-shadow: 1px 1px 3px #CCC;
+                box-shadow: 1px 1px 3px #CCC;
+        border-radius: 5px;
+        border: 2px solid #CCC;
+        padding: 5px;
+        margin: 8px;
+        cursor: pointer; 
+        background-color: #DDD;
+        
+    }
+        .pressed {
+            border: 2px solid #CCC;
+            -webkit-box-shadow: inset 3px 3px 8px #333;
+               -moz-box-shadow: inset 3px 3px 8px #333;
+                    box-shadow: inset 3px 3px 8px #333;
+        }
+
+/* this is where the pix classes live */
+.typin {
+    background-color: #DDD;
+    margin: 15px;
+}
+.pix {
+    background-color: #DDD;
+    width: 200px;
+    height: 30px;
+    margin: 15px;
+}
+    #top {
+        border: 1px solid;
+        
+    }
+
+    #bottom {
+        border: 1px solid;
+        height: 100px;
+        
+    }
+/* this is where the float classes live */
+.float-left {
+    float: left;
+}
+.float-right {
+    float: left;
+}
+.clear-both {
+    clear: both;
+}
+.clear-left {
+    clear: left;
+}
+.clear-right {
+    clear: right;
+}
+.select-none {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}

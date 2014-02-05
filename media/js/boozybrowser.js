@@ -8,7 +8,6 @@
 
             boozy.keys();
             boozy.buttons();
-
         },
         abc: 'abcdefghijklmnopqrstuvwxyz'.split(''),
         keys: function() {
@@ -37,38 +36,26 @@
                 keyCounter ++;
             });
         },
+        _posNeg: function() {
+            return Math.random() < 0.555555 ? -1 : 1;
+        },
+        _randDirection: function(randSize) { 
+            return boozy._posNeg() * Math.floor((Math.random()*randSize)+1);
+        },
         buttons: function() {
-            window.$buttons = $('.button, button, .btn');
-            console.log(window.$buttons);
-            window.$buttons.mouseover(function() {
+            var $buttons = $('.button, button, .btn');
+            $buttons.mouseover(function() {
                 var $button = $(this),
                     randSize = 15;
 
                 if($button.attr('id') == 'submit') {
                     randSize = 85;
                 } 
-                // negative
-                var randNegSpeed = Math.random() < 0.555555 ? -1 : 1,
-                    randNegRight = Math.random() < 0.555555 ? -1 : 1,
-                    randNegLeft = Math.random() < 0.555555 ? -1 : 1,
-                    randNegTop = Math.random() < 0.555555 ? -1 : 1,
-                    randNegBottom = Math.random() < 0.555555 ? -1 : 1,
-                // positive 
-                    randSpeed = randNegSpeed * Math.floor((Math.random()*10)+1),
-                    randRight = randNegRight * Math.floor((Math.random()*randSize)+1),
-                    randLeft = randNegLeft * Math.floor((Math.random()*randSize)+1),
-                    randTop = randNegTop * Math.floor((Math.random()*randSize)+1),
-                    randBottom = randNegBottom * Math.floor((Math.random()*randSize)+1);
-
-
-
 
                 $button.animate({
-                    "right": "+=" + randRight + "px", 
-                    "left": "+=" + randLeft + "px", 
-                    "top": "+=" + randTop + "px", 
-                    "bottom": "+=" + randBottom + "px"
-                }, {
+                    "right": "+=" + boozy._randDirection(randSize) + "px", 
+                    "top": "+=" + boozy._randDirection(randSize) + "px", 
+                },{
                     duration: 250,
                 });
             });

@@ -8,6 +8,7 @@
 
             boozy.keys.init();
             boozy.buttons.init();
+            boozy.focus.init();
         },
         boundedRandomInterval: function(min, max) {
             return Math.floor(Math.random()*(max-min+1)+min);
@@ -17,6 +18,57 @@
         },
         randDirection: function(randSize) { 
             return boozy.posNeg() * Math.floor((Math.random()*randSize)+1);
+        },
+        nextInt: function(num) {
+            return num + 1;
+        },
+        prevInt: function(num) {
+            return num - 1;
+        },
+        focus: {
+            _blurIntervalId: undefined,
+            _currentBlur: 1,
+            _blurMin: 1,
+            _blurMax: 2,
+            _blurDirection: 'up',
+            init: function() {
+                var $body = $('body');
+                
+                $body.addClass('transition-ease-out');
+
+                boozy.focus._blurMin = 0;
+                boozy.focus._blurMax = 6;
+                boozy.focus._blurIntervalId = setInterval(function(){
+                    boozy.focus.goHomeYoureDrunk($body);
+                }, 250);
+            },
+            _boundBlur: function() {
+                if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
+                    boozy.focus._blurDirection = 'up';
+                }
+                if(boozy.focus._currentBlur >= boozy.focus._blurMax) {
+                    boozy.focus._blurDirection = 'down';
+                }
+            },
+            _upDownBlur: function() {
+                boozy.focus._boundBlur();
+                var newBlur;
+                if(boozy.focus._blurDirection === 'up') {
+                    newBlur = boozy.nextInt(boozy.focus._currentBlur);
+                }
+                if(boozy.focus._blurDirection === 'down') {
+                    newBlur = boozy.prevInt(boozy.focus._currentBlur);
+                }
+                boozy.focus._currentBlur =  newBlur;
+                return newBlur;
+            },
+            goHomeYoureDrunk: function($whatsThat) {
+                var currentBlur = boozy.focus._currentBlur, 
+                    blurAmount = boozy.focus._upDownBlur(),
+                    blurCSS = 'blur(' + blurAmount + 'px)';
+                $whatsThat.removeClass('blur-' + currentBlur);
+                $whatsThat.addClass('blur-' + blurAmount);
+            }
         },
         keys: {
             init: function() {

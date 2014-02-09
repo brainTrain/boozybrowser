@@ -10,69 +10,87 @@
     border-radius: 5px;
     margin: 15px;
 }
-    .button {
-        display: inline-block;
-        position: relative;
-        -webkit-box-shadow: 1px 1px 3px #CCC;
-           -moz-box-shadow: 1px 1px 3px #CCC;
-                box-shadow: 1px 1px 3px #CCC;
-        border-radius: 5px;
-        border: 2px solid #CCC;
-        padding: 5px;
-        margin: 8px;
-        cursor: pointer; 
-        background-color: #DDD;
-        
-    }
-        .pressed {
-            border: 2px solid #CCC;
-            -webkit-box-shadow: inset 3px 3px 8px #333;
-               -moz-box-shadow: inset 3px 3px 8px #333;
-                    box-shadow: inset 3px 3px 8px #333;
-        }
+.button {
+    display: inline-block;
+    position: relative;
+    -webkit-box-shadow: 1px 1px 3px #CCC;
+       -moz-box-shadow: 1px 1px 3px #CCC;
+            box-shadow: 1px 1px 3px #CCC;
+    border-radius: 5px;
+    border: 2px solid #CCC;
+    padding: 5px;
+    margin: 8px;
+    cursor: pointer; 
+    background-color: #DDD;
+    
+}
+.pressed {
+    border: 2px solid #CCC;
+    -webkit-box-shadow: inset 3px 3px 8px #333;
+       -moz-box-shadow: inset 3px 3px 8px #333;
+            box-shadow: inset 3px 3px 8px #333;
+}
 
 /* this is where the pix classes live */
 .typin {
     background-color: #DDD;
     margin: 15px;
 }
-.pix {
-    background-color: #DDD;
-    width: 200px;
-    height: 30px;
-    margin: 15px;
+/* 
+    Functional Section:
+        This means these are classes that are intended to be dynamically toggled
+        at the moment they should either represent boolean actions or incremental 
+        numbered actions
+*/
+.transition-ease-out {
+    transition: all 0.25s ease-out;
+} 
+.blur-0 {
+    -webkit-filter: blur(0px);
+       -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+         -o-filter: blur(0px);
+            filter: blur(0px);
 }
-    #top {
-        border: 1px solid;
-        
-    }
-
-    #bottom {
-        border: 1px solid;
-        height: 100px;
-        
-    }
-/* this is where the float classes live */
-.float-left {
-    float: left;
+.blur-1 {
+    -webkit-filter: blur(1px);
+       -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+         -o-filter: blur(1px);
+            filter: blur(1px);
 }
-.float-right {
-    float: left;
+.blur-2 {
+    -webkit-filter: blur(2px);
+       -moz-filter: blur(2px);
+        -ms-filter: blur(2px);
+         -o-filter: blur(2px);
+            filter: blur(2px);
 }
-.clear-both {
-    clear: both;
+.blur-3 {
+    -webkit-filter: blur(3px);
+       -moz-filter: blur(3px);
+        -ms-filter: blur(3px);
+         -o-filter: blur(3px);
+            filter: blur(3px);
 }
-.clear-left {
-    clear: left;
+.blur-4 {
+    -webkit-filter: blur(4px);
+       -moz-filter: blur(4px);
+        -ms-filter: blur(4px);
+         -o-filter: blur(4px);
+            filter: blur(4px);
 }
-.clear-right {
-    clear: right;
+.blur-5 {
+    -webkit-filter: blur(5px);
+       -moz-filter: blur(5px);
+        -ms-filter: blur(5px);
+         -o-filter: blur(5px);
+            filter: blur(5px);
 }
-.select-none {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+.blur-6 {
+    -webkit-filter: blur(6px);
+       -moz-filter: blur(6px);
+        -ms-filter: blur(6px);
+         -o-filter: blur(6px);
+            filter: blur(6px);
 }

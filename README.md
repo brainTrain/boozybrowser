@@ -4,3 +4,5 @@
 ## boozy.lean
 ## boozy.focus
 ## boozy.keys
+## boozy.buttons
+<p>button text</p>

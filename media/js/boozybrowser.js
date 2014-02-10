@@ -1,5 +1,7 @@
 (function(window, document, $){
     window.boozy = { 
+        _typingSelectors: 'textarea',
+        _buttonSelectors: '.button, button, .btn',
         init: function() {
             $('.button').click(function() {
                 $('.button').removeClass('pressed');
@@ -36,6 +38,7 @@
                     $body.addClass(transitionClass);
                 }
 
+                boozy.lean._goHomeYoureDrunk($body);
                 boozy.lean._leanIntervalId = setInterval(function(){
                     boozy.lean._goHomeYoureDrunk($body);
                 }, 2000);
@@ -62,7 +65,7 @@
             }
         },
         focus: {
-            _blurIntervalId: undefined,
+            _focusIntervalId: undefined,
             _currentBlur: 1,
             _blurMin: 1,
             _blurMax: 2,
@@ -74,11 +77,12 @@
 
                 boozy.focus._blurMin = 0;
                 boozy.focus._blurMax = 6;
-                boozy.focus._blurIntervalId = setInterval(function(){
+                boozy.focus._focusIntervalId = setInterval(function(){
                     boozy.focus._goHomeYoureDrunk($body);
                 }, 2000);
             },
             stop: function() {
+                console.log(boozy.focus._focusIntervalId);
                 clearInterval(boozy.focus._focusIntervalId);
                 $('body')
                     .removeClass('blur-' + boozy.focus._currentBlur)
@@ -115,15 +119,17 @@
             }
         },
         keys: {
-            init: function() {
-                $('.typin textarea').keyup(boozy.keys.typer);
-                boozy.keys.setRandomInterval();
-            },
+            _boozyClass: 'boozy-keys',
             abc: 'abcdefghijklmnopqrstuvwxyz'.split(''),
             keyCounter: 0,
             howDrunk: 3,
             howSober: 10,
             randomInterval: 10,
+            init: function() {
+                $(boozy._typingSelectors).addClass(boozy.keys._boozyClass);
+                $('.boozy-keys').on('keyup.boozy-space', boozy.keys.typer);
+                boozy.keys.setRandomInterval();
+            },
             setRandomInterval: function() {
                 boozy.keys.randomInterval = boozy.boundedRandomInterval(boozy.keys.howDrunk, boozy.keys.howSober);
             },
@@ -145,11 +151,18 @@
                     boozy.keys.keyCounter = 0;
                 }
                 boozy.keys.keyCounter ++;
+            },
+            stop: function() {
+                $('.boozy-keys')
+                    .off('keyup.boozy-space')
+                    .removeClass(boozy.keys._boozyClass);
             }
         },
         buttons: {
+            _boozyClass: 'boozy-buttons',
             init: function() {
-                $('.button, button, .btn').mouseover(boozy.buttons.boozyMotions);
+                $(boozy._buttonSelectors).addClass(boozy.buttons._boozyClass);
+                $('.boozy-buttons').on('mouseover.boozy-space', boozy.buttons.boozyMotions);
             },
             boozyMotions: function() {
                 var $button = $(this),
@@ -165,6 +178,11 @@
                 },{
                     duration: 250,
                 });
+            },
+            stop: function() {
+                $('.boozy-buttons')
+                    .off('mouseover.boozy-space')
+                    .removeClass(boozy.buttons._boozyClass);
             }
         }
     };

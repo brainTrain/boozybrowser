@@ -1,3 +1,6 @@
 # boozybrowser
+[Check Out The Demo](http://www.boozybrowser.com)
 
-duh
+## boozy.lean
+## boozy.focus
+## boozy.keys

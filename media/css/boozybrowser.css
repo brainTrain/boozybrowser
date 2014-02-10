@@ -43,7 +43,11 @@
         numbered actions
 */
 .transition-ease-out {
-    transition: all 2s ease-out;
+    -webkit-transition: all 2s ease-out;
+       -moz-transition: all 2s ease-out;
+        -ms-transition: all 2s ease-out;
+         -o-transition: all 2s ease-out;
+            transition: all 2s ease-out;
 } 
 
 /* blur classes */
@@ -98,118 +102,79 @@
 }
 
 .rotate-5 {
-    -webkit-transform:  rotate3d(1, 1, 1, 5deg);
-       -moz-transform:  rotate3d(1, 1, 1, 5deg);
-        -ms-transform:  rotate3d(1, 1, 1, 5deg);
-         -o-transform:  rotate3d(1, 1, 1, 5deg);
-            transform:  rotate3d(1, 1, 1, 5deg);
+    -webkit-transform:  rotate(5deg);
+       -moz-transform:  rotate(5deg);
+        -ms-transform:  rotate(5deg);
+         -o-transform:  rotate(5deg);
+            transform:  rotate(5deg);
 }
 .rotate-4 {
-    -webkit-transform:  rotate3d(1, 1, 1, 4deg);
-       -moz-transform:  rotate3d(1, 1, 1, 4deg);
-        -ms-transform:  rotate3d(1, 1, 1, 4deg);
-         -o-transform:  rotate3d(1, 1, 1, 4deg);
-            transform:  rotate3d(1, 1, 1, 4deg);
+    -webkit-transform:  rotate(4deg);
+       -moz-transform:  rotate(4deg);
+        -ms-transform:  rotate(4deg);
+         -o-transform:  rotate(4deg);
+            transform:  rotate(4deg);
 }
 .rotate-3 {
-    -webkit-transform:  rotate3d(1, 1, 1, 3deg);
-       -moz-transform:  rotate3d(1, 1, 1, 3deg);
-        -ms-transform:  rotate3d(1, 1, 1, 3deg);
-         -o-transform:  rotate3d(1, 1, 1, 3deg);
-            transform:  rotate3d(1, 1, 1, 3deg);
+    -webkit-transform:  rotate(3deg);
+       -moz-transform:  rotate(3deg);
+        -ms-transform:  rotate(3deg);
+         -o-transform:  rotate(3deg);
+            transform:  rotate(3deg);
 }
 .rotate-2 {
-    -webkit-transform:  rotate3d(1, 1, 1, 2deg);
-       -moz-transform:  rotate3d(1, 1, 1, 2deg);
-        -ms-transform:  rotate3d(1, 1, 1, 2deg);
-         -o-transform:  rotate3d(1, 1, 1, 2deg);
-            transform:  rotate3d(1, 1, 1, 2deg);
+    -webkit-transform:  rotate(2deg);
+       -moz-transform:  rotate(2deg);
+        -ms-transform:  rotate(2deg);
+         -o-transform:  rotate(2deg);
+            transform:  rotate(2deg);
 }
 .rotate-1 {
-    -webkit-transform:  rotate3d(1, 1, 1, 1deg);
-       -moz-transform:  rotate3d(1, 1, 1, 1deg);
-        -ms-transform:  rotate3d(1, 1, 1, 1deg);
-         -o-transform:  rotate3d(1, 1, 1, 1deg);
-            transform:  rotate3d(1, 1, 1, 1deg);
+    -webkit-transform:  rotate(1deg);
+       -moz-transform:  rotate(1deg);
+        -ms-transform:  rotate(1deg);
+         -o-transform:  rotate(1deg);
+            transform:  rotate(1deg);
 }
 .rotate-0 {
-    -webkit-transform:  rotate3d(1, 1, 1, 0deg);
-       -moz-transform:  rotate3d(1, 1, 1, 0deg);
-        -ms-transform:  rotate3d(1, 1, 1, 0deg);
-         -o-transform:  rotate3d(1, 1, 1, 0deg);
-            transform:  rotate3d(1, 1, 1, 0deg);
+    -webkit-transform:  rotate(0deg);
+       -moz-transform:  rotate(0deg);
+        -ms-transform:  rotate(0deg);
+         -o-transform:  rotate(0deg);
+            transform:  rotate(0deg);
 }
 .rotate-neg-1 {
-    -webkit-transform:  rotate3d(1, 1, 1, -1deg);
-       -moz-transform:  rotate3d(1, 1, 1, -1deg);
-        -ms-transform:  rotate3d(1, 1, 1, -1deg);
-         -o-transform:  rotate3d(1, 1, 1, -1deg);
-            transform:  rotate3d(1, 1, 1, -1deg);
+    -webkit-transform:  rotate(-1deg);
+       -moz-transform:  rotate(-1deg);
+        -ms-transform:  rotate(-1deg);
+         -o-transform:  rotate(-1deg);
+            transform:  rotate(-1deg);
 }
 .rotate-neg-2 {
-    -webkit-transform:  rotate3d(1, 1, 1, -2deg);
-       -moz-transform:  rotate3d(1, 1, 1, -2deg);
-        -ms-transform:  rotate3d(1, 1, 1, -2deg);
-         -o-transform:  rotate3d(1, 1, 1, -2deg);
-            transform:  rotate3d(1, 1, 1, -2deg);
+    -webkit-transform:  rotate(-2deg);
+       -moz-transform:  rotate(-2deg);
+        -ms-transform:  rotate(-2deg);
+         -o-transform:  rotate(-2deg);
+            transform:  rotate(-2deg);
 }
 .rotate-neg-3 {
-    -webkit-transform:  rotate3d(1, 1, 1, -3deg);
-       -moz-transform:  rotate3d(1, 1, 1, -3deg);
-        -ms-transform:  rotate3d(1, 1, 1, -3deg);
-         -o-transform:  rotate3d(1, 1, 1, -3deg);
-            transform:  rotate3d(1, 1, 1, -3deg);
+    -webkit-transform:  rotate(-3deg);
+       -moz-transform:  rotate(-3deg);
+        -ms-transform:  rotate(-3deg);
+         -o-transform:  rotate(-3deg);
+            transform:  rotate(-3deg);
 }
 .rotate-neg-4 {
-    -webkit-transform:  rotate3d(1, 1, 1, -4deg);
-       -moz-transform:  rotate3d(1, 1, 1, -4deg);
-        -ms-transform:  rotate3d(1, 1, 1, -4deg);
-         -o-transform:  rotate3d(1, 1, 1, -4deg);
-            transform:  rotate3d(1, 1, 1, -4deg);
+    -webkit-transform:  rotate(-4deg);
+       -moz-transform:  rotate(-4deg);
+        -ms-transform:  rotate(-4deg);
+         -o-transform:  rotate(-4deg);
+            transform:  rotate(-4deg);
 }
 .rotate-neg-5 {
-    -webkit-transform:  rotate3d(1, 1, 1, -5deg);
-       -moz-transform:  rotate3d(1, 1, 1, -5deg);
-        -ms-transform:  rotate3d(1, 1, 1, -5deg);
-         -o-transform:  rotate3d(1, 1, 1, -5deg);
-            transform:  rotate3d(1, 1, 1, -5deg);
-}
-@keyframes spin {
-    0% { transform: rotate(360deg); }
-    100% { transform: rotate(0deg); }
-}
-@-webkit-keyframes spin {
-    0% {-webkit-transform: rotate(360deg); }
-    100% { -webkit-transform: rotate(0deg); }
-}
-@-moz-keyframes spin {
-    0% { -moz-transform: rotate(360deg); }
-    100% { -moz-transform: rotate(0deg); }
-}
-@-o-keyframes spin {
-    0% { -o-transform: rotate(360deg); }
-    100% { -o-transform: rotate(0deg); }
-}
-.spin-pos {
-    -webkit-animation: spin 15s linear 0s infinite normal;
-       -moz-animation: 15s linear 0s normal none infinite spin;
-         -0-animation: spin 15s linear 0s infinite normal;
-            animation: spin 15s linear 0s infinite normal;
-
-}
-.spin-neg-dir {
-    -webkit-animation: spin 15s linear 0s infinite reverse;
-       -moz-animation: 15s linear 0s reverse none infinite spin;
-         -0-animation: spin 15s linear 0s infinite reverse;
-            animation: spin 15s linear 0s infinite reverse;
-    -webkit-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    animation-play-state: paused;
-}
-.spin-neg {
-  -webkit-animation-play-state: running;
-    -o-animation-play-state: running;
-    -moz-animation-play-state: running;
-    -webkit-animation-play-state: running;
+    -webkit-transform:  rotate(-5deg);
+       -moz-transform:  rotate(-5deg);
+        -ms-transform:  rotate(-5deg);
+         -o-transform:  rotate(-5deg);
+            transform:  rotate(-5deg);
 }

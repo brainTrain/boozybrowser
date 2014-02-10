@@ -9,7 +9,7 @@
             boozy.keys.init();
             boozy.buttons.init();
             boozy.focus.init();
-            //boozy.lean.init();
+            boozy.lean.init();
         },
         boundedRandomInterval: function(min, max) {
             return Math.floor(Math.random()*(max-min+1)+min);
@@ -35,29 +35,30 @@
                 if(!$body.hasClass(transitionClass)) {
                     $body.addClass(transitionClass);
                 }
-                    $body.addClass('spin-pos');
 
                 boozy.lean._leanIntervalId = setInterval(function(){
-                    boozy.lean.goHomeYoureDrunk($body);
-                }, 1000);
+                    boozy.lean._goHomeYoureDrunk($body);
+                }, 2000);
             },
-            goHomeYoureDrunk: function($whatsThat) {
-                if($whatsThat.hasClass('spin-neg')) {
-                    $whatsThat.removeClass('spin-neg');
+            stop: function() {
+                clearInterval(boozy.lean._leanIntervalId);
+                $('body')
+                    .removeClass('rotate-2')
+                    .removeClass('rotate-neg-2')
+                    .addClass('rotate-0')
+            },
+            _goHomeYoureDrunk: function($whatsThat) {
+                if($whatsThat.hasClass('rotate-2')) {
+                    $whatsThat
+                        .removeClass('rotate-2')
+                        .addClass('rotate-neg-2');
+                } else if($whatsThat.hasClass('rotate-neg-2')){
+                    $whatsThat
+                        .removeClass('rotate-neg-2')
+                        .addClass('rotate-2');
                 } else {
-                    $whatsThat.addClass('spin-neg');
+                    $whatsThat.addClass('rotate-2');
                 }
-                /*
-                if($whatsThat.hasClass('spin-pos')) {
-                    $whatsThat.removeClass('spin-pos');
-                    $whatsThat.addClass('spin-neg');
-                } else if ($whatsThat.hasClass('spin-neg')) {
-                    $whatsThat.removeClass('spin-neg');
-                    $whatsThat.addClass('spin-pos');
-                } else {
-                    $whatsThat.addClass('spin-pos');
-                }
-                */
             }
         },
         focus: {
@@ -74,8 +75,16 @@
                 boozy.focus._blurMin = 0;
                 boozy.focus._blurMax = 6;
                 boozy.focus._blurIntervalId = setInterval(function(){
-                    boozy.focus.goHomeYoureDrunk($body);
-                }, 250);
+                    boozy.focus._goHomeYoureDrunk($body);
+                }, 2000);
+            },
+            stop: function() {
+                clearInterval(boozy.focus._focusIntervalId);
+                $('body')
+                    .removeClass('blur-' + boozy.focus._currentBlur)
+                    .addClass('blur-0');
+                boozy.focus._currentBlur = 1;
+                boozy.focus._blurDirection = 'pos';
             },
             _boundBlur: function() {
                 if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
@@ -97,11 +106,12 @@
                 boozy.focus._currentBlur =  newBlur;
                 return newBlur;
             },
-            goHomeYoureDrunk: function($whatsThat) {
+            _goHomeYoureDrunk: function($whatsThat) {
                 var currentBlur = boozy.focus._currentBlur, 
                     blurAmount = boozy.focus._upDownBlur();
-                $whatsThat.removeClass('blur-' + currentBlur);
-                $whatsThat.addClass('blur-' + blurAmount);
+                $whatsThat
+                    .removeClass('blur-' + currentBlur)
+                    .addClass('blur-' + blurAmount);
             }
         },
         keys: {

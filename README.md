@@ -5,10 +5,12 @@ _This is just about teaching the internet how to drink._
 ### boozy.lean
 _Startin to lean._
 * initialize with: `boozy.lean.init();`
+* stop with: `boozy.lean.stop();`
 
 ### boozy.focus
 _Vision blurrin in and out._
 * initialize with: `boozy.focus.init();`
+* stop with: `boozy.focus.stop();`
 
 ### boozy.keys
 _Addin that boozy type-o action._

@@ -37,48 +37,22 @@
     margin: 15px;
 }
 /* 
-    Functional Section:
+    Somewhat Functional Section:
         This means these are classes that are intended to be dynamically toggled
         at the moment they should either represent boolean actions or incremental 
         numbered actions
 */
 .transition-ease-out {
-    transition: all 0.25s ease-out;
+    transition: all 2s ease-out;
 } 
-.blur-0 {
-    -webkit-filter: blur(0px);
-       -moz-filter: blur(0px);
-        -ms-filter: blur(0px);
-         -o-filter: blur(0px);
-            filter: blur(0px);
-}
-.blur-1 {
-    -webkit-filter: blur(1px);
-       -moz-filter: blur(1px);
-        -ms-filter: blur(1px);
-         -o-filter: blur(1px);
-            filter: blur(1px);
-}
-.blur-2 {
-    -webkit-filter: blur(2px);
-       -moz-filter: blur(2px);
-        -ms-filter: blur(2px);
-         -o-filter: blur(2px);
-            filter: blur(2px);
-}
-.blur-3 {
-    -webkit-filter: blur(3px);
-       -moz-filter: blur(3px);
-        -ms-filter: blur(3px);
-         -o-filter: blur(3px);
-            filter: blur(3px);
-}
-.blur-4 {
-    -webkit-filter: blur(4px);
-       -moz-filter: blur(4px);
-        -ms-filter: blur(4px);
-         -o-filter: blur(4px);
-            filter: blur(4px);
+
+/* blur classes */
+.blur-6 {
+    -webkit-filter: blur(6px);
+       -moz-filter: blur(6px);
+        -ms-filter: blur(6px);
+         -o-filter: blur(6px);
+            filter: blur(6px);
 }
 .blur-5 {
     -webkit-filter: blur(5px);
@@ -87,10 +61,155 @@
          -o-filter: blur(5px);
             filter: blur(5px);
 }
-.blur-6 {
-    -webkit-filter: blur(6px);
-       -moz-filter: blur(6px);
-        -ms-filter: blur(6px);
-         -o-filter: blur(6px);
-            filter: blur(6px);
+.blur-4 {
+    -webkit-filter: blur(4px);
+       -moz-filter: blur(4px);
+        -ms-filter: blur(4px);
+         -o-filter: blur(4px);
+            filter: blur(4px);
+}
+.blur-3 {
+    -webkit-filter: blur(3px);
+       -moz-filter: blur(3px);
+        -ms-filter: blur(3px);
+         -o-filter: blur(3px);
+            filter: blur(3px);
+}
+.blur-2 {
+    -webkit-filter: blur(2px);
+       -moz-filter: blur(2px);
+        -ms-filter: blur(2px);
+         -o-filter: blur(2px);
+            filter: blur(2px);
+}
+.blur-1 {
+    -webkit-filter: blur(1px);
+       -moz-filter: blur(1px);
+        -ms-filter: blur(1px);
+         -o-filter: blur(1px);
+            filter: blur(1px);
+}
+.blur-0 {
+    -webkit-filter: blur(0px);
+       -moz-filter: blur(0px);
+        -ms-filter: blur(0px);
+         -o-filter: blur(0px);
+            filter: blur(0px);
+}
+
+.rotate-5 {
+    -webkit-transform:  rotate3d(1, 1, 1, 5deg);
+       -moz-transform:  rotate3d(1, 1, 1, 5deg);
+        -ms-transform:  rotate3d(1, 1, 1, 5deg);
+         -o-transform:  rotate3d(1, 1, 1, 5deg);
+            transform:  rotate3d(1, 1, 1, 5deg);
+}
+.rotate-4 {
+    -webkit-transform:  rotate3d(1, 1, 1, 4deg);
+       -moz-transform:  rotate3d(1, 1, 1, 4deg);
+        -ms-transform:  rotate3d(1, 1, 1, 4deg);
+         -o-transform:  rotate3d(1, 1, 1, 4deg);
+            transform:  rotate3d(1, 1, 1, 4deg);
+}
+.rotate-3 {
+    -webkit-transform:  rotate3d(1, 1, 1, 3deg);
+       -moz-transform:  rotate3d(1, 1, 1, 3deg);
+        -ms-transform:  rotate3d(1, 1, 1, 3deg);
+         -o-transform:  rotate3d(1, 1, 1, 3deg);
+            transform:  rotate3d(1, 1, 1, 3deg);
+}
+.rotate-2 {
+    -webkit-transform:  rotate3d(1, 1, 1, 2deg);
+       -moz-transform:  rotate3d(1, 1, 1, 2deg);
+        -ms-transform:  rotate3d(1, 1, 1, 2deg);
+         -o-transform:  rotate3d(1, 1, 1, 2deg);
+            transform:  rotate3d(1, 1, 1, 2deg);
+}
+.rotate-1 {
+    -webkit-transform:  rotate3d(1, 1, 1, 1deg);
+       -moz-transform:  rotate3d(1, 1, 1, 1deg);
+        -ms-transform:  rotate3d(1, 1, 1, 1deg);
+         -o-transform:  rotate3d(1, 1, 1, 1deg);
+            transform:  rotate3d(1, 1, 1, 1deg);
+}
+.rotate-0 {
+    -webkit-transform:  rotate3d(1, 1, 1, 0deg);
+       -moz-transform:  rotate3d(1, 1, 1, 0deg);
+        -ms-transform:  rotate3d(1, 1, 1, 0deg);
+         -o-transform:  rotate3d(1, 1, 1, 0deg);
+            transform:  rotate3d(1, 1, 1, 0deg);
+}
+.rotate-neg-1 {
+    -webkit-transform:  rotate3d(1, 1, 1, -1deg);
+       -moz-transform:  rotate3d(1, 1, 1, -1deg);
+        -ms-transform:  rotate3d(1, 1, 1, -1deg);
+         -o-transform:  rotate3d(1, 1, 1, -1deg);
+            transform:  rotate3d(1, 1, 1, -1deg);
+}
+.rotate-neg-2 {
+    -webkit-transform:  rotate3d(1, 1, 1, -2deg);
+       -moz-transform:  rotate3d(1, 1, 1, -2deg);
+        -ms-transform:  rotate3d(1, 1, 1, -2deg);
+         -o-transform:  rotate3d(1, 1, 1, -2deg);
+            transform:  rotate3d(1, 1, 1, -2deg);
+}
+.rotate-neg-3 {
+    -webkit-transform:  rotate3d(1, 1, 1, -3deg);
+       -moz-transform:  rotate3d(1, 1, 1, -3deg);
+        -ms-transform:  rotate3d(1, 1, 1, -3deg);
+         -o-transform:  rotate3d(1, 1, 1, -3deg);
+            transform:  rotate3d(1, 1, 1, -3deg);
+}
+.rotate-neg-4 {
+    -webkit-transform:  rotate3d(1, 1, 1, -4deg);
+       -moz-transform:  rotate3d(1, 1, 1, -4deg);
+        -ms-transform:  rotate3d(1, 1, 1, -4deg);
+         -o-transform:  rotate3d(1, 1, 1, -4deg);
+            transform:  rotate3d(1, 1, 1, -4deg);
+}
+.rotate-neg-5 {
+    -webkit-transform:  rotate3d(1, 1, 1, -5deg);
+       -moz-transform:  rotate3d(1, 1, 1, -5deg);
+        -ms-transform:  rotate3d(1, 1, 1, -5deg);
+         -o-transform:  rotate3d(1, 1, 1, -5deg);
+            transform:  rotate3d(1, 1, 1, -5deg);
+}
+@keyframes spin {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+@-webkit-keyframes spin {
+    0% {-webkit-transform: rotate(360deg); }
+    100% { -webkit-transform: rotate(0deg); }
+}
+@-moz-keyframes spin {
+    0% { -moz-transform: rotate(360deg); }
+    100% { -moz-transform: rotate(0deg); }
+}
+@-o-keyframes spin {
+    0% { -o-transform: rotate(360deg); }
+    100% { -o-transform: rotate(0deg); }
+}
+.spin-pos {
+    -webkit-animation: spin 15s linear 0s infinite normal;
+       -moz-animation: 15s linear 0s normal none infinite spin;
+         -0-animation: spin 15s linear 0s infinite normal;
+            animation: spin 15s linear 0s infinite normal;
+
+}
+.spin-neg-dir {
+    -webkit-animation: spin 15s linear 0s infinite reverse;
+       -moz-animation: 15s linear 0s reverse none infinite spin;
+         -0-animation: spin 15s linear 0s infinite reverse;
+            animation: spin 15s linear 0s infinite reverse;
+    -webkit-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    animation-play-state: paused;
+}
+.spin-neg {
+  -webkit-animation-play-state: running;
+    -o-animation-play-state: running;
+    -moz-animation-play-state: running;
+    -webkit-animation-play-state: running;
 }

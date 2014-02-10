@@ -9,6 +9,7 @@
             boozy.keys.init();
             boozy.buttons.init();
             boozy.focus.init();
+            //boozy.lean.init();
         },
         boundedRandomInterval: function(min, max) {
             return Math.floor(Math.random()*(max-min+1)+min);
@@ -25,12 +26,46 @@
         prevInt: function(num) {
             return num - 1;
         },
+        lean: {
+            _leanIntervalId: undefined,
+            init: function() {
+                var $body = $('body'),
+                    transitionClass = 'transition-ease-out';
+                 
+                if(!$body.hasClass(transitionClass)) {
+                    $body.addClass(transitionClass);
+                }
+                    $body.addClass('spin-pos');
+
+                boozy.lean._leanIntervalId = setInterval(function(){
+                    boozy.lean.goHomeYoureDrunk($body);
+                }, 1000);
+            },
+            goHomeYoureDrunk: function($whatsThat) {
+                if($whatsThat.hasClass('spin-neg')) {
+                    $whatsThat.removeClass('spin-neg');
+                } else {
+                    $whatsThat.addClass('spin-neg');
+                }
+                /*
+                if($whatsThat.hasClass('spin-pos')) {
+                    $whatsThat.removeClass('spin-pos');
+                    $whatsThat.addClass('spin-neg');
+                } else if ($whatsThat.hasClass('spin-neg')) {
+                    $whatsThat.removeClass('spin-neg');
+                    $whatsThat.addClass('spin-pos');
+                } else {
+                    $whatsThat.addClass('spin-pos');
+                }
+                */
+            }
+        },
         focus: {
             _blurIntervalId: undefined,
             _currentBlur: 1,
             _blurMin: 1,
             _blurMax: 2,
-            _blurDirection: 'up',
+            _blurDirection: 'pos',
             init: function() {
                 var $body = $('body');
                 
@@ -44,19 +79,19 @@
             },
             _boundBlur: function() {
                 if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
-                    boozy.focus._blurDirection = 'up';
+                    boozy.focus._blurDirection = 'pos';
                 }
                 if(boozy.focus._currentBlur >= boozy.focus._blurMax) {
-                    boozy.focus._blurDirection = 'down';
+                    boozy.focus._blurDirection = 'neg';
                 }
             },
             _upDownBlur: function() {
                 boozy.focus._boundBlur();
                 var newBlur;
-                if(boozy.focus._blurDirection === 'up') {
+                if(boozy.focus._blurDirection === 'pos') {
                     newBlur = boozy.nextInt(boozy.focus._currentBlur);
                 }
-                if(boozy.focus._blurDirection === 'down') {
+                if(boozy.focus._blurDirection === 'neg') {
                     newBlur = boozy.prevInt(boozy.focus._currentBlur);
                 }
                 boozy.focus._currentBlur =  newBlur;
@@ -64,8 +99,7 @@
             },
             goHomeYoureDrunk: function($whatsThat) {
                 var currentBlur = boozy.focus._currentBlur, 
-                    blurAmount = boozy.focus._upDownBlur(),
-                    blurCSS = 'blur(' + blurAmount + 'px)';
+                    blurAmount = boozy.focus._upDownBlur();
                 $whatsThat.removeClass('blur-' + currentBlur);
                 $whatsThat.addClass('blur-' + blurAmount);
             }

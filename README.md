@@ -1,5 +1,5 @@
 # boozybrowser
-[Check Out The Demo](http://www.boozybrowser.com)
+<a href="http://www.boozybrowser.com" target="_blank">Check Out The Demo</a>
 
 ## boozy.lean
 ## boozy.focus

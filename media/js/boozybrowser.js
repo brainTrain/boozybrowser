@@ -39,7 +39,7 @@
             handleShowClicks: function(event) {
                 var $menu = $('.boozy-menu');
                 $menu.removeClass('hide-menu');
-                console.log($('.show', $menu));
+
                 $('.hide', $menu).toggleClass('fade-out');
                 $('.show', $menu).toggleClass('fade-out');
             },

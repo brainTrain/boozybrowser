@@ -3,15 +3,95 @@
         _typingSelectors: 'textarea',
         _buttonSelectors: '.button, button, .btn',
         init: function() {
+            // only initialize after the menu is loaded
+            boozy._menu.init(function() {
+                boozy.keys.init();
+                boozy.buttons.init();
+                boozy.focus.init();
+                boozy.lean.init();
+            });
+
             $('.button').click(function() {
                 $('.button').removeClass('pressed');
                 $(this).addClass('pressed');
             });
 
-            boozy.keys.init();
-            boozy.buttons.init();
-            boozy.focus.init();
-            boozy.lean.init();
+        },
+        _menu: {
+            init: function(callBack) {
+                var $menuContainer = $('html');
+                $menuContainer.append(boozy._menu._menuHTML.join(''));
+                $('.control', $menuContainer).click(boozy._menu.handleControlClicks);
+                callBack();
+            },
+            handleControlClicks: function(event) {
+                var $control = $(this);
+
+                boozy._menu.toggleControl($control);
+            },
+            toggleControl: function($control) {
+                var controlId = $control.attr('id'),
+                    isOn = false;
+                $('.switch .option', $control).toggleClass('deactivated');
+                if($('.switch .off', $control).hasClass('deactivated')) {
+                    isOn = true;
+                }
+                boozy._menu.toggleBooziness(controlId, isOn);
+            },
+            toggleBooziness: function(boozyId, isOn) {
+                if(isOn === true) {
+                    boozy[boozyId].init();
+                } else if(isOn === false) {
+                    boozy[boozyId].stop();
+                }
+            },
+            _menuHTML: [
+            '<div class="boozy-menu">',
+                '<h2 class="title font">Boozy Browsin</h2>',
+                '<div class="controls-container display-inline-block">',
+                    '<div id="lean" class="control cursor-pointer display-inline-block">',
+                        '<div class="title font float-left">',
+                            'Lean',
+                        '</div>',
+                        '<div class="switch float-right">',
+                            '<div class="on option float-left"></div>',
+                            '<div class="off option float-left deactivated"></div>',
+                        '</div>',
+                    '</div>',
+                    '<div class="clear-both"></div>',
+                    '<div id="focus" class="control cursor-pointer display-inline-block">',
+                        '<div class="title font float-left">',
+                            'Focus',
+                        '</div>',
+                        '<div class="switch float-right">',
+                            '<div class="on option float-left"></div>',
+                            '<div class="off option float-left deactivated"></div>',
+                        '</div>',
+                    '</div>',
+                    '<div class="clear-both"></div>',
+                    '<div id="buttons" class="control cursor-pointer display-inline-block">',
+                        '<div class="title font float-left">',
+                            'Buttons',
+                        '</div>',
+                        '<div class="switch float-right">',
+                            '<div class="on option float-left"></div>',
+                            '<div class="off option float-left deactivated"></div>',
+                        '</div>',
+                    '</div>',
+                    '<div class="clear-both"></div>',
+                    '<div id="keys" class="control cursor-pointer display-inline-block">',
+                        '<div class="title font float-left">',
+                            'Keys',
+                        '</div>',
+                        '<div class="switch float-right">',
+                            '<div class="on option float-left"></div>',
+                            '<div class="off option float-left deactivated"></div>',
+                        '</div>',
+                    '</div>',
+                    '<div class="clear-both"></div>',
+                '</div>',
+            '</div>'
+            ]
         },
         boundedRandomInterval: function(min, max) {
             return Math.floor(Math.random()*(max-min+1)+min);
@@ -82,11 +162,10 @@
                 }, 2000);
             },
             stop: function() {
-                console.log(boozy.focus._focusIntervalId);
                 clearInterval(boozy.focus._focusIntervalId);
-                $('body')
-                    .removeClass('blur-' + boozy.focus._currentBlur)
-                    .addClass('blur-0');
+
+                $('body').removeClass('blur-' + boozy.focus._currentBlur);
+
                 boozy.focus._currentBlur = 1;
                 boozy.focus._blurDirection = 'pos';
             },
@@ -127,13 +206,13 @@
             randomInterval: 10,
             init: function() {
                 $(boozy._typingSelectors).addClass(boozy.keys._boozyClass);
-                $('.boozy-keys').on('keyup.boozy-space', boozy.keys.typer);
+                $('.boozy-keys').on('keyup.boozy-space', boozy.keys._goHomeYoureDrunk);
                 boozy.keys.setRandomInterval();
             },
             setRandomInterval: function() {
                 boozy.keys.randomInterval = boozy.boundedRandomInterval(boozy.keys.howDrunk, boozy.keys.howSober);
             },
-            typer: function() {
+            _goHomeYoureDrunk: function() {
                 if(boozy.keys.keyCounter == boozy.keys.randomInterval){
                     var $textField = $(this),
                         randomBurst = Math.floor((Math.random()*3)+1),
@@ -162,9 +241,9 @@
             _boozyClass: 'boozy-buttons',
             init: function() {
                 $(boozy._buttonSelectors).addClass(boozy.buttons._boozyClass);
-                $('.boozy-buttons').on('mouseover.boozy-space', boozy.buttons.boozyMotions);
+                $('.boozy-buttons').on('mouseover.boozy-space', boozy.buttons._goHomeYoureDrunk);
             },
-            boozyMotions: function() {
+            _goHomeYoureDrunk: function() {
                 var $button = $(this),
                     randSize = 15;
 

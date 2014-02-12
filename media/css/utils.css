@@ -3,7 +3,7 @@
     float: left;
 }
 .float-right {
-    float: left;
+    float: right;
 }
 .clear-both {
     clear: both;
@@ -21,4 +21,18 @@
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
+}
+/* this is where the display classes live */
+.display-inline-block {
+    display: inline-block;
+}
+.display-none {
+    display: none;
+}
+/* this is where the cursor classes live */
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-default {
+    cursor: default;
 }

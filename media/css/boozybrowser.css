@@ -1,6 +1,3 @@
-.black {
-    background-color: black;
-}
 /* this is where the buttons classes live */
 .button-container {
     position: relative;
@@ -31,11 +28,51 @@
             box-shadow: inset 3px 3px 8px #333;
 }
 
-/* this is where the pix classes live */
+/* this is where the typing classes live */
 .typin {
     background-color: #DDD;
     margin: 15px;
 }
+.boozy-menu {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    border: 1px solid #545450;
+    padding: 15px;
+    background-color: white;
+}
+.boozy-menu .font {
+    font-family: helvetica;
+}
+.boozy-menu .title {
+    color: #545450;
+}
+.boozy-menu .switch {
+    padding: 5px;
+}
+.boozy-menu .switch .option {
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+}
+.boozy-menu .switch .on {
+    background-color: green;
+}
+.boozy-menu .switch .off {
+    background-color: red;
+}
+.boozy-menu .switch .deactivated {
+    background-color: #545450;
+}
+.boozy-menu .control {
+    width: 172px;
+
+}
+.boozy-menu .control:hover {
+    background-color: #ECF1DA;
+}
+/* this is where the menu classes live */
+
 /* 
     Somewhat Functional Section:
         This means these are classes that are intended to be dynamically toggled

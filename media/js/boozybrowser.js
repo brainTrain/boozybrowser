@@ -19,14 +19,32 @@
         },
         _menu: {
             init: function(callBack) {
-                var $menuContainer = $('html');
+                var $menuContainer = $('html'),
+                    $boozyMenu = $('.boozy-menu');
+
                 $menuContainer.append(boozy._menu._menuHTML.join(''));
-                $('.control', $menuContainer).click(boozy._menu.handleControlClicks);
+
+                $('.control', $menuContainer).on('click', boozy._menu.handleControlClicks);
+                $('.hide', $menuContainer).on('click', boozy._menu.handleHideClicks);
+                $('.show', $menuContainer).on('click', boozy._menu.handleShowClicks);
+
                 callBack();
+            },
+            handleHideClicks: function(event) {
+                var $menu = $('.boozy-menu');
+                $menu.addClass('hide-menu');
+                $('.hide', $menu).toggleClass('fade-out');
+                $('.show', $menu).toggleClass('fade-out');
+            },
+            handleShowClicks: function(event) {
+                var $menu = $('.boozy-menu');
+                $menu.removeClass('hide-menu');
+                console.log($('.show', $menu));
+                $('.hide', $menu).toggleClass('fade-out');
+                $('.show', $menu).toggleClass('fade-out');
             },
             handleControlClicks: function(event) {
                 var $control = $(this);
-
                 boozy._menu.toggleControl($control);
             },
             toggleControl: function($control) {
@@ -47,7 +65,9 @@
             },
             _menuHTML: [
             '<div class="boozy-menu">',
-                '<h2 class="title font">Boozy Browsin</h2>',
+                '<h2 class="title font float-left">Boozy Browsin</h2>',
+                '<div class="hide font float-right cursor-pointer">x</div>',
+                '<div class="clear-both"></div>',
                 '<div class="controls-container display-inline-block">',
                     '<div id="lean" class="control cursor-pointer display-inline-block">',
                         '<div class="title font float-left">',
@@ -90,6 +110,8 @@
                     '</div>',
                     '<div class="clear-both"></div>',
                 '</div>',
+                '<div class="clear-both"></div>',
+                '<div class="show font float-right cursor-pointer fade-out">open</div>',
             '</div>'
             ]
         },

@@ -1,5 +1,28 @@
 /*
     Let's treat this spot kinda like jira... listing my TODO's
+    -- drunk classifications --
+        * sober: everything off
+        * buzzed: slightly noticible
+            - keys: slight type-o's (so slight the user might think it's their type-o)
+            - buttons: very slight motion.. noticible but very much usuable (buttons should stay within their region desite number of hovers)
+            - lean: no lean
+            - focus: no focus
+        * getting drunk: definitely noticiable but not annoying 
+            - keys: noticible type-o's (user should now noticed but still not really be annoyed by them)
+            - buttons: noticible motion.. still usable but close to annoying
+            - lean: very slight intermittent lean.. kinda like small flashes of rolls
+            - focus: very slight intermittent blurring in and out.. not enough to prevent reading and slight enough that most may not notice
+        * drunk: annoying but useful
+            - keys: type-o's are now impossible to ignore and happen in seemingly every word
+            - buttons: quite dynamic motion, should border on frustrating, perhaps random keys are more difficult to chase down than others
+            - lean: lean should be in full effect, the page should sway back and forth constantly but not by too much
+            - focus: focus now throbs in and out.  The max blur should still be fairly  readable
+        * drunk drunk: holy shit I can barely use this webpage
+            - keys: type-o's should happen with every word, in fact a fair number of words should have more than one injected type-o
+            - buttons: buttons should now be close to impossible to click.. perhaps some random buttons are easier to click
+            - lean: the sway should be constant and quite large.. the user should be getting sea sick at this point
+            - focus: focus should throb in and out, with the max blur being impossible to read
+        * blackout drunk: completely unusable (black sceen? no.... hmm)
 
     TODO:
     ====
@@ -19,8 +42,9 @@
 
 (function(window, document, $){
     window.boozy = { 
-        _typingSelectors: 'textarea',
+        _typingSelectors: 'textarea, input',
         _buttonSelectors: '.button, button, .btn',
+        _pageSelectors: 'body',
         init: function() {
             // only initialize after the menu is loaded
             boozy._menu.init(function() {
@@ -36,27 +60,34 @@
             });
 
         },
+        /*
+            jira shiz... planning son!
+            lean should:
+                * have slow slight changes that are somewhat intermittent
+                * only start at say... the drunk drunk mode
+
+        */
         // all the boozy shit
         lean: {
             _leanIntervalId: undefined,
             _howDrunk: 2,
             _howFast: 2000,
             init: function() {
-                var $body = $('body'),
+                var $page = $(boozy._pageSelectors),
                     transitionClass = 'transition-ease-out';
                  
-                if(!$body.hasClass(transitionClass)) {
-                    $body.addClass(transitionClass);
+                if(!$page.hasClass(transitionClass)) {
+                    $page.addClass(transitionClass);
                 }
 
-                boozy.lean._goHomeYoureDrunk($body);
+                boozy.lean._goHomeYoureDrunk($page);
                 boozy.lean._leanIntervalId = setInterval(function(){
-                    boozy.lean._goHomeYoureDrunk($body);
+                    boozy.lean._goHomeYoureDrunk($page);
                 }, boozy.lean._howFast);
             },
             stop: function() {
                 clearInterval(boozy.lean._leanIntervalId);
-                $('body')
+                $(boozy._pageSelectors)
                     .removeClass('rotate-' + boozy.lean._howDrunk)
                     .removeClass('rotate-neg-' + boozy.lean._howDrunk);
             },
@@ -84,18 +115,18 @@
             _blurMax: 6,
             _blurDirection: 'pos',
             init: function() {
-                var $body = $('body');
+                var $page = $(boozy._pageSelectors);
                 
-                $body.addClass('transition-ease-out');
+                $page.addClass('transition-ease-out');
 
                 boozy.focus._focusIntervalId = setInterval(function(){
-                    boozy.focus._goHomeYoureDrunk($body);
+                    boozy.focus._goHomeYoureDrunk($page);
                 }, 2000);
             },
             stop: function() {
                 clearInterval(boozy.focus._focusIntervalId);
 
-                $('body').removeClass('blur-' + boozy.focus._currentBlur);
+                $(boozy._pageSelectors).removeClass('blur-' + boozy.focus._currentBlur);
 
                 boozy.focus._currentBlur = 1;
                 boozy.focus._blurDirection = 'pos';
@@ -129,15 +160,14 @@
             }
         },
         keys: {
-            _boozyClass: 'boozy-keys',
             _abc: 'abcdefghijklmnopqrstuvwxyz'.split(''),
+            _boozySpace: 'keyup.boozy-space',
             _keyCounter: 0,
             _howDrunk: 3,
             _howSober: 10,
             _randomInterval: 10,
             init: function() {
-                $(boozy._typingSelectors).addClass(boozy.keys._boozyClass);
-                $('.boozy-keys').on('keyup.boozy-space', boozy.keys._goHomeYoureDrunk);
+                $(boozy._typingSelectors).on(boozy.keys._boozySpace, boozy.keys._goHomeYoureDrunk);
                 boozy.keys._setRandomInterval();
             },
             _setRandomInterval: function() {
@@ -164,19 +194,15 @@
                 boozy.keys._keyCounter ++;
             },
             stop: function() {
-                $('.boozy-keys')
-                    .off('keyup.boozy-space')
-                    .removeClass(boozy.keys._boozyClass);
+                $(boozy._typingSelectors).off(boozy.keys._boozyNamespace);
             }
         },
         buttons: {
-            _boozyClass: 'boozy-buttons',
             _howDrunk: 15,
             _howFast: 250,
             _boozyNamespace:'mouseover.boozy-space',
             init: function() {
-                $(boozy._buttonSelectors).addClass(boozy.buttons._boozyClass);
-                $('.' + boozy.buttons._boozyClass).on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
+                $(boozy._buttonSelectors).on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
             },
             _goHomeYoureDrunk: function() {
                 var $button = $(this),
@@ -192,9 +218,7 @@
                 });
             },
             stop: function() {
-                $('.'+boozy.buttons._boozyClass)
-                    .off(boozy.buttons._boozyNamespace)
-                    .removeClass(boozy.buttons._boozyClass);
+                $(boozy._buttonSelectors).off(boozy.buttons._boozyNamespace);
             }
         },
         // utility functions 

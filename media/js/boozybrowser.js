@@ -1,5 +1,6 @@
 /*
     Let's treat this spot kinda like jira... listing my TODO's
+
     -- drunk classifications --
         * sober: everything off
         * buzzed: slightly noticible
@@ -60,13 +61,6 @@
             });
 
         },
-        /*
-            jira shiz... planning son!
-            lean should:
-                * have slow slight changes that are somewhat intermittent
-                * only start at say... the drunk drunk mode
-
-        */
         // all the boozy shit
         lean: {
             _leanIntervalId: undefined,

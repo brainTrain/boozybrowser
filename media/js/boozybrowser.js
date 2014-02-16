@@ -49,10 +49,10 @@
         init: function() {
             // only initialize after the menu is loaded
             boozy._menu.init(function() {
-                //boozy.buttons.init();
-                //boozy.focus.init();
-                //boozy.lean.init();
-                //boozy.keys.init();
+                //boozy.buttons.start();
+                //boozy.focus.start();
+                //boozy.lean.start();
+                //boozy.keys.start();
             });
 
             $('.button').click(function() {
@@ -72,34 +72,16 @@
                 };
             boozy._howDrunk(drunkObject); 
         },
+        _notDrunk: 'sober',
+        _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         _howDrunk: function(drunkObject) {
             if(drunkObject) {
-                console.log(drunkObject);
-                if(drunkObject.drunkLevel === 'sober') {
-                    console.log('sober');
+                if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober
                     boozy[drunkObject.controlId].stop();
-
-                } else if(drunkObject.drunkLevel === 'buzzed') {
-                    console.log('drunk');
+                } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
                     // be drunk
-                    boozy[drunkObject.controlId].init();
-                    
-                } else if(drunkObject.drunkLevel === 'im-fine') {
-                    // be drunk
-                    boozy[drunkObject.controlId].init();
-
-                } else if(drunkObject.drunkLevel === 'drunk') {
-                    // be drunk
-                    boozy[drunkObject.controlId].init();
-
-                } else if(drunkObject.drunkLevel === 'wooo') {
-                    // be drunk
-                    boozy[drunkObject.controlId].init();
-
-                } else if(drunkObject.drunkLevel === 'blackout') {
-                    // be drunk
-                    boozy[drunkObject.controlId].init();
+                    boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
                 }
             }
         },
@@ -109,9 +91,10 @@
             _transitionClass: 'transition-ease-out',
             _howDrunk: 2,
             _howFast: 2000,
-            init: function() {
-                console.log($(''))
-                console.log('lean init');
+            start: function(drunkLevel) {
+                // ensure we've cleaned up after ourselves before we start
+                boozy.lean.stop();
+                boozy.lean._setBooziness(drunkLevel);
                 var $page = $(boozy._pageSelectors);
                  
                 if(!$page.hasClass(boozy.lean._transitionClass)) {
@@ -124,11 +107,12 @@
                 }, boozy.lean._howFast);
             },
             stop: function() {
-                console.log('lean stop');
                 clearInterval(boozy.lean._leanIntervalId);
                 $(boozy._pageSelectors)
                     .removeClass('rotate-' + boozy.lean._howDrunk)
                     .removeClass('rotate-neg-' + boozy.lean._howDrunk);
+            },
+            _setBooziness: function(drunkLevel) {
             },
             _goHomeYoureDrunk: function($whatsThat) {
                 var posRotate = 'rotate-' + boozy.lean._howDrunk,
@@ -154,7 +138,10 @@
             _blurMin: 0,
             _blurMax: 6,
             _blurDirection: 'pos',
-            init: function() {
+            start: function(drunkLevel) {
+                // ensure we've cleaned up after ourselves before we start 
+                boozy.focus.stop();
+                boozy.focus._setBooziness(drunkLevel);
                 var $page = $(boozy._pageSelectors);
                 
                 $page.addClass(boozy.focus._transitionClass);
@@ -171,6 +158,8 @@
 
                 boozy.focus._currentBlur = 1;
                 boozy.focus._blurDirection = 'pos';
+            },
+            _setBooziness: function(drunkLevel) {
             },
             _boundBlur: function() {
                 if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
@@ -207,10 +196,15 @@
             _howDrunk: 3,
             _howSober: 10,
             _randomInterval: 10,
-            init: function() {
+            start: function(drunkLevel) {
+                // ensure we've cleaned up after ourselves before we start
+                boozy.keys.stop();
+                boozy.keys._setBooziness(drunkLevel)
                 $(boozy._typingSelectors)
                     .on(boozy.keys._boozySpace, boozy.keys._goHomeYoureDrunk);
                 boozy.keys._setRandomInterval();
+            },
+            _setBooziness: function(drunkLevel) {
             },
             _setRandomInterval: function() {
                 // higher value == less drunk cause higher value lets you type more without type-o's
@@ -243,9 +237,14 @@
             _howDrunk: 15,
             _howFast: 250,
             _boozyNamespace:'mouseover.boozy-space',
-            init: function() {
+            start: function(drunkLevel) {
+                // ensure we've cleaned up after ourselves before we start
+                boozy.buttons.stop();
+                boozy.buttons._setBooziness(drunkLevel);
                 $(boozy._buttonSelectors)
                     .on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
+            },
+            _setBooziness: function(drunkLevel) {
             },
             _goHomeYoureDrunk: function() {
                 var $button = $(this),

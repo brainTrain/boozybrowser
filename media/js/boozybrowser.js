@@ -48,11 +48,7 @@
         _pageSelectors: 'body',
         init: function() {
             // only initialize after the menu is loaded
-            boozy._menu.init(function() {
-                //boozy.buttons.start();
-                //boozy.focus.start();
-                //boozy.lean.start();
-                //boozy.keys.start();
+            boozy._menu.init(function(){
             });
 
             $('.button').click(function() {
@@ -83,6 +79,7 @@
                     // be drunk
                     boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
                 }
+                // I am god! (lol #ihtw)
             }
         },
         // all the boozy shit
@@ -94,17 +91,20 @@
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start
                 boozy.lean.stop();
-                boozy.lean._setBooziness(drunkLevel);
-                var $page = $(boozy._pageSelectors);
-                 
-                if(!$page.hasClass(boozy.lean._transitionClass)) {
-                    $page.addClass(boozy.lean._transitionClass);
-                }
+                boozy.lean._setBooziness(drunkLevel, function(ready) {
+                    if(ready === true) {
+                        var $page = $(boozy._pageSelectors);
+                         
+                        if(!$page.hasClass(boozy.lean._transitionClass)) {
+                            $page.addClass(boozy.lean._transitionClass);
+                        }
 
-                boozy.lean._goHomeYoureDrunk($page);
-                boozy.lean._leanIntervalId = setInterval(function(){
-                    boozy.lean._goHomeYoureDrunk($page);
-                }, boozy.lean._howFast);
+                        boozy.lean._goHomeYoureDrunk($page);
+                        boozy.lean._leanIntervalId = setInterval(function() {
+                            boozy.lean._goHomeYoureDrunk($page);
+                        }, boozy.lean._howFast);
+                    }
+                });
             },
             stop: function() {
                 clearInterval(boozy.lean._leanIntervalId);
@@ -112,7 +112,22 @@
                     .removeClass('rotate-' + boozy.lean._howDrunk)
                     .removeClass('rotate-neg-' + boozy.lean._howDrunk);
             },
-            _setBooziness: function(drunkLevel) {
+            _setBooziness: function(drunkLevel, ready) {
+                var isOption = _.contains(boozy._drunkLevels, drunkLevel);
+                if(isOption) {
+                    if(drunkLevel === 'buzzed') {
+
+                    } else if (drunkLevel === 'im-fine') {
+
+                    } else if (drunkLevel === 'drunk') {
+
+                    } else if (drunkLevel === 'wooo') {
+
+                    } else if (drunkLevel === 'blackout') {
+
+                    }
+                    ready(isOption);
+                }
             },
             _goHomeYoureDrunk: function($whatsThat) {
                 var posRotate = 'rotate-' + boozy.lean._howDrunk,
@@ -141,14 +156,17 @@
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start 
                 boozy.focus.stop();
-                boozy.focus._setBooziness(drunkLevel);
-                var $page = $(boozy._pageSelectors);
-                
-                $page.addClass(boozy.focus._transitionClass);
+                boozy.focus._setBooziness(drunkLevel, function(ready) {
+                    if(ready === true) {
+                        var $page = $(boozy._pageSelectors);
+                        
+                        $page.addClass(boozy.focus._transitionClass);
 
-                boozy.focus._focusIntervalId = setInterval(function(){
-                    boozy.focus._goHomeYoureDrunk($page);
-                }, 2000);
+                        boozy.focus._focusIntervalId = setInterval(function(){
+                            boozy.focus._goHomeYoureDrunk($page);
+                        }, 2000);
+                    }
+                });
             },
             stop: function() {
                 clearInterval(boozy.focus._focusIntervalId);
@@ -159,7 +177,22 @@
                 boozy.focus._currentBlur = 1;
                 boozy.focus._blurDirection = 'pos';
             },
-            _setBooziness: function(drunkLevel) {
+            _setBooziness: function(drunkLevel, ready) {
+                var isOption = _.contains(boozy._drunkLevels, drunkLevel);
+                if(isOption) {
+                    if(drunkLevel === 'buzzed') {
+
+                    } else if (drunkLevel === 'im-fine') {
+
+                    } else if (drunkLevel === 'drunk') {
+
+                    } else if (drunkLevel === 'wooo') {
+
+                    } else if (drunkLevel === 'blackout') {
+
+                    }
+                    ready(isOption);
+                }
             },
             _boundBlur: function() {
                 if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
@@ -199,12 +232,40 @@
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start
                 boozy.keys.stop();
-                boozy.keys._setBooziness(drunkLevel)
-                $(boozy._typingSelectors)
-                    .on(boozy.keys._boozySpace, boozy.keys._goHomeYoureDrunk);
-                boozy.keys._setRandomInterval();
+                boozy.keys._setBooziness(drunkLevel, function(ready) {
+                    if(ready === true) {
+                        $(boozy._typingSelectors)
+                            .on(boozy.keys._boozySpace, boozy.keys._goHomeYoureDrunk);
+                        boozy.keys._setRandomInterval();
+                    }
+                });
             },
-            _setBooziness: function(drunkLevel) {
+            _setBooziness: function(drunkLevel, ready) {
+                var isOption = _.contains(boozy._drunkLevels, drunkLevel);
+                if(isOption) {
+                    if(drunkLevel === 'buzzed') {
+                        boozy.keys._howDrunk = 10;
+                        boozy.keys._howSober = 20;
+
+                    } else if (drunkLevel === 'im-fine') {
+                        boozy.keys._howDrunk = 5;
+                        boozy.keys._howSober = 15;
+
+                    } else if (drunkLevel === 'drunk') {
+                        boozy.keys._howDrunk = 5;
+                        boozy.keys._howSober = 10;
+
+                    } else if (drunkLevel === 'wooo') {
+                        boozy.keys._howDrunk = 4;
+                        boozy.keys._howSober = 8;
+
+                    } else if (drunkLevel === 'blackout') {
+                        boozy.keys._howDrunk = 2;
+                        boozy.keys._howSober = 5;
+
+                    }
+                    ready(isOption);
+                }
             },
             _setRandomInterval: function() {
                 // higher value == less drunk cause higher value lets you type more without type-o's
@@ -245,6 +306,21 @@
                     .on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
             },
             _setBooziness: function(drunkLevel) {
+                var isOption = _.contains(boozy._drunkLevels, drunkLevel); 
+                if(isOption) {
+                    if(drunkLevel === 'buzzed') {
+
+                    } else if (drunkLevel === 'im-fine') {
+
+                    } else if (drunkLevel === 'drunk') {
+
+                    } else if (drunkLevel === 'wooo') {
+
+                    } else if (drunkLevel === 'blackout') {
+
+                    }
+                    ready(isOption);
+                }
             },
             _goHomeYoureDrunk: function() {
                 var $button = $(this),
@@ -290,8 +366,6 @@
 
                 $('.drunk-level', $menuContainer)
                     .on('change', boozy._howDrunkHandler);
-                $('.control', $menuContainer)
-                    //.on('click', boozy._menu.handleControlClicks);
                 $('.hide', $menuContainer)
                     .on('click', boozy._menu.handleHideClicks);
                 $('.show', $menuContainer)
@@ -312,26 +386,6 @@
                 // TODO: these toggles suck, come up with something better
                 $('.hide', $menu).toggleClass('fade-out');
                 $('.show', $menu).toggleClass('fade-out');
-            },
-            handleControlClicks: function(event) {
-                var $control = $(this);
-                boozy._menu.toggleControl($control);
-            },
-            toggleControl: function($control) {
-                var controlId = $control.attr('id'),
-                    isOn = false;
-                $('.switch .option', $control).toggleClass('deactivated');
-                if($('.switch .off', $control).hasClass('deactivated')) {
-                    isOn = true;
-                }
-                boozy._menu.toggleBooziness(controlId, isOn);
-            },
-            toggleBooziness: function(boozyId, isOn) {
-                if(isOn === true) {
-                    boozy[boozyId].init();
-                } else if(isOn === false) {
-                    boozy[boozyId].stop();
-                }
             },
             _menuHTML: [
 '<div class="boozy-menu">',

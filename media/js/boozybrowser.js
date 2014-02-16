@@ -301,11 +301,14 @@
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start
                 boozy.buttons.stop();
-                boozy.buttons._setBooziness(drunkLevel);
-                $(boozy._buttonSelectors)
-                    .on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
+                boozy.buttons._setBooziness(drunkLevel, function(ready){
+                    if(ready === true) {
+                        $(boozy._buttonSelectors)
+                            .on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
+                    }
+                });
             },
-            _setBooziness: function(drunkLevel) {
+            _setBooziness: function(drunkLevel, ready) {
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel); 
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {

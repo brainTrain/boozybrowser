@@ -118,7 +118,7 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.lean._howDrunk = 2;
+                        boozy.lean._howDrunk = 1;
                         boozy.lean._howFast = 2000;
 
                     } else if (drunkLevel === 'im-fine') {
@@ -126,15 +126,15 @@
                         boozy.lean._howFast = 2000;
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.lean._howDrunk = 2;
+                        boozy.lean._howDrunk = 3;
                         boozy.lean._howFast = 2000;
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.lean._howDrunk = 2;
+                        boozy.lean._howDrunk = 4;
                         boozy.lean._howFast = 2000;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.lean._howDrunk = 2;
+                        boozy.lean._howDrunk = 5;
                         boozy.lean._howFast = 2000;
 
                     }
@@ -165,9 +165,9 @@
         focus: {
             _focusIntervalId: undefined,
             _transitionClass: 'transition-ease-out',
-            _currentBlur: 1,
+            _currentBlur: 0,
             _blurMin: 0,
-            _blurMax: 6,
+            _blurMax: 1,
             _blurDirection: 'pos',
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start 
@@ -197,27 +197,22 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.focus._currentBlur = 1;
                         boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
+                        boozy.focus._blurMax = 1;
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.focus._currentBlur = 1;
                         boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
+                        boozy.focus._blurMax = 2;
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.focus._currentBlur = 1;
                         boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
+                        boozy.focus._blurMax = 4;
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.focus._currentBlur = 1;
                         boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
+                        boozy.focus._blurMax = 5;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.focus._currentBlur = 1;
                         boozy.focus._blurMin = 0;
                         boozy.focus._blurMax = 6;
 
@@ -279,24 +274,24 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.keys._howDrunk = 10;
-                        boozy.keys._howSober = 20;
+                        boozy.keys._howDrunk = 50;
+                        boozy.keys._howSober = 80;
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.keys._howDrunk = 5;
-                        boozy.keys._howSober = 15;
+                        boozy.keys._howDrunk = 30;
+                        boozy.keys._howSober = 40;
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.keys._howDrunk = 5;
-                        boozy.keys._howSober = 10;
+                        boozy.keys._howDrunk = 20;
+                        boozy.keys._howSober = 30;
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.keys._howDrunk = 4;
-                        boozy.keys._howSober = 8;
+                        boozy.keys._howDrunk = 15;
+                        boozy.keys._howSober = 25;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.keys._howDrunk = 2;
-                        boozy.keys._howSober = 5;
+                        boozy.keys._howDrunk = 8;
+                        boozy.keys._howSober = 14;
 
                     }
                     ready(isOption);
@@ -351,24 +346,24 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel); 
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.keys._howDrunk = 15;
-                        boozy.keys._howFast = 250;
+                        boozy.buttons._howDrunk = 0;
+                        boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.keys._howDrunk = 15;
-                        boozy.keys._howFast = 250;
+                        boozy.buttons._howDrunk = 2;
+                        boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.keys._howDrunk = 15;
-                        boozy.keys._howFast = 250;
+                        boozy.buttons._howDrunk = 15;
+                        boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.keys._howDrunk = 15;
-                        boozy.keys._howFast = 250;
+                        boozy.buttons._howDrunk = 25;
+                        boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.keys._howDrunk = 15;
-                        boozy.keys._howFast = 250;
+                        boozy.buttons._howDrunk = 40;
+                        boozy.buttons._howFast = 250;
 
                     }
                     ready(isOption);

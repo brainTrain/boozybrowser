@@ -47,6 +47,18 @@
          -o-transition: all 1s ease-in-out;
             transition: all 1s ease-in-out;
 }
+.divider-top {
+    border-top: 1px solid rgba(235, 235, 235, 0.6);
+    
+}
+.divider-bottom {
+    border-bottom: 1px solid rgba(235, 235, 235, 0.6);
+    
+}
+.divider-both {
+    border-top: 1px solid rgba(235, 235, 235, 0.6);
+    border-bottom: 1px solid rgba(235, 235, 235, 0.6);
+}
 .boozy-menu .fade-out {
     -webkit-opacity: 0;
        -moz-opacity: 0;

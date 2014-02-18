@@ -71,7 +71,10 @@
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         _howDrunk: function(drunkObject) {
             if(drunkObject) {
-                if(drunkObject.drunkLevel === boozy._notDrunk) {
+                if(drunkObject.controlId === 'bulk') {
+                    // change them all
+                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
+                } else if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober
                     boozy[drunkObject.controlId].stop();
                 } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
@@ -439,13 +442,29 @@
     '<h2 class="title font float-left">Boozy Browsin</h2>',
     '<div class="hide font float-right cursor-pointer">x</div>',
     '<div class="clear-both"></div>',
-    '<div class="controls-container display-inline-block">',
+    '<div id="bulk" class="control cursor-pointer display-inline-block divider-bottom">',
+        '<div class="title font float-left">',
+            'Bulk',
+        '</div>',
+        '<div class="switch float-right">',
+            '<select class="drunk-level float-left">',
+                '<option value="sober">sober</option>',
+                '<option value="buzzed">buzzed</option>',
+                '<option value="im-fine">I\'m fine</option>',
+                '<option value="drunk">drunk</option>',
+                '<option value="wooo">wooo!</option>',
+                '<option value="blackout">blackout</option>', 
+            '</select>',
+        '</div>',
+    '</div>',
+    '<div class="clear-both"></div>',
+    '<div class="controls-container display-inline-block divider-top">',
         '<div id="lean" class="control cursor-pointer display-inline-block">',
             '<div class="title font float-left">',
                 'Lean',
             '</div>',
             '<div class="switch float-right">',
-                '<select class="drunk-level float-left">',
+                '<select class="drunk-level single-control float-left">',
                     '<option value="sober">sober</option>',
                     '<option value="buzzed">buzzed</option>',
                     '<option value="im-fine">I\'m fine</option>',
@@ -461,7 +480,7 @@
                 'Focus',
             '</div>',
             '<div class="switch float-right">',
-                '<select class="drunk-level float-left">',
+                '<select class="drunk-level single-control float-left">',
                     '<option value="sober">sober</option>',
                     '<option value="buzzed">buzzed</option>',
                     '<option value="im-fine">I\'m fine</option>',
@@ -477,7 +496,7 @@
                 'Buttons',
             '</div>',
             '<div class="switch float-right">',
-                '<select class="drunk-level float-left">',
+                '<select class="drunk-level single-control float-left">',
                     '<option value="sober">sober</option>',
                     '<option value="buzzed">buzzed</option>',
                     '<option value="im-fine">I\'m fine</option>',
@@ -493,7 +512,7 @@
                 'Keys',
             '</div>',
             '<div class="switch float-right">',
-                '<select class="drunk-level float-left">',
+                '<select class="drunk-level single-control float-left">',
                     '<option value="sober">sober</option>',
                     '<option value="buzzed">buzzed</option>',
                     '<option value="im-fine">I\'m fine</option>',

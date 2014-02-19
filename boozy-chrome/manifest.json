@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+
+  "name": "Boozy Browser",
+  "description": "Please drink responsibly...",
+  "version": "0.0",
+  "content_scripts": [
+      {
+          "matches": [
+              "http://*/*",
+              "https://*/*"
+          ],
+          "css": ["utils.css", "boozychrome.css"],
+          "js": ["jquery.js", "underscore-min.js", "boozychrome.js"],
+          "run_at": "document_end"
+      }
+  ],
+  "permissions": [],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}
+
+{
+  "manifest_version": 2,
+
+  "name": "Boozy Browser",
+  "description": "Please drink responsibly...",
+  "version": "0.0",
+  "content_scripts": [
+      {
+          "matches": [
+              "http://*/*",
+              "https://*/*"
+          ],
+          "css": ["utils.css", "boozychrome.css"],
+          "js": ["jquery.js", "underscore-min.js", "boozychrome.js"],
+          "run_at": "document_end"
+      }
+  ],
+  "permissions": [],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}

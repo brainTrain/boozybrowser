@@ -1,6 +1,6 @@
+html {
+}
 .boozy-menu {
-    z-index: 9999999;
-    position: fixed;
     right: 20px;
     top: 20px;
     border: 1px solid #545450;

@@ -1,12 +1,8 @@
 (function(window, document, $){
-    window.boozy = { 
+    boozy = { 
         _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
         _buttonSelectors: '.button, button, .btn, [role="button"]',
         _pageSelectors: 'body',
-        init: function() {
-            // only initialize after the menu is loaded
-            boozy._menu.init(function(){});
-        },
         _howDrunkHandler: function(event) {
             var $drunkDrop =  $(event.target).closest('.drunk-level'),
                 $controlContainer = $drunkDrop.parents('.control'),
@@ -356,129 +352,6 @@
         },
         prevInt: function(num) {
             return num - 1;
-        },
-        // menu control rendering/event handling
-        _menu: {
-            init: function(callBack) {
-                var $menuContainer = $('html'),
-                    $boozyMenu = $('.boozy-menu');
-
-                $menuContainer.append(boozy._menu._menuHTML.join(''));
-
-                $('.drunk-level', $menuContainer)
-                    .on('change', boozy._howDrunkHandler);
-                $('.hide', $menuContainer)
-                    .on('click', boozy._menu.handleHideClicks);
-                $('.show', $menuContainer)
-                    .on('click', boozy._menu.handleShowClicks);
-
-                callBack();
-            },
-            handleHideClicks: function(event) {
-                var $menu = $('.boozy-menu');
-                $menu.addClass('hide-menu');
-                // TODO: these toggles suck, come up with something better
-                $('.hide', $menu).toggleClass('fade-out');
-                $('.show', $menu).toggleClass('fade-out');
-            },
-            handleShowClicks: function(event) {
-                var $menu = $('.boozy-menu');
-                $menu.removeClass('hide-menu');
-                // TODO: these toggles suck, come up with something better
-                $('.hide', $menu).toggleClass('fade-out');
-                $('.show', $menu).toggleClass('fade-out');
-            },
-            _menuHTML: [
-'<div class="boozy-menu">',
-    '<h2 class="title font float-left">Boozy Browsin</h2>',
-    '<div class="hide font float-right cursor-pointer">x</div>',
-    '<div class="clear-both"></div>',
-    '<div id="bulk" class="control cursor-pointer display-inline-block divider-bottom">',
-        '<div class="title font float-left">',
-            'Bulk',
-        '</div>',
-        '<div class="switch float-right">',
-            '<select class="drunk-level float-left">',
-                '<option value="sober">sober</option>',
-                '<option value="buzzed">buzzed</option>',
-                '<option value="im-fine">I\'m fine</option>',
-                '<option value="drunk">drunk</option>',
-                '<option value="wooo">wooo!</option>',
-                '<option value="blackout">blackout</option>', 
-            '</select>',
-        '</div>',
-    '</div>',
-    '<div class="clear-both"></div>',
-    '<div class="controls-container display-inline-block divider-top">',
-        '<div id="lean" class="control cursor-pointer display-inline-block">',
-            '<div class="title font float-left">',
-                'Lean',
-            '</div>',
-            '<div class="switch float-right">',
-                '<select class="drunk-level single-control float-left">',
-                    '<option value="sober">sober</option>',
-                    '<option value="buzzed">buzzed</option>',
-                    '<option value="im-fine">I\'m fine</option>',
-                    '<option value="drunk">drunk</option>',
-                    '<option value="wooo">wooo!</option>',
-                    '<option value="blackout">blackout</option>', 
-                '</select>',
-            '</div>',
-        '</div>',
-        '<div class="clear-both"></div>',
-        '<div id="focus" class="control cursor-pointer display-inline-block">',
-            '<div class="title font float-left">',
-                'Focus',
-            '</div>',
-            '<div class="switch float-right">',
-                '<select class="drunk-level single-control float-left">',
-                    '<option value="sober">sober</option>',
-                    '<option value="buzzed">buzzed</option>',
-                    '<option value="im-fine">I\'m fine</option>',
-                    '<option value="drunk">drunk</option>',
-                    '<option value="wooo">wooo!</option>',
-                    '<option value="blackout">blackout</option>', 
-                '</select>',
-            '</div>',
-        '</div>',
-        '<div class="clear-both"></div>',
-        '<div id="buttons" class="control cursor-pointer display-inline-block">',
-            '<div class="title font float-left">',
-                'Buttons',
-            '</div>',
-            '<div class="switch float-right">',
-                '<select class="drunk-level single-control float-left">',
-                    '<option value="sober">sober</option>',
-                    '<option value="buzzed">buzzed</option>',
-                    '<option value="im-fine">I\'m fine</option>',
-                    '<option value="drunk">drunk</option>',
-                    '<option value="wooo">wooo!</option>',
-                    '<option value="blackout">blackout</option>', 
-                '</select>',
-            '</div>',
-        '</div>',
-        '<div class="clear-both"></div>',
-        '<div id="keys" class="control cursor-pointer display-inline-block">',
-            '<div class="title font float-left">',
-                'Keys',
-            '</div>',
-            '<div class="switch float-right">',
-                '<select class="drunk-level single-control float-left">',
-                    '<option value="sober">sober</option>',
-                    '<option value="buzzed">buzzed</option>',
-                    '<option value="im-fine">I\'m fine</option>',
-                    '<option value="drunk">drunk</option>',
-                    '<option value="wooo">wooo!</option>',
-                    '<option value="blackout">blackout</option>', 
-                '</select>',
-            '</div>',
-        '</div>',
-        '<div class="clear-both"></div>',
-    '</div>',
-    '<div class="clear-both"></div>',
-    '<div class="show font float-right cursor-pointer fade-out">open</div>',
-'</div>'
-            ]
         }
     };
 

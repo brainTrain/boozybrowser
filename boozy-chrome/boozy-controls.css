@@ -1,0 +1,50 @@
+.boozy-menu {
+    z-index: 9999999;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    border: 1px solid #545450;
+    padding: 15px;
+    background-color: white;
+}
+.divider-top {
+    border-top: 1px solid rgba(235, 235, 235, 0.6);
+    
+}
+.divider-bottom {
+    border-bottom: 1px solid rgba(235, 235, 235, 0.6);
+    
+}
+.divider-both {
+    border-top: 1px solid rgba(235, 235, 235, 0.6);
+    border-bottom: 1px solid rgba(235, 235, 235, 0.6);
+}
+.boozy-menu .font {
+    font-family: helvetica;
+}
+.boozy-menu .title {
+    color: #545450;
+}
+.boozy-menu .switch {
+    padding: 5px;
+}
+.boozy-menu .switch .option {
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+}
+.boozy-menu .switch .on {
+    background-color: green;
+}
+.boozy-menu .switch .off {
+    background-color: red;
+}
+.boozy-menu .switch .deactivated {
+    background-color: #545450;
+}
+.boozy-menu .control {
+    width: 172px;
+}
+.boozy-menu .control:hover {
+    background-color: #ECF1DA;
+}

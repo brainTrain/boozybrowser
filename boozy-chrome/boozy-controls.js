@@ -33,10 +33,10 @@
                     $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
                 } else if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober
-                    boozy[drunkObject.controlId].stop();
+                    //boozy[drunkObject.controlId].stop();
                 } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
                     // be drunk
-                    boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
+                    //boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
                 }
                 // I am god! (lol #ihtw)
             }

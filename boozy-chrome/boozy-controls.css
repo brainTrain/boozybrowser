@@ -1,9 +1,5 @@
 .boozy-menu {
-    right: 20px;
-    top: 20px;
-    border: 1px solid #545450;
     padding: 15px;
-    background-color: white;
 }
 .divider-top {
     border-top: 1px solid rgba(235, 235, 235, 0.6);

@@ -11,7 +11,7 @@
                 "https://*/*"
             ],
             "css": ["utils.css", "boozychrome.css"],
-            "js": ["jquery.js", "underscore-min.js", "boozychrome.js"],
+            "js": ["jquery-2.1.0.min.js", "underscore-min.js", "boozychrome.js"],
             "run_at": "document_end"
         }
     ],

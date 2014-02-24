@@ -3,25 +3,19 @@
         _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
         _buttonSelectors: '.button, button, .btn, [role="button"]',
         _pageSelectors: 'body',
-        _howDrunkHandler: function(event) {
-            var $drunkDrop =  $(event.target).closest('.drunk-level'),
-                $controlContainer = $drunkDrop.parents('.control'),
-                controlId = $controlContainer.attr('id'),
-                drunkLevel = $drunkDrop.val(),
-                drunkObject = {
-                    "controlId": controlId,
-                    "drunkLevel": drunkLevel
-                };
-            boozy._howDrunk(drunkObject); 
-        },
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
+        init: function() {
+            chrome.runtime.onConnect.addListener(function(port) {
+                console.assert(port.name == 'boozy-browser');
+                port.onMessage.addListener(function(drunkObject) {
+                    boozy._howDrunk(drunkObject);
+                });
+            });
+        },
         _howDrunk: function(drunkObject) {
-            if(drunkObject) {
-                if(drunkObject.controlId === 'bulk') {
-                    // change them all
-                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
-                } else if(drunkObject.drunkLevel === boozy._notDrunk) {
+            if(drunkObject && drunkObject.controlId !== 'bulk') {
+                if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober
                     boozy[drunkObject.controlId].stop();
                 } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {

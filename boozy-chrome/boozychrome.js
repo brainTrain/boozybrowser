@@ -346,9 +346,7 @@
             return num - 1;
         }
     };
-
-    $(document).ready(function() {
-        boozy.init();     
-    });
+    // don't want document ready with content script
+    boozy.init();     
 
 })(window, document, jQuery);

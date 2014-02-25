@@ -33,7 +33,7 @@
                     "controlId": controlId,
                     "drunkLevel": drunkLevel
                 };
-            boozy._sendChromeMessage();
+            boozy._sendChromeMessage(drunkObject);
             boozy._howDrunk(drunkObject); 
         },
         _howDrunk: function(drunkObject) {

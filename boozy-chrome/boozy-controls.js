@@ -1,9 +1,16 @@
 (function(window, document, $){
     boozy = { 
         init: function() {
-            boozy._port = chrome.runtime.connect({name: "boozy-browser"});
+            //boozy._port = chrome.runtime.connect({name: "boozy-browser"});
             // only initialize after the menu is loaded
             boozy._menu.init();
+        },
+        _sendChromeMessage: function(drunkObject) {
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.sendMessage(tabs[0].id, drunkObject, function(response) {
+                    console.log(response.farewell);
+                });
+            });
         },
         _port: undefined,
         // menu control rendering/event handling
@@ -26,6 +33,7 @@
                     "controlId": controlId,
                     "drunkLevel": drunkLevel
                 };
+            boozy._sendChromeMessage();
             boozy._howDrunk(drunkObject); 
         },
         _howDrunk: function(drunkObject) {
@@ -36,7 +44,7 @@
                     $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
                 } else if(drunkObject.drunkLevel === boozy._notDrunk || isOption) {
                     // send that message
-                    boozy._port.postMessage(drunkObject)
+                    //boozy._port.postMessage(drunkObject)
                 } 
             }
         },

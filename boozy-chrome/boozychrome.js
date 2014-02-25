@@ -6,23 +6,10 @@
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         init: function() {
-            chrome.runtime.onMessage.addListener(
-                function(request, sender, sendResponse) {
-                    console.log(sender.tab ?
-                            "from a content script:" + sender.tab.url :
-                            "from the extension");
-
-                    if (request.greeting == "hello")
-                        sendResponse({farewell: "goodbye"});
-            });
-            /*
-            chrome.runtime.onConnect.addListener(function(port) {
-                console.assert(port.name == 'boozy-browser');
-                port.onMessage.addListener(function(drunkObject) {
+            chrome.runtime.onMessage.addListener(function(drunkObject, sender, sendResponse) {
                     boozy._howDrunk(drunkObject);
-                });
+                    sendResponse({howDrunk: drunkObject.drunkLevel});
             });
-            */
         },
         _howDrunk: function(drunkObject) {
             if(drunkObject && drunkObject.controlId !== 'bulk') {

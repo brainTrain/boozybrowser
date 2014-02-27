@@ -10,13 +10,13 @@
                 "http://*/*",
                 "https://*/*"
             ],
-            "css": ["css/utils.css", "css/boozychrome.css"],
-            "js": ["js/lib/jquery-2.1.0.min.js", "js/lib/underscore-min.js", "js/boozychrome.js"],
+            "css": ["/css/utils.css", "/css/boozychrome.css"],
+            "js": ["/js/lib/jquery-2.1.0.min.js", "/js/lib/underscore-min.js", "/js/boozychrome.js"],
             "run_at": "document_end"
         }
     ],
     "permissions": [],
     "browser_action": {
-        "default_popup": "html/popup.html"
+        "default_popup": "/html/popup.html"
     }
 }

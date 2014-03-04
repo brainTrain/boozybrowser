@@ -1,5 +1,5 @@
 /* this is where the buttons classes live */
-/* line 2, ../scss/boozybrowser.scss */
+/* line 2, ../scss/partials/_demo.scss */
 .button-container {
   position: relative;
   width: auto;
@@ -9,7 +9,7 @@
   margin: 15px;
 }
 
-/* line 10, ../scss/boozybrowser.scss */
+/* line 10, ../scss/partials/_demo.scss */
 .button {
   display: inline-block;
   position: relative;
@@ -24,7 +24,7 @@
   background-color: #DDD;
 }
 
-/* line 24, ../scss/boozybrowser.scss */
+/* line 24, ../scss/partials/_demo.scss */
 .pressed {
   border: 2px solid #CCC;
   -webkit-box-shadow: inset 3px 3px 8px #333;
@@ -33,13 +33,14 @@
 }
 
 /* this is where the typing classes live */
-/* line 32, ../scss/boozybrowser.scss */
+/* line 32, ../scss/partials/_demo.scss */
 .typin {
   background-color: #DDD;
   margin: 15px;
 }
 
-/* line 36, ../scss/boozybrowser.scss */
+/* this is where the menu classes live */
+/* line 3, ../scss/partials/_menu.scss */
 .boozy-menu {
   position: fixed;
   right: 20px;
@@ -54,23 +55,23 @@
   transition: all 1s ease-in-out;
 }
 
-/* line 50, ../scss/boozybrowser.scss */
+/* line 17, ../scss/partials/_menu.scss */
 .divider-top {
   border-top: 1px solid rgba(235, 235, 235, 0.6);
 }
 
-/* line 54, ../scss/boozybrowser.scss */
+/* line 21, ../scss/partials/_menu.scss */
 .divider-bottom {
   border-bottom: 1px solid rgba(235, 235, 235, 0.6);
 }
 
-/* line 58, ../scss/boozybrowser.scss */
+/* line 25, ../scss/partials/_menu.scss */
 .divider-both {
   border-top: 1px solid rgba(235, 235, 235, 0.6);
   border-bottom: 1px solid rgba(235, 235, 235, 0.6);
 }
 
-/* line 62, ../scss/boozybrowser.scss */
+/* line 29, ../scss/partials/_menu.scss */
 .boozy-menu .fade-out {
   -webkit-opacity: 0;
   -moz-opacity: 0;
@@ -84,7 +85,7 @@
   transition: all 1s ease-in-out;
 }
 
-/* line 75, ../scss/boozybrowser.scss */
+/* line 42, ../scss/partials/_menu.scss */
 .boozy-menu .fade-in {
   -webkit-opacity: 1;
   -moz-opacity: 1;
@@ -98,54 +99,54 @@
   transition: all 1s ease-in-out;
 }
 
-/* line 88, ../scss/boozybrowser.scss */
+/* line 55, ../scss/partials/_menu.scss */
 .boozy-menu .font {
   font-family: helvetica;
 }
 
-/* line 91, ../scss/boozybrowser.scss */
+/* line 58, ../scss/partials/_menu.scss */
 .boozy-menu .title {
   color: #545450;
 }
 
-/* line 94, ../scss/boozybrowser.scss */
+/* line 61, ../scss/partials/_menu.scss */
 .boozy-menu .switch {
   padding: 5px;
 }
 
-/* line 97, ../scss/boozybrowser.scss */
+/* line 64, ../scss/partials/_menu.scss */
 .boozy-menu .switch .option {
   width: 10px;
   height: 10px;
   border-radius: 20px;
 }
 
-/* line 102, ../scss/boozybrowser.scss */
+/* line 69, ../scss/partials/_menu.scss */
 .boozy-menu .switch .on {
   background-color: green;
 }
 
-/* line 105, ../scss/boozybrowser.scss */
+/* line 72, ../scss/partials/_menu.scss */
 .boozy-menu .switch .off {
   background-color: red;
 }
 
-/* line 108, ../scss/boozybrowser.scss */
+/* line 75, ../scss/partials/_menu.scss */
 .boozy-menu .switch .deactivated {
   background-color: #545450;
 }
 
-/* line 111, ../scss/boozybrowser.scss */
+/* line 78, ../scss/partials/_menu.scss */
 .boozy-menu .control {
   width: 172px;
 }
 
-/* line 114, ../scss/boozybrowser.scss */
+/* line 81, ../scss/partials/_menu.scss */
 .boozy-menu .control:hover {
   background-color: #ECF1DA;
 }
 
-/* line 117, ../scss/boozybrowser.scss */
+/* line 84, ../scss/partials/_menu.scss */
 .boozy-menu.hide-menu {
   -webkit-transform: translateY(-92%);
   -moz-transform: translateY(-92%);
@@ -154,14 +155,13 @@
   transform: translateY(-92%);
 }
 
-/* this is where the menu classes live */
 /* 
     Somewhat Functional Section:
         This means these are classes that are intended to be dynamically toggled
         at the moment they should either represent boolean actions or incremental 
         numbered actions
 */
-/* line 133, ../scss/boozybrowser.scss */
+/* line 7, ../scss/partials/_functions.scss */
 .transition-ease-out {
   -webkit-transition: all 2s ease-out;
   -moz-transition: all 2s ease-out;
@@ -171,7 +171,7 @@
 }
 
 /* blur classes */
-/* line 142, ../scss/boozybrowser.scss */
+/* line 16, ../scss/partials/_functions.scss */
 .blur-6 {
   -webkit-filter: blur(6px);
   -moz-filter: blur(6px);
@@ -180,7 +180,7 @@
   filter: blur(6px);
 }
 
-/* line 149, ../scss/boozybrowser.scss */
+/* line 23, ../scss/partials/_functions.scss */
 .blur-5 {
   -webkit-filter: blur(5px);
   -moz-filter: blur(5px);
@@ -189,7 +189,7 @@
   filter: blur(5px);
 }
 
-/* line 156, ../scss/boozybrowser.scss */
+/* line 30, ../scss/partials/_functions.scss */
 .blur-4 {
   -webkit-filter: blur(4px);
   -moz-filter: blur(4px);
@@ -198,7 +198,7 @@
   filter: blur(4px);
 }
 
-/* line 163, ../scss/boozybrowser.scss */
+/* line 37, ../scss/partials/_functions.scss */
 .blur-3 {
   -webkit-filter: blur(3px);
   -moz-filter: blur(3px);
@@ -207,7 +207,7 @@
   filter: blur(3px);
 }
 
-/* line 170, ../scss/boozybrowser.scss */
+/* line 44, ../scss/partials/_functions.scss */
 .blur-2 {
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -216,7 +216,7 @@
   filter: blur(2px);
 }
 
-/* line 177, ../scss/boozybrowser.scss */
+/* line 51, ../scss/partials/_functions.scss */
 .blur-1 {
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
@@ -225,7 +225,7 @@
   filter: blur(1px);
 }
 
-/* line 184, ../scss/boozybrowser.scss */
+/* line 58, ../scss/partials/_functions.scss */
 .blur-0 {
   -webkit-filter: blur(0px);
   -moz-filter: blur(0px);
@@ -234,7 +234,7 @@
   filter: blur(0px);
 }
 
-/* line 192, ../scss/boozybrowser.scss */
+/* line 66, ../scss/partials/_functions.scss */
 .rotate-5 {
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
@@ -243,7 +243,7 @@
   transform: rotate(5deg);
 }
 
-/* line 199, ../scss/boozybrowser.scss */
+/* line 73, ../scss/partials/_functions.scss */
 .rotate-4 {
   -webkit-transform: rotate(4deg);
   -moz-transform: rotate(4deg);
@@ -252,7 +252,7 @@
   transform: rotate(4deg);
 }
 
-/* line 206, ../scss/boozybrowser.scss */
+/* line 80, ../scss/partials/_functions.scss */
 .rotate-3 {
   -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
@@ -261,7 +261,7 @@
   transform: rotate(3deg);
 }
 
-/* line 213, ../scss/boozybrowser.scss */
+/* line 87, ../scss/partials/_functions.scss */
 .rotate-2 {
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -270,7 +270,7 @@
   transform: rotate(2deg);
 }
 
-/* line 220, ../scss/boozybrowser.scss */
+/* line 94, ../scss/partials/_functions.scss */
 .rotate-1 {
   -webkit-transform: rotate(1deg);
   -moz-transform: rotate(1deg);
@@ -279,7 +279,7 @@
   transform: rotate(1deg);
 }
 
-/* line 227, ../scss/boozybrowser.scss */
+/* line 101, ../scss/partials/_functions.scss */
 .rotate-0 {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -288,7 +288,7 @@
   transform: rotate(0deg);
 }
 
-/* line 234, ../scss/boozybrowser.scss */
+/* line 108, ../scss/partials/_functions.scss */
 .rotate-neg-1 {
   -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-1deg);
@@ -297,7 +297,7 @@
   transform: rotate(-1deg);
 }
 
-/* line 241, ../scss/boozybrowser.scss */
+/* line 115, ../scss/partials/_functions.scss */
 .rotate-neg-2 {
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -306,7 +306,7 @@
   transform: rotate(-2deg);
 }
 
-/* line 248, ../scss/boozybrowser.scss */
+/* line 122, ../scss/partials/_functions.scss */
 .rotate-neg-3 {
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
@@ -315,7 +315,7 @@
   transform: rotate(-3deg);
 }
 
-/* line 255, ../scss/boozybrowser.scss */
+/* line 129, ../scss/partials/_functions.scss */
 .rotate-neg-4 {
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
@@ -324,7 +324,7 @@
   transform: rotate(-4deg);
 }
 
-/* line 262, ../scss/boozybrowser.scss */
+/* line 136, ../scss/partials/_functions.scss */
 .rotate-neg-5 {
   -webkit-transform: rotate(-5deg);
   -moz-transform: rotate(-5deg);

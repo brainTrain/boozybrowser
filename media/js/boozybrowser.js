@@ -1,37 +1,8 @@
 /*
-    Let's treat this spot kinda like jira... listing my TODO's
-
-    -- drunk classifications --
-        * sober: everything off
-        * buzzed: slightly noticible
-            - keys: slight type-o's (so slight the user might think it's their type-o)
-            - buttons: very slight motion.. noticible but very much usuable (buttons should stay within their region desite number of hovers)
-            - lean: no lean
-            - focus: no focus
-        * I'm fine: definitely noticiable but not annoying 
-            - keys: noticible type-o's (user should now noticed but still not really be annoyed by them)
-            - buttons: noticible motion.. still usable but close to annoying
-            - lean: very slight intermittent lean.. kinda like small flashes of rolls
-            - focus: very slight intermittent blurring in and out.. not enough to prevent reading and slight enough that most may not notice
-        * drunk: annoying but useful
-            - keys: type-o's are now impossible to ignore and happen in seemingly every word
-            - buttons: quite dynamic motion, should border on frustrating, perhaps random keys are more difficult to chase down than others
-            - lean: lean should be in full effect, the page should sway back and forth constantly but not by too much
-            - focus: focus now throbs in and out.  The max blur should still be fairly  readable
-        * wooo!: holy shit I can barely use this webpage
-            - keys: type-o's should happen with every word, in fact a fair number of words should have more than one injected type-o
-            - buttons: buttons should now be close to impossible to click.. perhaps some random buttons are easier to click
-            - lean: the sway should be constant and quite large.. the user should be getting sea sick at this point
-            - focus: focus should throb in and out, with the max blur being impossible to read
-        * blackout drunk: completely unusable (black sceen? no.... hmm)
 
     TODO:
     ====
-        * create boozy menu that's useful and easy to discover/recall but very out of the way
-        * determine what more/less drunk means for each boozy function
-        * change boozy/sober/drunk values on the fly
-        * develop combinations for creative booziness 
-            (zomgz tequila goes right to my head... I can drink beer forever but I become an asshole.. etc)
+        * sass dis shit up
         * attempt to find a way to replace jQuery's animate with some css animations
         * attempt to optimize these animations so they don't get so jumpy
         * chrome extension:
@@ -55,6 +26,11 @@
                 $(this).addClass('pressed');
             });
 
+        },
+        _dom: {
+            _hasClass: function(el, selector) {
+                return (new RegExp('(\\s|^)' + selector + '(\\s|$)').test(el.className));
+            }
         },
         _howDrunkHandler: function(event) {
             var $drunkDrop =  $(event.target).closest('.drunk-level'),
@@ -98,10 +74,13 @@
                 boozy.lean.stop();
                 boozy.lean._setBooziness(drunkLevel, function(ready) {
                     if(ready === true) {
-                        var $page = $(boozy._pageSelectors);
+                        var $page = document.querySelectorAll(boozy._pageSelectors);
                          
-                        if(!$page.hasClass(boozy.lean._transitionClass)) {
+                        if(boozy._dom._hasClass($page, boozy.lean._transitionClass)) {
                             $page.addClass(boozy.lean._transitionClass);
+                        }
+                        if(!boozy._dom._hasClass($page, 'hardware-acceleration')) {
+                            $page.addClass('hardware-acceleration');
                         }
 
                         boozy.lean._goHomeYoureDrunk($page);
@@ -115,7 +94,8 @@
                 clearInterval(boozy.lean._leanIntervalId);
                 $(boozy._pageSelectors)
                     .removeClass('rotate-' + boozy.lean._howDrunk)
-                    .removeClass('rotate-neg-' + boozy.lean._howDrunk);
+                    .removeClass('rotate-neg-' + boozy.lean._howDrunk)
+                    .removeClass('hardware-acceleration');
             },
             _setBooziness: function(drunkLevel, ready) {
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);

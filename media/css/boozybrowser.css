@@ -22,9 +22,65 @@
   margin: 8px;
   cursor: pointer;
   background-color: #DDD;
+  width: 91px;
+  animation: width-stuffs 5s infinite;
+  -webkit-animation: width-stuffs 5s infinite;
 }
 
-/* line 24, ../scss/partials/_demo.scss */
+@-webkit-keyframes width-stuffs {
+  /* line 30, ../scss/partials/_demo.scss */
+  100% {
+    width: 24px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  90% {
+    width: 75px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  80% {
+    width: 28px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  70% {
+    width: 9px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  60% {
+    width: 50px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  50% {
+    width: 44px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  40% {
+    width: 84px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  30% {
+    width: 54px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  20% {
+    width: 92px;
+  }
+
+  /* line 30, ../scss/partials/_demo.scss */
+  10% {
+    width: 78px;
+  }
+}
+
+@keyframes width-stuffs {}
+/* line 47, ../scss/partials/_demo.scss */
 .pressed {
   border: 2px solid #CCC;
   -webkit-box-shadow: inset 3px 3px 8px #333;
@@ -33,7 +89,7 @@
 }
 
 /* this is where the typing classes live */
-/* line 32, ../scss/partials/_demo.scss */
+/* line 55, ../scss/partials/_demo.scss */
 .typin {
   background-color: #DDD;
   margin: 15px;

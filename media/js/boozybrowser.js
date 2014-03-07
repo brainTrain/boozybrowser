@@ -27,11 +27,6 @@
             });
 
         },
-        _dom: {
-            _hasClass: function(el, selector) {
-                return (new RegExp('(\\s|^)' + selector + '(\\s|$)').test(el.className));
-            }
-        },
         _howDrunkHandler: function(event) {
             var $drunkDrop =  $(event.target).closest('.drunk-level'),
                 $controlContainer = $drunkDrop.parents('.control'),
@@ -74,12 +69,12 @@
                 boozy.lean.stop();
                 boozy.lean._setBooziness(drunkLevel, function(ready) {
                     if(ready === true) {
-                        var $page = document.querySelectorAll(boozy._pageSelectors);
+                        var $page = $(boozy._pageSelectors);
                          
-                        if(boozy._dom._hasClass($page, boozy.lean._transitionClass)) {
+                        if($page.hasClass(boozy.lean._transitionClass)) {
                             $page.addClass(boozy.lean._transitionClass);
                         }
-                        if(!boozy._dom._hasClass($page, 'hardware-acceleration')) {
+                        if(!$page.hasClass('hardware-acceleration')) {
                             $page.addClass('hardware-acceleration');
                         }
 

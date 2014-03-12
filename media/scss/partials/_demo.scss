@@ -19,18 +19,14 @@
     margin: 8px;
     cursor: pointer; 
     background-color: #DDD;
-    width: random() + px;
-    animation: width-stuffs 5s infinite;
-    -webkit-animation: width-stuffs 5s infinite;
 }
 $loop: 100;
-$direction: -1;
 @-webkit-keyframes width-stuffs {
   @while $loop > 0 {
     #{$loop * 1%} {
         width: random() + px;
     } 
-    $step: $direction * 10;
+    $step: -10;
     $loop: $loop + $step; 
 
   }
@@ -40,7 +36,7 @@ $direction: -1;
     #{$loop * 1%} {
         width: random() + px;
     } 
-    $step: $direction * 10;
+    $step: -10;
     $loop: $loop + $step; 
   }
 }

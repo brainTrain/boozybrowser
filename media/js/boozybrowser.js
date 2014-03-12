@@ -340,8 +340,8 @@
                         boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.buttons._howDrunk = 40;
-                        boozy.buttons._howFast = 250;
+                        boozy.buttons._howDrunk = 140;
+                        boozy.buttons._howFast = 350;
 
                     }
                     ready(isOption);
@@ -350,15 +350,45 @@
             _goHomeYoureDrunk: function() {
                 var $button = $(this),
                     randSize = boozy.buttons._howDrunk,
-                    moveRight = boozy.randDirection(randSize),
-                    moveTop = boozy.randDirection(randSize);
-
-                $button.animate({
-                    "right": "+=" + moveRight + "px", 
-                    "top": "+=" + moveTop + "px", 
-                },{
-                    duration: boozy.buttons._howFast
-                });
+                    moveLeft = boozy.randDirection(randSize),
+                    moveTop = boozy.randDirection(randSize),
+                    animationOffset, animationTop, animationLeft;
+                window.$button = $button;
+                $button
+                    .animate({
+                        "left": "+=" + moveLeft + "px", 
+                        "top": "+=" + moveTop + "px", 
+                    },{
+                        duration: boozy.buttons._howFast,
+                        complete: function() {
+                            // if buttons leave the clickable region 
+                            // of a page bounce 'em right back! (only top/left)
+                            animationOffset = $button.offset(); 
+                            animationTop = animationOffset.top;
+                            animationLeft = animationOffset.left;
+                            if(animationTop < 0) {
+                                console.log('top less than 0?');
+                                $button
+                                    .animate({
+                                        "left": moveLeft + "px", 
+                                        "top": "5px", 
+                                    },{
+                                        duration: boozy.buttons._howFast
+                                    });
+                            }
+                            if(animationLeft < 0) {
+                                console.log('left less than 0?');
+                                $button
+                                    .animate({
+                                        "left": "5px", 
+                                        "top": moveTop + "px", 
+                                    },{
+                                        duration: boozy.buttons._howFast
+                                    });
+                            }
+                            console.log($button.offset());
+                        }
+                    });
             },
             stop: function() {
                 $(boozy._buttonSelectors)

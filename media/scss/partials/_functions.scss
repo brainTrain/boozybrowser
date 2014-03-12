@@ -11,7 +11,28 @@
     @include backface-visibility(hidden);
     @include perspective(1000);
 }
+/* commenting this guy out to be used as an example
+$loop: 100;
+@-webkit-keyframes width-stuffs {
+  @while $loop > 0 {
+    #{$loop * 1%} {
+        width: random() + px;
+    } 
+    $step: -10;
+    $loop: $loop + $step; 
 
+  }
+}
+@keyframes width-stuffs {
+  @while $loop > 0 {
+    #{$loop * 1%} {
+        width: random() + px;
+    } 
+    $step: -10;
+    $loop: $loop + $step; 
+  }
+}
+*/
 /* blur classes */
 .blur-6 {
     @include filter(blur(6px));

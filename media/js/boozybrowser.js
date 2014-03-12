@@ -367,7 +367,6 @@
                             animationTop = animationOffset.top;
                             animationLeft = animationOffset.left;
                             if(animationTop < 0) {
-                                console.log('top less than 0?');
                                 $button
                                     .animate({
                                         "left": moveLeft + "px", 
@@ -377,7 +376,6 @@
                                     });
                             }
                             if(animationLeft < 0) {
-                                console.log('left less than 0?');
                                 $button
                                     .animate({
                                         "left": "5px", 
@@ -386,7 +384,6 @@
                                         duration: boozy.buttons._howFast
                                     });
                             }
-                            console.log($button.offset());
                         }
                     });
             },

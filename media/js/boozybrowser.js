@@ -71,7 +71,7 @@
                     if(ready === true) {
                         var $page = $(boozy._pageSelectors);
                          
-                        if($page.hasClass(boozy.lean._transitionClass)) {
+                        if(!$page.hasClass(boozy.lean._transitionClass)) {
                             $page.addClass(boozy.lean._transitionClass);
                         }
                         if(!$page.hasClass('hardware-acceleration')) {

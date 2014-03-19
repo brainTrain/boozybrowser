@@ -4,6 +4,9 @@
         at the moment they should either represent boolean actions or incremental 
         numbered actions
 */
+.buzzed-transition {
+    @include transition(all 0.5s ease-out);
+} 
 .transition-ease-out {
     @include transition(all 2s ease-out);
 } 
@@ -11,28 +14,24 @@
     @include backface-visibility(hidden);
     @include perspective(1000);
 }
-/* commenting this guy out to be used as an example
-$loop: 100;
-@-webkit-keyframes width-stuffs {
-  @while $loop > 0 {
-    #{$loop * 1%} {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
-
-  }
+.buzzed-blur {
+    // if I include a blur of 0px here then applying blur
+    // via keyframe blurs out entire screen when applied to body
+    @include filter(blur(0px));
+    @include transition(all 1s ease-in-out);
+    @include animation(blur-animation 1s); 
 }
-@keyframes width-stuffs {
-  @while $loop > 0 {
-    #{$loop * 1%} {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
-  }
+@include keyframes(blur-animation) {
+    0% {
+        @include filter(blur(0px));
+    }  
+    50% {
+        @include filter(blur(3px));
+    }  
+    100% {
+        @include filter(blur(0px));
+    }  
 }
-*/
 /* blur classes */
 .blur-6 {
     @include filter(blur(6px));

@@ -24,60 +24,7 @@
   background-color: #DDD;
 }
 
-@-webkit-keyframes width-stuffs {
-  /* line 26, ../scss/partials/_demo.scss */
-  100% {
-    width: 77px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  90% {
-    width: 75px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  80% {
-    width: 35px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  70% {
-    width: 44px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  60% {
-    width: 2px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  50% {
-    width: 61px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  40% {
-    width: 25px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  30% {
-    width: 4px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  20% {
-    width: 6px;
-  }
-
-  /* line 26, ../scss/partials/_demo.scss */
-  10% {
-    width: 32px;
-  }
-}
-
-@keyframes width-stuffs {}
-/* line 43, ../scss/partials/_demo.scss */
+/* line 23, ../scss/partials/_demo.scss */
 .pressed {
   border: 2px solid #CCC;
   -webkit-box-shadow: inset 3px 3px 8px #333;
@@ -86,7 +33,7 @@
 }
 
 /* this is where the typing classes live */
-/* line 51, ../scss/partials/_demo.scss */
+/* line 31, ../scss/partials/_demo.scss */
 .typin {
   background-color: #DDD;
   margin: 15px;
@@ -215,194 +162,248 @@
         numbered actions
 */
 /* line 7, ../scss/partials/_functions.scss */
-.transition-ease-out {
-  -webkit-transition: all 2s ease-out;
-  -moz-transition: all 2s ease-out;
-  -o-transition: all 2s ease-out;
-  transition: all 2s ease-out;
+.buzzed-transition {
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 /* line 10, ../scss/partials/_functions.scss */
+.transition-ease-out {
+  -moz-transition: all 2s ease-out;
+  -o-transition: all 2s ease-out;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
+}
+
+/* line 13, ../scss/partials/_functions.scss */
 .hardware-acceleration {
-  -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 1000;
   -moz-perspective: 1000;
-  -ms-perspective: 1000;
-  -o-perspective: 1000;
+  -webkit-perspective: 1000;
   perspective: 1000;
 }
 
-/* commenting this guy out to be used as an example
-$loop: 100;
-@-webkit-keyframes width-stuffs {
-  @while $loop > 0 {
-    0% {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
+/* line 17, ../scss/partials/_functions.scss */
+.buzzed-blur {
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  -webkit-animation: blur-animation 1s;
+  -moz-animation: blur-animation 1s;
+  -o-animation: blur-animation 1s;
+  animation: blur-animation 1s;
+}
 
+@-webkit-keyframes blur-animation {
+  /* line 25, ../scss/partials/_functions.scss */
+  0% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+
+  /* line 28, ../scss/partials/_functions.scss */
+  50% {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+
+  /* line 31, ../scss/partials/_functions.scss */
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
   }
 }
-@keyframes width-stuffs {
-  @while $loop > 0 {
-    0% {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
+@-moz-keyframes blur-animation {
+  /* line 25, ../scss/partials/_functions.scss */
+  0% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+
+  /* line 28, ../scss/partials/_functions.scss */
+  50% {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+
+  /* line 31, ../scss/partials/_functions.scss */
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
   }
 }
-*/
+@-ms-keyframes blur-animation {
+  /* line 25, ../scss/partials/_functions.scss */
+  0% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+
+  /* line 28, ../scss/partials/_functions.scss */
+  50% {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+
+  /* line 31, ../scss/partials/_functions.scss */
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
+@keyframes blur-animation {
+  /* line 25, ../scss/partials/_functions.scss */
+  0% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+
+  /* line 28, ../scss/partials/_functions.scss */
+  50% {
+    -webkit-filter: blur(3px);
+    filter: blur(3px);
+  }
+
+  /* line 31, ../scss/partials/_functions.scss */
+  100% {
+    -webkit-filter: blur(0px);
+    filter: blur(0px);
+  }
+}
 /* blur classes */
-/* line 37, ../scss/partials/_functions.scss */
+/* line 36, ../scss/partials/_functions.scss */
 .blur-6 {
   -webkit-filter: blur(6px);
-  -moz-filter: blur(6px);
   filter: blur(6px);
 }
 
-/* line 40, ../scss/partials/_functions.scss */
+/* line 39, ../scss/partials/_functions.scss */
 .blur-5 {
   -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
   filter: blur(5px);
 }
 
-/* line 43, ../scss/partials/_functions.scss */
+/* line 42, ../scss/partials/_functions.scss */
 .blur-4 {
   -webkit-filter: blur(4px);
-  -moz-filter: blur(4px);
   filter: blur(4px);
 }
 
-/* line 46, ../scss/partials/_functions.scss */
+/* line 45, ../scss/partials/_functions.scss */
 .blur-3 {
   -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
   filter: blur(3px);
 }
 
-/* line 49, ../scss/partials/_functions.scss */
+/* line 48, ../scss/partials/_functions.scss */
 .blur-2 {
   -webkit-filter: blur(2px);
-  -moz-filter: blur(2px);
   filter: blur(2px);
 }
 
-/* line 52, ../scss/partials/_functions.scss */
+/* line 51, ../scss/partials/_functions.scss */
 .blur-1 {
   -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
   filter: blur(1px);
 }
 
-/* line 55, ../scss/partials/_functions.scss */
+/* line 54, ../scss/partials/_functions.scss */
 .blur-0 {
   -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
   filter: blur(0px);
 }
 
-/* line 59, ../scss/partials/_functions.scss */
+/* line 58, ../scss/partials/_functions.scss */
 .rotate-5 {
-  -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
   -ms-transform: rotate(5deg);
-  -o-transform: rotate(5deg);
+  -webkit-transform: rotate(5deg);
   transform: rotate(5deg);
 }
 
-/* line 62, ../scss/partials/_functions.scss */
+/* line 61, ../scss/partials/_functions.scss */
 .rotate-4 {
-  -webkit-transform: rotate(4deg);
   -moz-transform: rotate(4deg);
   -ms-transform: rotate(4deg);
-  -o-transform: rotate(4deg);
+  -webkit-transform: rotate(4deg);
   transform: rotate(4deg);
 }
 
-/* line 65, ../scss/partials/_functions.scss */
+/* line 64, ../scss/partials/_functions.scss */
 .rotate-3 {
-  -webkit-transform: rotate(3deg);
   -moz-transform: rotate(3deg);
   -ms-transform: rotate(3deg);
-  -o-transform: rotate(3deg);
+  -webkit-transform: rotate(3deg);
   transform: rotate(3deg);
 }
 
-/* line 68, ../scss/partials/_functions.scss */
+/* line 67, ../scss/partials/_functions.scss */
 .rotate-2 {
-  -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
   -ms-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
+  -webkit-transform: rotate(2deg);
   transform: rotate(2deg);
 }
 
-/* line 71, ../scss/partials/_functions.scss */
+/* line 70, ../scss/partials/_functions.scss */
 .rotate-1 {
-  -webkit-transform: rotate(1deg);
   -moz-transform: rotate(1deg);
   -ms-transform: rotate(1deg);
-  -o-transform: rotate(1deg);
+  -webkit-transform: rotate(1deg);
   transform: rotate(1deg);
 }
 
-/* line 74, ../scss/partials/_functions.scss */
+/* line 73, ../scss/partials/_functions.scss */
 .rotate-0 {
-  -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -ms-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
   transform: rotate(0deg);
 }
 
-/* line 77, ../scss/partials/_functions.scss */
+/* line 76, ../scss/partials/_functions.scss */
 .rotate-neg-1 {
-  -webkit-transform: rotate(-1deg);
   -moz-transform: rotate(-1deg);
   -ms-transform: rotate(-1deg);
-  -o-transform: rotate(-1deg);
+  -webkit-transform: rotate(-1deg);
   transform: rotate(-1deg);
 }
 
-/* line 80, ../scss/partials/_functions.scss */
+/* line 79, ../scss/partials/_functions.scss */
 .rotate-neg-2 {
-  -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
   -ms-transform: rotate(-2deg);
-  -o-transform: rotate(-2deg);
+  -webkit-transform: rotate(-2deg);
   transform: rotate(-2deg);
 }
 
-/* line 83, ../scss/partials/_functions.scss */
+/* line 82, ../scss/partials/_functions.scss */
 .rotate-neg-3 {
-  -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   -ms-transform: rotate(-3deg);
-  -o-transform: rotate(-3deg);
+  -webkit-transform: rotate(-3deg);
   transform: rotate(-3deg);
 }
 
-/* line 86, ../scss/partials/_functions.scss */
+/* line 85, ../scss/partials/_functions.scss */
 .rotate-neg-4 {
-  -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
-  -o-transform: rotate(-4deg);
+  -webkit-transform: rotate(-4deg);
   transform: rotate(-4deg);
 }
 
-/* line 89, ../scss/partials/_functions.scss */
+/* line 88, ../scss/partials/_functions.scss */
 .rotate-neg-5 {
-  -webkit-transform: rotate(-5deg);
   -moz-transform: rotate(-5deg);
   -ms-transform: rotate(-5deg);
-  -o-transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
   transform: rotate(-5deg);
 }

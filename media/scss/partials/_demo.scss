@@ -20,26 +20,6 @@
     cursor: pointer; 
     background-color: #DDD;
 }
-$loop: 100;
-@-webkit-keyframes width-stuffs {
-  @while $loop > 0 {
-    #{$loop * 1%} {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
-
-  }
-}
-@keyframes width-stuffs {
-  @while $loop > 0 {
-    #{$loop * 1%} {
-        width: random() + px;
-    } 
-    $step: -10;
-    $loop: $loop + $step; 
-  }
-}
 .pressed {
     border: 2px solid #CCC;
     -webkit-box-shadow: inset 3px 3px 8px #333;

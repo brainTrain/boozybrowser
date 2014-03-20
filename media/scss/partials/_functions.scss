@@ -19,14 +19,14 @@
     // via keyframe blurs out entire screen when applied to body
     @include filter(blur(0px));
     @include transition(all 1s ease-in-out);
-    @include animation(blur-animation 1s); 
+    @include animation(light-blur-animation 0.3s); 
 }
-@include keyframes(blur-animation) {
+@include keyframes(light-blur-animation) {
     0% {
         @include filter(blur(0px));
     }  
     50% {
-        @include filter(blur(3px));
+        @include filter(blur(2px));
     }  
     100% {
         @include filter(blur(0px));

@@ -1,0 +1,24 @@
+// keyframes mixin
+// from https://gist.github.com/ericam/1607696
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  } 
+}
+// animation mixin
+// from: http://codepen.io/sawmac/pen/rjHFd
+@mixin animation($animation...) {
+    -webkit-animation: $animation;
+       -moz-animation: $animation;
+         -o-animation: $animation;
+            animation: $animation;
+}

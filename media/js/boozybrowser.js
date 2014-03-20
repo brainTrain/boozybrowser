@@ -142,11 +142,7 @@
         */
         focus: {
             _focusIntervalId: undefined,
-            _transitionClass: 'transition-ease-out',
-            _currentBlur: 0,
-            _blurMin: 0,
-            _blurMax: 1,
-            _blurDirection: 'pos',
+            _drunkClass: '',
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start 
                 boozy.focus.stop();
@@ -154,11 +150,10 @@
                     if(ready === true) {
                         var $page = $(boozy._pageSelectors);
                         
-                        $page.addClass(boozy.focus._transitionClass);
-
                         boozy.focus._focusIntervalId = setInterval(function(){
                             boozy.focus._goHomeYoureDrunk($page);
-                        }, 2000);
+                            console.log('going home drunk');
+                        }, 5000);
                     }
                 });
             },
@@ -166,64 +161,35 @@
                 clearInterval(boozy.focus._focusIntervalId);
 
                 $(boozy._pageSelectors)
-                    .removeClass('blur-' + boozy.focus._currentBlur);
-
-                boozy.focus._currentBlur = 1;
-                boozy.focus._blurDirection = 'pos';
+                    .removeClass(boozy.focus._drunkClass);
             },
             _setBooziness: function(drunkLevel, ready) {
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 1;
+                        boozy.focus._drunkClass = 'buzzed-blur';
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 2;
+                        boozy.focus._drunkClass = 'buzzed-blur';
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 4;
+                        boozy.focus._drunkClass = 'buzzed-blur';
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 5;
+                        boozy.focus._drunkClass = 'buzzed-blur';
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
-
+                        boozy.focus._drunkClass = 'buzzed-blur';
                     }
                     ready(isOption);
                 }
             },
-            _boundBlur: function() {
-                if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
-                    boozy.focus._blurDirection = 'pos';
-                }
-                if(boozy.focus._currentBlur >= boozy.focus._blurMax) {
-                    boozy.focus._blurDirection = 'neg';
-                }
-            },
-            _upDownBlur: function() {
-                boozy.focus._boundBlur();
-                var newBlur;
-                if(boozy.focus._blurDirection === 'pos') {
-                    newBlur = boozy.nextInt(boozy.focus._currentBlur);
-                }
-                if(boozy.focus._blurDirection === 'neg') {
-                    newBlur = boozy.prevInt(boozy.focus._currentBlur);
-                }
-                boozy.focus._currentBlur =  newBlur;
-                return newBlur;
-            },
             _goHomeYoureDrunk: function($whatsThat) {
-                var currentBlur = boozy.focus._currentBlur, 
-                    blurAmount = boozy.focus._upDownBlur();
-                $whatsThat
-                    .removeClass('blur-' + currentBlur)
-                    .addClass('blur-' + blurAmount);
+                $whatsThat.removeClass(boozy.focus._drunkClass)
+                // just give it a lil time
+                setTimeout(function(){
+                    $whatsThat.addClass(boozy.focus._drunkClass);
+                }, 100);
             }
         },
         /*

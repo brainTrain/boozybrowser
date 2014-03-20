@@ -21,12 +21,51 @@
     @include transition(all 1s ease-in-out);
     @include animation(light-blur-animation 0.3s); 
 }
+.im-fine-blur {
+    // if I include a blur of 0px here then applying blur
+    // via keyframe blurs out entire screen when applied to body
+    @include filter(blur(0px));
+    @include transition(all 1s ease-in-out);
+    @include animation(light-blur-animation 0.5s); 
+}
+.drunk-blur {
+    // if I include a blur of 0px here then applying blur
+    // via keyframe blurs out entire screen when applied to body
+    @include filter(blur(0px));
+    @include transition(all 1s ease-in-out);
+    @include animation(heavy-blur-animation 1s); 
+}
+.wooo-blur {
+    // if I include a blur of 0px here then applying blur
+    // via keyframe blurs out entire screen when applied to body
+    @include filter(blur(0px));
+    @include transition(all 1s ease-in-out);
+    @include animation(heavy-blur-animation 2s); 
+}
+.blackout-blur {
+    // if I include a blur of 0px here then applying blur
+    // via keyframe blurs out entire screen when applied to body
+    @include filter(blur(0px));
+    @include transition(all 1s ease-in-out);
+    @include animation(heavy-blur-animation 5s); 
+}
 @include keyframes(light-blur-animation) {
     0% {
         @include filter(blur(0px));
     }  
     50% {
         @include filter(blur(2px));
+    }  
+    100% {
+        @include filter(blur(0px));
+    }  
+}
+@include keyframes(heavy-blur-animation) {
+    0% {
+        @include filter(blur(0px));
+    }  
+    50% {
+        @include filter(blur(6px));
     }  
     100% {
         @include filter(blur(0px));

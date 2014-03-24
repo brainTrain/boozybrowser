@@ -167,23 +167,23 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.focus._drunkClass = 'buzzed-blur';
+                        boozy.focus._drunkClass = 'blur-4';
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 60000);
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.focus._drunkClass = 'im-fine-blur';
+                        boozy.focus._drunkClass = 'blur-4';
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 40000);
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.focus._drunkClass = 'drunk-blur';
+                        boozy.focus._drunkClass = 'blur-6';
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(8000, 10000);
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.focus._drunkClass = 'wooo-blur';
+                        boozy.focus._drunkClass = 'blur-6';
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.focus._drunkClass = 'blackout-blur';
+                        boozy.focus._drunkClass = 'blur-6';
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
                     }
                     ready(isOption);

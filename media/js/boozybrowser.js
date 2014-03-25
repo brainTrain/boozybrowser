@@ -142,23 +142,34 @@
         */
         focus: {
             _focusIntervalId: undefined,
+            _focusTimeoutId: undefined,
+            _displayInterval: 5000,
+            _displayTimeout: 200,
+            _drunkTransitionClass: '',
             _drunkClass: '',
+            _currentBlur: 0,
+            _blurMin: 0,
+            _blurMax: 1,
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start 
                 boozy.focus.stop();
                 boozy.focus._setBooziness(drunkLevel, function(ready) {
                     if(ready === true) {
                         var $page = $(boozy._pageSelectors);
+
+                        if(!$page.hasClass(boozy.lean._transitionClass)) {
+                            $page.addClass(boozy.lean._transitionClass);
+                        }
                         
                         boozy.focus._focusIntervalId = setInterval(function(){
                             boozy.focus._goHomeYoureDrunk($page);
-                            console.log('going home drunk ' + boozy.focus._displayInterval);
                         }, boozy.focus._displayInterval);
                     }
                 });
             },
             stop: function() {
                 clearInterval(boozy.focus._focusIntervalId);
+                clearInterval(boozy.focus._focusTimeoutId);
 
                 $(boozy._pageSelectors)
                     .removeClass(boozy.focus._drunkClass);
@@ -167,34 +178,43 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.focus._drunkClass = 'blur-4';
+                        boozy.focus._drunkClass = 'blur-2';
+                        boozy.focus._drunkTransitionClass = 'buzzed-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(300, 600);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 60000);
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.focus._drunkClass = 'blur-4';
+                        boozy.focus._drunkClass = 'blur-3';
+                        boozy.focus._drunkTransitionClass = 'im-fine-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(200, 700);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 40000);
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.focus._drunkClass = 'blur-6';
+                        boozy.focus._drunkClass = 'blur-4';
+                        boozy.focus._drunkTransitionClass = 'drunk-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 1000);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(8000, 10000);
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.focus._drunkClass = 'blur-6';
+                        boozy.focus._drunkClass = 'blur-5';
+                        boozy.focus._drunkTransitionClass = 'wooo-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1000, 1300);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
 
                     } else if (drunkLevel === 'blackout') {
                         boozy.focus._drunkClass = 'blur-6';
+                        boozy.focus._drunkTransitionClass = 'blackout-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(2000, 3000);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
                     }
                     ready(isOption);
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
-                $whatsThat.removeClass(boozy.focus._drunkClass)
-                // just give it a lil time
-                setTimeout(function(){
-                    $whatsThat.addClass(boozy.focus._drunkClass);
-                }, 100);
+                $whatsThat.addClass(boozy.focus._drunkClass);
+                boozy.focus._focusTimeoutId = setTimeout(function(){
+                    $whatsThat.removeClass(boozy.focus._drunkClass);
+                }, boozy.focus._displayTimeout);
             }
         },
         /*

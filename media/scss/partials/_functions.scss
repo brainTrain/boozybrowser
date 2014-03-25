@@ -5,7 +5,19 @@
         numbered actions
 */
 .buzzed-transition {
-    @include transition(all 0.5s ease-out);
+    @include transition(all 0.25s ease-in-out);
+} 
+.im-fine-transition {
+    @include transition(all 0.5s ease-in-out);
+} 
+.drunk-transition {
+    @include transition(all 2s ease-in-out);
+} 
+.wooo-transition {
+    @include transition(all 3s ease-in-out);
+} 
+.blackout-transition {
+    @include transition(all 5s ease-in-out);
 } 
 .transition-ease-out {
     @include transition(all 2s ease-out);

@@ -172,6 +172,7 @@
                 clearInterval(boozy.focus._focusTimeoutId);
 
                 $(boozy._pageSelectors)
+                    .removeClass(boozy.focus._transitionClass)
                     .removeClass(boozy.focus._drunkClass);
             },
             _setBooziness: function(drunkLevel, ready) {
@@ -180,31 +181,31 @@
                     if(drunkLevel === 'buzzed') {
                         boozy.focus._drunkClass = 'blur-2';
                         boozy.focus._drunkTransitionClass = 'buzzed-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(300, 600);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 900);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 60000);
 
                     } else if (drunkLevel === 'im-fine') {
                         boozy.focus._drunkClass = 'blur-3';
                         boozy.focus._drunkTransitionClass = 'im-fine-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(200, 700);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1000, 1500);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 40000);
 
                     } else if (drunkLevel === 'drunk') {
                         boozy.focus._drunkClass = 'blur-4';
                         boozy.focus._drunkTransitionClass = 'drunk-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 1000);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1500, 2000);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(8000, 10000);
 
                     } else if (drunkLevel === 'wooo') {
                         boozy.focus._drunkClass = 'blur-5';
                         boozy.focus._drunkTransitionClass = 'wooo-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1000, 1300);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(2000, 3000);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
 
                     } else if (drunkLevel === 'blackout') {
                         boozy.focus._drunkClass = 'blur-6';
                         boozy.focus._drunkTransitionClass = 'blackout-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(2000, 3000);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(3000, 4000);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
                     }
                     ready(isOption);

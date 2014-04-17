@@ -187,7 +187,7 @@
                     } else if (drunkLevel === 'im-fine') {
                         boozy.focus._drunkClass = 'blur-3';
                         boozy.focus._drunkTransitionClass = 'im-fine-transition';
-                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1000, 1500);
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 1100);
                         boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 40000);
 
                     } else if (drunkLevel === 'drunk') {
@@ -206,7 +206,7 @@
                         boozy.focus._drunkClass = 'blur-6';
                         boozy.focus._drunkTransitionClass = 'blackout-transition';
                         boozy.focus._displayTimeout = boozy.boundedRandomInterval(3000, 4000);
-                        boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(4000, 6000);
                     }
                     ready(isOption);
                 }

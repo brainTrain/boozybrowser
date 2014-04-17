@@ -147,6 +147,7 @@
             _displayTimeout: 200,
             _drunkTransitionClass: '',
             _drunkClass: '',
+            _soberClass: 'blur-0',
             _currentBlur: 0,
             _blurMin: 0,
             _blurMax: 1,
@@ -173,6 +174,7 @@
 
                 $(boozy._pageSelectors)
                     .removeClass(boozy.focus._transitionClass)
+                    .removeClass(boozy.focus._soberClass)
                     .removeClass(boozy.focus._drunkClass);
             },
             _setBooziness: function(drunkLevel, ready) {
@@ -212,9 +214,13 @@
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
-                $whatsThat.addClass(boozy.focus._drunkClass);
+                $whatsThat
+                    .removeClass(boozy.focus._soberClass)
+                    .addClass(boozy.focus._drunkClass);
                 boozy.focus._focusTimeoutId = setTimeout(function(){
-                    $whatsThat.removeClass(boozy.focus._drunkClass);
+                    $whatsThat
+                        .removeClass(boozy.focus._drunkClass)
+                        .addClass(boozy.focus._soberClass);
                 }, boozy.focus._displayTimeout);
             }
         },

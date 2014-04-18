@@ -44,7 +44,7 @@
             if(drunkObject) {
                 if(drunkObject.controlId === 'bulk') {
                     // change them all
-                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
+                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
                 } else if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober
                     boozy[drunkObject.controlId].stop();

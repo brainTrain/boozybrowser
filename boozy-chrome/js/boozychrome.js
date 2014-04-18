@@ -42,6 +42,9 @@
                         if(!$page.hasClass(boozy.lean._transitionClass)) {
                             $page.addClass(boozy.lean._transitionClass);
                         }
+                        if(!$page.hasClass('hardware-acceleration')) {
+                            $page.addClass('hardware-acceleration');
+                        }
 
                         boozy.lean._goHomeYoureDrunk($page);
                         boozy.lean._leanIntervalId = setInterval(function() {
@@ -54,7 +57,8 @@
                 clearInterval(boozy.lean._leanIntervalId);
                 $(boozy._pageSelectors)
                     .removeClass('rotate-' + boozy.lean._howDrunk)
-                    .removeClass('rotate-neg-' + boozy.lean._howDrunk);
+                    .removeClass('rotate-neg-' + boozy.lean._howDrunk)
+                    .removeClass('hardware-acceleration');
             },
             _setBooziness: function(drunkLevel, ready) {
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
@@ -106,88 +110,86 @@
         */
         focus: {
             _focusIntervalId: undefined,
-            _transitionClass: 'transition-ease-out',
+            _focusTimeoutId: undefined,
+            _displayInterval: 5000,
+            _displayTimeout: 200,
+            _drunkTransitionClass: '',
+            _drunkClass: '',
+            _soberClass: 'blur-0',
             _currentBlur: 0,
             _blurMin: 0,
             _blurMax: 1,
-            _blurDirection: 'pos',
             start: function(drunkLevel) {
                 // ensure we've cleaned up after ourselves before we start 
                 boozy.focus.stop();
                 boozy.focus._setBooziness(drunkLevel, function(ready) {
                     if(ready === true) {
                         var $page = $(boozy._pageSelectors);
-                        
-                        $page.addClass(boozy.focus._transitionClass);
 
+                        if(!$page.hasClass(boozy.lean._transitionClass)) {
+                            $page.addClass(boozy.lean._transitionClass);
+                        }
+                        
                         boozy.focus._focusIntervalId = setInterval(function(){
                             boozy.focus._goHomeYoureDrunk($page);
-                        }, 2000);
+                        }, boozy.focus._displayInterval);
                     }
                 });
             },
             stop: function() {
                 clearInterval(boozy.focus._focusIntervalId);
+                clearInterval(boozy.focus._focusTimeoutId);
 
                 $(boozy._pageSelectors)
-                    .removeClass('blur-' + boozy.focus._currentBlur);
-
-                boozy.focus._currentBlur = 1;
-                boozy.focus._blurDirection = 'pos';
+                    .removeClass(boozy.focus._transitionClass)
+                    .removeClass(boozy.focus._soberClass)
+                    .removeClass(boozy.focus._drunkClass);
             },
             _setBooziness: function(drunkLevel, ready) {
                 var isOption = _.contains(boozy._drunkLevels, drunkLevel);
                 if(isOption) {
                     if(drunkLevel === 'buzzed') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 1;
+                        boozy.focus._drunkClass = 'blur-2';
+                        boozy.focus._drunkTransitionClass = 'buzzed-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 900);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 60000);
 
                     } else if (drunkLevel === 'im-fine') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 2;
+                        boozy.focus._drunkClass = 'blur-3';
+                        boozy.focus._drunkTransitionClass = 'im-fine-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(600, 1100);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(10000, 40000);
 
                     } else if (drunkLevel === 'drunk') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 4;
+                        boozy.focus._drunkClass = 'blur-4';
+                        boozy.focus._drunkTransitionClass = 'drunk-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(1500, 2000);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(8000, 10000);
 
                     } else if (drunkLevel === 'wooo') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 5;
+                        boozy.focus._drunkClass = 'blur-5';
+                        boozy.focus._drunkTransitionClass = 'wooo-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(2000, 3000);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(5000, 7000);
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.focus._blurMin = 0;
-                        boozy.focus._blurMax = 6;
-
+                        boozy.focus._drunkClass = 'blur-6';
+                        boozy.focus._drunkTransitionClass = 'blackout-transition';
+                        boozy.focus._displayTimeout = boozy.boundedRandomInterval(3000, 4000);
+                        boozy.focus._displayInterval = boozy.boundedRandomInterval(4000, 6000);
                     }
                     ready(isOption);
                 }
             },
-            _boundBlur: function() {
-                if(boozy.focus._currentBlur <= boozy.focus._blurMin) {
-                    boozy.focus._blurDirection = 'pos';
-                }
-                if(boozy.focus._currentBlur >= boozy.focus._blurMax) {
-                    boozy.focus._blurDirection = 'neg';
-                }
-            },
-            _upDownBlur: function() {
-                boozy.focus._boundBlur();
-                var newBlur;
-                if(boozy.focus._blurDirection === 'pos') {
-                    newBlur = boozy.nextInt(boozy.focus._currentBlur);
-                }
-                if(boozy.focus._blurDirection === 'neg') {
-                    newBlur = boozy.prevInt(boozy.focus._currentBlur);
-                }
-                boozy.focus._currentBlur =  newBlur;
-                return newBlur;
-            },
             _goHomeYoureDrunk: function($whatsThat) {
-                var currentBlur = boozy.focus._currentBlur, 
-                    blurAmount = boozy.focus._upDownBlur();
                 $whatsThat
-                    .removeClass('blur-' + currentBlur)
-                    .addClass('blur-' + blurAmount);
+                    .removeClass(boozy.focus._soberClass)
+                    .addClass(boozy.focus._drunkClass);
+                boozy.focus._focusTimeoutId = setTimeout(function(){
+                    $whatsThat
+                        .removeClass(boozy.focus._drunkClass)
+                        .addClass(boozy.focus._soberClass);
+                }, boozy.focus._displayTimeout);
             }
         },
         /*
@@ -304,8 +306,8 @@
                         boozy.buttons._howFast = 250;
 
                     } else if (drunkLevel === 'blackout') {
-                        boozy.buttons._howDrunk = 40;
-                        boozy.buttons._howFast = 250;
+                        boozy.buttons._howDrunk = 140;
+                        boozy.buttons._howFast = 350;
 
                     }
                     ready(isOption);
@@ -314,15 +316,42 @@
             _goHomeYoureDrunk: function() {
                 var $button = $(this),
                     randSize = boozy.buttons._howDrunk,
-                    moveRight = boozy.randDirection(randSize),
-                    moveTop = boozy.randDirection(randSize);
-
-                $button.animate({
-                    "right": "+=" + moveRight + "px", 
-                    "top": "+=" + moveTop + "px", 
-                },{
-                    duration: boozy.buttons._howFast
-                });
+                    moveLeft = boozy.randDirection(randSize),
+                    moveTop = boozy.randDirection(randSize),
+                    animationOffset, animationTop, animationLeft;
+                window.$button = $button;
+                $button
+                    .animate({
+                        "left": "+=" + moveLeft + "px", 
+                        "top": "+=" + moveTop + "px", 
+                    },{
+                        duration: boozy.buttons._howFast,
+                        complete: function() {
+                            // if buttons leave the clickable region 
+                            // of a page bounce 'em right back! (only top/left)
+                            animationOffset = $button.offset(); 
+                            animationTop = animationOffset.top;
+                            animationLeft = animationOffset.left;
+                            if(animationTop < 0) {
+                                $button
+                                    .animate({
+                                        "left": moveLeft + "px", 
+                                        "top": "5px", 
+                                    },{
+                                        duration: boozy.buttons._howFast
+                                    });
+                            }
+                            if(animationLeft < 0) {
+                                $button
+                                    .animate({
+                                        "left": "5px", 
+                                        "top": moveTop + "px", 
+                                    },{
+                                        duration: boozy.buttons._howFast
+                                    });
+                            }
+                        }
+                    });
             },
             stop: function() {
                 $(boozy._buttonSelectors)

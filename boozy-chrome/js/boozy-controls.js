@@ -39,7 +39,7 @@
                 var isOption = _.contains(boozy._drunkLevels, drunkObject.drunkLevel);
                 if(drunkObject.controlId === 'bulk') {
                     // change them all
-                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change()
+                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
                 } else if(drunkObject.drunkLevel === boozy._notDrunk || isOption) {
                     // send that message
                 } 

@@ -9,12 +9,14 @@ _This is just about teaching the internet how to drink._
 var bb = new BoozyBrowser();
 // choose a string to set booziness, default will be sober
 bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
-// pass in an array (or single string if you're just doin one, undefined/empty/falsy defaults to all
+// pass in an array (or single string if you're just doin one, 
+// undefined/empty/falsy defaults to all
 bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
-// set selectors and whether they should be additive or just replace, below are the current default selectors
+// set selectors and whether they should be additive or just replace, 
+// below are the current default selectors
 bb.setSelectors({
-    "keys": "textarea, input, [role="input"], [role="textarea"]",   
-    "buttons": ".button, button, .btn, [role="button"]",
+    "keys": "textarea, input, [role='input'], [role='textarea']",   
+    "buttons": ".button, button, .btn, [role='button']",
     "lean": "body",
     "blur": "body",
     "replace": false | true // replace current selectors, defautlts to false

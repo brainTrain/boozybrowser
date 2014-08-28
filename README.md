@@ -35,26 +35,6 @@ bb.lean.stop();
 bb.lean.start();
 ``` 
 
-### boozy.lean
-_Startin to lean._
-* initialize with: `boozy.lean.start();`
-* stop with: `boozy.lean.stop();`
-
-### boozy.focus
-_Vision blurrin in and out._
-* initialize with: `boozy.focus.start();`
-* stop with: `boozy.focus.stop();`
-
-### boozy.keys
-_Addin that boozy type-o action._
-* initialize with: `boozy.keys.start();`
-* stop with: `boozy.keys.stop();`
-
-### boozy.buttons
-_Makes buttons move around when you hover over them._
-* initialize with: `boozy.buttons.start();`
-* initialize with: `boozy.buttons.stop();`
-
 ## drunk classifications 
     * sober: everything off
     * buzzed: slightly noticible

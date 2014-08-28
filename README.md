@@ -2,6 +2,32 @@
 _This is just about teaching the internet how to drink._
 <a href="http://www.boozybrowser.com" target="_blank">Check Out The Demo</a>
 
+## fake usage, gonna start at a high level to determine how I wanna consume this guy 
+### (tech spec I guess)
+```
+// init boozy object, brah!
+var bb = new BoozyBrowser();
+// choose a string to set booziness, default will be sober
+bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
+// pass in an array (or single string if you're just doin one, undefined/empty/falsy defaults to all
+bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
+// set selectors and whether they should be additive or just replace, below are the current default selectors
+bb.setSelectors({
+    "keys": "textarea, input, [role="input"], [role="textarea"]",   
+    "buttons": ".button, button, .btn, [role="button"]",
+    "lean": "body",
+    "blur": "body",
+    "replace": false | true // replace current selectors, defautlts to false
+});
+// start all boozy functions
+bb.start();
+// stop all boozy functions
+bb.stop();
+// or start/stop individual functions
+bb.lean.stop();
+bb.lean.start();
+``` 
+
 ### boozy.lean
 _Startin to lean._
 * initialize with: `boozy.lean.start();`

@@ -7,11 +7,11 @@
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         init: function() {
             chrome.runtime.onMessage.addListener(function(drunkObject, sender, sendResponse) {
-                    boozy._howDrunk(drunkObject);
+                    boozy._setHowDrunk(drunkObject);
                     sendResponse({howDrunk: drunkObject.drunkLevel});
             });
         },
-        _howDrunk: function(drunkObject) {
+        _setHowDrunk: function(drunkObject) {
             if(drunkObject && drunkObject.controlId !== 'bulk') {
                 if(drunkObject.drunkLevel === boozy._notDrunk) {
                     // be sober

@@ -4,7 +4,7 @@ _This is just about teaching the internet how to drink._
 
 ## fake usage, gonna start at a high level to determine how I wanna consume this guy 
 ### (tech spec I guess)
-```
+``` JavaScript
 // init boozy object, brah!
 var bb = new BoozyBrowser();
 // choose a string to set booziness, default will be sober

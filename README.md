@@ -24,7 +24,7 @@ bb.setSelectors({
     "buttons": ".button, button, .btn, [role='button']",
     "lean": "body",
     "blur": "body",
-    "replace": false | true // replace current selectors, defautlts to false
+    "replace": false | true // optional: replace current selectors, defautlts to false
 });
 // start all boozy functions
 bb.start();

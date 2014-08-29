@@ -1,64 +1,65 @@
 /*
 
-    TODO:
+    orgz:
     ====
-        * sass dis shit up
-        * attempt to find a way to replace jQuery's animate with some css animations
-        * attempt to optimize these animations so they don't get so jumpy
-        * chrome extension:
-            * learn the wtf's 
-            * learn about persisten states and remotely influencing thereof (passing drinkz around brah)
-            * password to unlock booziness?
+        BoozyBrowser: just sets booziness 
+
+        // wasn't sure how to organize but if I make an object for each I 
+        // should be able to inherit, as doing BoozyBrowser.prototype.keys.start() 
+        // is apparently bad practice in JS world... hmmmmm
+
+        BoozyLean: does all lean stuffs, inherits booziness from BoozyBrowser
+        BoozyFocus: does all focus stuffs, inherits booziness from BoozyBrowser
+        BoozyKeys: does all keys stuffs, inherits booziness from BoozyBrowser
+        BoozyButtons: does all buttons stuffs, inherits booziness from BoozyBrowser
 
 */
 
 (function(window, document, $){
-    window.boozy = { 
-        _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
-        _buttonSelectors: '.button, button, .btn, [role="button"]',
-        _pageSelectors: 'body',
-        init: function() {
-            // only initialize after the menu is loaded
-            boozy._menu.init();
 
-            $('.button').click(function() {
-                $('.button').removeClass('pressed');
-                $(this).addClass('pressed');
-            });
+    function BoozyBrowser() {
+        this.drunkLevel = "sober"; 
+        this.boozyTypes = ["lean", "focus", "keys", "buttons"];
 
+        this.lean._selectors = 'body';
+        this.focus._selectors = 'body';
+        this.buttons._selectors = '.button, button, .btn, [role="button"]';
+        this.keys._selectors = 'textarea, input, [role="input"], [role="textarea"]';
+    };
+
+    BoozyBrowser.prototype = {
+        constructor: BoozyBrowser,
+        self: function() {
+            return this;
         },
-        _howDrunkHandler: function(event) {
-            var $drunkDrop =  $(event.target).closest('.drunk-level'),
-                $controlContainer = $drunkDrop.parents('.control'),
-                controlId = $controlContainer.attr('id'),
-                drunkLevel = $drunkDrop.val(),
-                drunkObject = {
-                    "controlId": controlId,
-                    "drunkLevel": drunkLevel
-                };
-            boozy._howDrunk(drunkObject); 
+        setBooziness: function(drunkLevel) {
+            this.drunkLevel = drunkLevel; 
         },
-        _notDrunk: 'sober',
-        _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
-        _howDrunk: function(drunkObject) {
-            if(drunkObject) {
-                if(drunkObject.controlId === 'bulk') {
-                    // change them all
-                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
-                } else if(drunkObject.drunkLevel === boozy._notDrunk) {
-                    // be sober
-                    boozy[drunkObject.controlId].stop();
-                } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
-                    // be drunk
-                    boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
+        setBoozyTypes: function(boozyTypes) {
+            this.boozyTypes = boozyTypes;
+        },
+        removeBoozyTypes: function(boozyTypes) {
+        },
+        setSelectors: function(selectorObject) {
+            for(var key in selectorObject) {
+                if(selectorObject.hasOwnProperty(key) && key !== 'replace') {
+                    if(selectorObject.replace) {
+                        this[key]._selectors = selectorObject[key];
+                    } else {
+                        // make sure to handle case where selector is empty
+                        if(this[key]._selectors.length === 0) {
+                            this[key]._selectors = selectorObject[key];
+                        } else {
+                            this[key]._selectors += ', ' + selectorObject[key];
+                        }
+                    }
                 }
-                // I am god! (lol #ihtw)
             }
         },
-        /*
-            Lean:
-            ====
-        */
+        start: function() {
+        },
+        stop: function() {
+        },
         lean: {
             _leanIntervalId: undefined,
             _transitionClass: 'transition-ease-out',
@@ -136,11 +137,8 @@
                 }
             }
         },
-        /*
-            Focus:
-            =====
-        */
         focus: {
+            _transitionClass: 'transition-ease-out',
             _focusIntervalId: undefined,
             _focusTimeoutId: undefined,
             _displayInterval: 5000,
@@ -152,21 +150,25 @@
             _blurMin: 0,
             _blurMax: 1,
             start: function(drunkLevel) {
+                console.log('this');
+                console.log(this);
+                /*
                 // ensure we've cleaned up after ourselves before we start 
-                boozy.focus.stop();
-                boozy.focus._setBooziness(drunkLevel, function(ready) {
+                this.stop();
+                this._setBooziness(drunkLevel, function(ready) {
                     if(ready === true) {
-                        var $page = $(boozy._pageSelectors);
+                        var $page = $(this._pageSelectors);
 
-                        if(!$page.hasClass(boozy.lean._transitionClass)) {
-                            $page.addClass(boozy.lean._transitionClass);
+                        if(!$page.hasClass(this._transitionClass)) {
+                            $page.addClass(this._transitionClass);
                         }
                         
-                        boozy.focus._focusIntervalId = setInterval(function(){
-                            boozy.focus._goHomeYoureDrunk($page);
-                        }, boozy.focus._displayInterval);
+                        this._focusIntervalId = setInterval(function(){
+                            this._goHomeYoureDrunk($page);
+                        }, this._displayInterval);
                     }
                 });
+                */
             },
             stop: function() {
                 clearInterval(boozy.focus._focusIntervalId);
@@ -224,10 +226,6 @@
                 }, boozy.focus._displayTimeout);
             }
         },
-        /*
-            Keys:
-            ====
-        */
         keys: {
             _abc: 'abcdefghijklmnopqrstuvwxyz'.split(''),
             _boozySpace: 'keyup.boozy-space',
@@ -300,10 +298,6 @@
                 $(boozy._typingSelectors).off(boozy.keys._boozyNamespace);
             }
         },
-        /*
-            Buttons:
-            =======
-        */
         buttons: {
             _howDrunk: 15,
             _howFast: 250,
@@ -400,11 +394,50 @@
         randDirection: function(randSize) { 
             return boozy.posNeg() * Math.floor((Math.random()*randSize)+1);
         },
-        nextInt: function(num) {
-            return num + 1;
+    
+    };
+
+    window.boozy = { 
+        _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
+        _buttonSelectors: '.button, button, .btn, [role="button"]',
+        _pageSelectors: 'body',
+        init: function() {
+            // only initialize after the menu is loaded
+            boozy._menu.init();
+
+            $('.button').click(function() {
+                $('.button').removeClass('pressed');
+                $(this).addClass('pressed');
+            });
+
         },
-        prevInt: function(num) {
-            return num - 1;
+        _howDrunkHandler: function(event) {
+            var $drunkDrop =  $(event.target).closest('.drunk-level'),
+                $controlContainer = $drunkDrop.parents('.control'),
+                controlId = $controlContainer.attr('id'),
+                drunkLevel = $drunkDrop.val(),
+                drunkObject = {
+                    "controlId": controlId,
+                    "drunkLevel": drunkLevel
+                };
+            boozy._howDrunk(drunkObject); 
+        },
+        _notDrunk: 'sober',
+        _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
+        _howDrunk: function(drunkObject) {
+            if(drunkObject) {
+                if(drunkObject.controlId === 'bulk') {
+                    // change them all
+                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
+                } else if(drunkObject.drunkLevel === boozy._notDrunk) {
+                    // be sober
+                    boozy[drunkObject.controlId].stop();
+                } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
+                    // be drunk
+                    boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
+                }
+                // I am god! (lol #ihtw)
+            }
         },
         // menu control rendering/event handling
         _menu: {
@@ -437,7 +470,7 @@
     };
 
     $(document).ready(function() {
-        boozy.init();     
+        window.BoozyBrowser = BoozyBrowser;     
     });
 
 })(window, document, jQuery);

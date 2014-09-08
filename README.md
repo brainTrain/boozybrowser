@@ -23,7 +23,7 @@ bb.setBoozySelectors({
     "keys": "textarea, input, [role='input'], [role='textarea']",   
     "buttons": ".button, button, .btn, [role='button']",
     "lean": "body",
-    "blur": "body",
+    "focus": "body",
     "replace": false | true // optional: replace current selectors, defautlts to false
 });
 // start all boozy functions

@@ -19,7 +19,7 @@ bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
 bb.removeBoozyTypes(["lean", "focus", "keys", "buttons"]);
 // set selectors and whether they should be additive or just replace, 
 // below are the current default selectors
-bb.setSelectors({
+bb.setBoozySelectors({
     "keys": "textarea, input, [role='input'], [role='textarea']",   
     "buttons": ".button, button, .btn, [role='button']",
     "lean": "body",

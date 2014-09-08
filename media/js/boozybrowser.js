@@ -19,12 +19,15 @@
 
     var BoozyBrowser = function() {
         this.setBooziness("sober"); 
-        this.boozyTypes = ["lean", "focus", "keys", "buttons"];
+        this.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
+        this.setBoozySelectors({
+            "keys": "textarea, input, [role='input'], [role='textarea']",   
+            "buttons": ".button, button, .btn, [role='button']",
+            "lean": "body",
+            "blur": "body",
+            "replace": true
+        });
 
-        this.lean._selectors = 'body';
-        this.focus._selectors = 'body';
-        this.buttons._selectors = '.button, button, .btn, [role="button"]';
-        this.keys._selectors = 'textarea, input, [role="input"], [role="textarea"]';
     };
 
     BoozyBrowser.prototype = {
@@ -37,8 +40,9 @@
         },
         removeBoozyTypes: function(boozyTypes) {
         },
-        setSelectors: function(selectorObject) {
+        setBoozySelectors: function(selectorObject) {
             for(var key in selectorObject) {
+                // don't want to iterate on the replace option
                 if(selectorObject.hasOwnProperty(key) && key !== 'replace') {
                     if(selectorObject.replace) {
                         this[key]._selectors = selectorObject[key];
@@ -53,14 +57,22 @@
                 }
             }
         },
-        start: function() {
-            for(var i = 0, len = boozyTypes.length; i < len; i++) {
-                this[boozyTypes[i]].start(this.drunkLevel);
+        start: function(boozyType) {
+            if(boozyType) {
+                this[boozyType].start(this.drunkLevel);
+            } else {
+                for(var i = 0, len = boozyTypes.length; i < len; i++) {
+                    this[boozyTypes[i]].start(this.drunkLevel);
+                }
             }
         },
-        stop: function() {
-            for(var i = 0, len = boozyTypes.length; i < len; i++) {
-                this[boozyTypes[i]].stop();
+        stop: function(boozyType) {
+            if(boozyType) {
+                this[boozyType].stop();
+            } else {
+                for(var i = 0, len = boozyTypes.length; i < len; i++) {
+                    this[boozyTypes[i]].stop();
+                }
             }
         },
         lean: {

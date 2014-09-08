@@ -15,19 +15,21 @@
 
 */
 
-(function($){
-    // utility functions 
-    var someMaths = {
-        boundedRandomInterval: function(min, max) {
-            return Math.floor(Math.random()*(max-min+1)+min);
-        },
-        posNeg: function() {
-            return Math.random() < 0.555555 ? -1 : 1;
-        },
-        randDirection: function(randSize) { 
-            return this.posNeg() * Math.floor((Math.random()*randSize)+1);
-        }
-    };
+// TODO: bust out into its own file (or something) mannnnn
+// utility functions 
+var someMaths = {
+    boundedRandomInterval: function(min, max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    },
+    posNeg: function() {
+        return Math.random() < 0.555555 ? -1 : 1;
+    },
+    randDirection: function(randSize) { 
+        return this.posNeg() * Math.floor((Math.random()*randSize)+1);
+    }
+};
+
+(function($, someMaths){
 
     var BoozyBrowser = function() {
         this.setBooziness("sober"); 
@@ -78,6 +80,7 @@
             if(boozyType) {
                 this[boozyType].start(this.drunkLevel);
             } else {
+                var boozyTypes = this.boozyTypes;
                 for(var i = 0, len = boozyTypes.length; i < len; i++) {
                     this[boozyTypes[i]].start(this.drunkLevel);
                 }
@@ -96,57 +99,61 @@
             _leanIntervalId: undefined,
             _transitionClass: 'transition-ease-out',
             start: function(drunkLevel) {
+                var lean = this,
+                    $page = $(lean._selectors);
+
                 // ensure we've cleaned up after ourselves before we start
-                this.stop();
-                this._setBooziness(drunkLevel);
+                lean.stop();
+                lean._setBooziness(drunkLevel);
 
-                var $page = $(this._selectors);
-
-                if(!$page.hasClass(this._transitionClass)) {
-                    $page.addClass(this._transitionClass);
+                if(!$page.hasClass(lean._transitionClass)) {
+                    $page.addClass(lean._transitionClass);
                 }
                 if(!$page.hasClass('hardware-acceleration')) {
                     $page.addClass('hardware-acceleration');
                 }
 
-                this._goHomeYoureDrunk($page);
-               this._leanIntervalId = setInterval(function() {
-                    this._goHomeYoureDrunk($page);
-                }, this._howFast);
+                lean._goHomeYoureDrunk($page);
+                lean._leanIntervalId = setInterval(function() {
+                    lean._goHomeYoureDrunk($page);
+                }, lean._howFast);
             },
             stop: function() {
-                clearInterval(this._leanIntervalId);
-                $(this._selectors)
-                    .removeClass('rotate-' + this._howDrunk)
-                    .removeClass('rotate-neg-' + this._howDrunk)
+                var lean = this;
+                clearInterval(lean._leanIntervalId);
+                $(lean._selectors)
+                    .removeClass('rotate-' + lean._howDrunk)
+                    .removeClass('rotate-neg-' + lean._howDrunk)
                     .removeClass('hardware-acceleration');
             },
             _setBooziness: function(drunkLevel) {
+                var lean = this;
                 if(drunkLevel === 'buzzed') {
-                    this._howDrunk = 1;
-                    this._howFast = 2000;
+                    lean._howDrunk = 1;
+                    lean._howFast = 2000;
 
                 } else if (drunkLevel === 'im-fine') {
-                    this._howDrunk = 2;
-                    this._howFast = 2000;
+                    lean._howDrunk = 2;
+                    lean._howFast = 2000;
 
                 } else if (drunkLevel === 'drunk') {
-                    this._howDrunk = 3;
-                    this._howFast = 2000;
+                    lean._howDrunk = 3;
+                    lean._howFast = 2000;
 
                 } else if (drunkLevel === 'wooo') {
-                    this._howDrunk = 4;
-                    this._howFast = 2000;
+                    lean._howDrunk = 4;
+                    lean._howFast = 2000;
 
                 } else if (drunkLevel === 'blackout') {
-                    this.lean._howDrunk = 5;
-                    this._howFast = 2000;
+                    lean.lean._howDrunk = 5;
+                    lean._howFast = 2000;
 
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
-                var posRotate = 'rotate-' + this._howDrunk,
-                    negRotate = 'rotate-neg-' + this._howDrunk;
+                var lean = this,
+                    posRotate = 'rotate-' + lean._howDrunk,
+                    negRotate = 'rotate-neg-' + lean._howDrunk;
 
                 if($whatsThat.hasClass(posRotate)) {
                     $whatsThat
@@ -166,70 +173,75 @@
             _focusIntervalId: undefined,
             _focusTimeoutId: undefined,
             start: function(drunkLevel) {
+                var focus = this, 
+                    $page = $(focus._selectors);
                 // ensure we've cleaned up after ourselves before we start 
-                this.stop();
-                this._setBooziness(drunkLevel);
+                focus.stop();
+                focus._setBooziness(drunkLevel);
 
-                var $page = $(this._selectors);
 
-                if(!$page.hasClass(this._transitionClass)) {
-                    $page.addClass(this._transitionClass);
+                if(!$page.hasClass(focus._transitionClass)) {
+                    $page.addClass(focus._transitionClass);
                 }
                 
-                this._focusIntervalId = setInterval(function(){
-                    this._goHomeYoureDrunk($page);
-                }, this._displayInterval);
+                focus._focusIntervalId = setInterval(function(){
+                    focus._goHomeYoureDrunk($page);
+                }, focus._displayInterval);
             },
             stop: function() {
-                clearInterval(this._focusIntervalId);
-                clearInterval(this._focusTimeoutId);
+                var focus = this;
 
-                $(this._selectors)
-                    .removeClass(this._transitionClass)
-                    .removeClass(this._soberClass)
-                    .removeClass(this._drunkClass);
+                clearInterval(focus._focusIntervalId);
+                clearInterval(focus._focusTimeoutId);
+
+                $(focus._selectors)
+                    .removeClass(focus._transitionClass)
+                    .removeClass(focus._soberClass)
+                    .removeClass(focus._drunkClass);
             },
             _setBooziness: function(drunkLevel) {
+                var focus = this;
+
                 if(drunkLevel === 'buzzed') {
-                    this._drunkClass = 'blur-2';
-                    this._drunkTransitionClass = 'buzzed-transition';
-                    this._displayTimeout = someMaths.boundedRandomInterval(600, 900);
-                    this._displayInterval = someMaths.boundedRandomInterval(10000, 60000);
+                    focus._drunkClass = 'blur-2';
+                    focus._drunkTransitionClass = 'buzzed-transition';
+                    focus._displayTimeout = someMaths.boundedRandomInterval(600, 900);
+                    focus._displayInterval = someMaths.boundedRandomInterval(10000, 60000);
 
                 } else if (drunkLevel === 'im-fine') {
-                    this._drunkClass = 'blur-3';
-                    this._drunkTransitionClass = 'im-fine-transition';
-                    this._displayTimeout = someMaths.boundedRandomInterval(600, 1100);
-                    this._displayInterval = someMaths.boundedRandomInterval(10000, 40000);
+                    focus._drunkClass = 'blur-3';
+                    focus._drunkTransitionClass = 'im-fine-transition';
+                    focus._displayTimeout = someMaths.boundedRandomInterval(600, 1100);
+                    focus._displayInterval = someMaths.boundedRandomInterval(10000, 40000);
 
                 } else if (drunkLevel === 'drunk') {
-                    this._drunkClass = 'blur-4';
-                    this._drunkTransitionClass = 'drunk-transition';
-                    this._displayTimeout = someMaths.boundedRandomInterval(1500, 2000);
-                    this._displayInterval = someMaths.boundedRandomInterval(8000, 10000);
+                    focus._drunkClass = 'blur-4';
+                    focus._drunkTransitionClass = 'drunk-transition';
+                    focus._displayTimeout = someMaths.boundedRandomInterval(1500, 2000);
+                    focus._displayInterval = someMaths.boundedRandomInterval(8000, 10000);
 
                 } else if (drunkLevel === 'wooo') {
-                    this._drunkClass = 'blur-5';
-                    this._drunkTransitionClass = 'wooo-transition';
-                    this._displayTimeout = someMaths.boundedRandomInterval(2000, 3000);
-                    this._displayInterval = someMaths.boundedRandomInterval(5000, 7000);
+                    focus._drunkClass = 'blur-5';
+                    focus._drunkTransitionClass = 'wooo-transition';
+                    focus._displayTimeout = someMaths.boundedRandomInterval(2000, 3000);
+                    focus._displayInterval = someMaths.boundedRandomInterval(5000, 7000);
 
                 } else if (drunkLevel === 'blackout') {
-                    this._drunkClass = 'blur-6';
-                    this._drunkTransitionClass = 'blackout-transition';
-                    this._displayTimeout = someMaths.boundedRandomInterval(3000, 4000);
-                    this._displayInterval = someMaths.boundedRandomInterval(4000, 6000);
+                    focus._drunkClass = 'blur-6';
+                    focus._drunkTransitionClass = 'blackout-transition';
+                    focus._displayTimeout = someMaths.boundedRandomInterval(3000, 4000);
+                    focus._displayInterval = someMaths.boundedRandomInterval(4000, 6000);
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
                 $whatsThat
-                    .removeClass(this._soberClass)
-                    .addClass(this._drunkClass);
-                this._focusTimeoutId = setTimeout(function(){
+                    .removeClass(focus._soberClass)
+                    .addClass(focus._drunkClass);
+                focus._focusTimeoutId = setTimeout(function(){
                     $whatsThat
-                        .removeClass(this._drunkClass)
-                        .addClass(this._soberClass);
-                }, this._displayTimeout);
+                        .removeClass(focus._drunkClass)
+                        .addClass(focus._soberClass);
+                }, focus._displayTimeout);
             }
         },
         keys: {
@@ -238,100 +250,111 @@
             _keyCounter: 0,
             _randomInterval: 10,
             start: function(drunkLevel) {
+                var keys = this;
                 // ensure we've cleaned up after ourselves before we start
-                boozy.keys.stop();
-                boozy.keys._setBooziness(drunkLevel);
+                keys.stop();
+                keys._setBooziness(drunkLevel);
 
-                $(boozy._typingSelectors)
-                    .on(boozy.keys._boozySpace, boozy.keys._goHomeYoureDrunk);
-                boozy.keys._setRandomInterval();
+                $(boozy._selectors)
+                    .on(keys._boozySpace, {"keys": keys}, keys._goHomeYoureDrunk);
+                keys._setRandomInterval();
             },
             _setBooziness: function(drunkLevel) {
+                var keys = this;
+
                 if(drunkLevel === 'buzzed') {
-                    boozy.keys._howDrunk = 50;
-                    boozy.keys._howSober = 80;
+                    keys._howDrunk = 50;
+                    keys._howSober = 80;
 
                 } else if (drunkLevel === 'im-fine') {
-                    boozy.keys._howDrunk = 30;
-                    boozy.keys._howSober = 40;
+                    keys._howDrunk = 30;
+                    keys._howSober = 40;
 
                 } else if (drunkLevel === 'drunk') {
-                    boozy.keys._howDrunk = 20;
-                    boozy.keys._howSober = 30;
+                    keys._howDrunk = 20;
+                    keys._howSober = 30;
 
                 } else if (drunkLevel === 'wooo') {
-                    boozy.keys._howDrunk = 15;
-                    boozy.keys._howSober = 25;
+                    keys._howDrunk = 15;
+                    keys._howSober = 25;
 
                 } else if (drunkLevel === 'blackout') {
-                    boozy.keys._howDrunk = 8;
-                    boozy.keys._howSober = 14;
+                    keys._howDrunk = 8;
+                    keys._howSober = 14;
 
                 }
             },
             _setRandomInterval: function() {
+                var keys = this;
+
                 // higher value == less drunk cause higher value lets you type more without type-o's
-                boozy.keys._randomInterval = someMaths.boundedRandomInterval(boozy.keys._howDrunk, boozy.keys._howSober);
+                keys._randomInterval = someMaths.boundedRandomInterval(keys._howDrunk, keys._howSober);
             },
-            _goHomeYoureDrunk: function() {
-                if(boozy.keys._keyCounter == boozy.keys._randomInterval){
-                    var $textField = $(this),
+            _goHomeYoureDrunk: function(event) {
+                var keys = event.data.keys;
+
+                if(keys._keyCounter == keys._randomInterval){
+                    var $textField = $(keys),
                         randomBurst = Math.floor((Math.random()*3)+1),
                         randomLetters = '',
                         boozyType = $textField.val();
 
                     for(j=0; j<randomBurst; j++) {
                         randCount = Math.floor((Math.random()*26));
-                        randomLetters += boozy.keys._abc[randCount];
+                        randomLetters += keys._abc[randCount];
                     }
 
                     $textField.val(boozyType + randomLetters);
 
-                    boozy.keys._setRandomInterval();
-                    boozy.keys._keyCounter = 0;
+                    keys._setRandomInterval();
+                    keys._keyCounter = 0;
                 }
-                boozy.keys._keyCounter ++;
+                keys._keyCounter ++;
             },
             stop: function() {
-                $(boozy._typingSelectors).off(boozy.keys._boozyNamespace);
+                $(boozy._selectors).off(this._boozyNamespace);
             }
         },
         buttons: {
             _boozyNamespace:'mouseover.boozy-space',
             start: function(drunkLevel) {
+                var buttons = this;
                 // ensure we've cleaned up after ourselves before we start
-                boozy.buttons.stop();
-                boozy.buttons._setBooziness(drunkLevel);
+                buttons.stop();
+                buttons._setBooziness(drunkLevel);
 
-                $(boozy._buttonSelectors)
-                    .on(boozy.buttons._boozyNamespace, boozy.buttons._goHomeYoureDrunk);
+                $(boozy._selectors)
+                    .on(buttons._boozyNamespace, {"buttons": buttons}, buttons._goHomeYoureDrunk);
             },
         _setBooziness: function(drunkLevel) {
+                var buttons = this;
+
                 if(drunkLevel === 'buzzed') {
-                    boozy.buttons._howDrunk = 0;
-                    boozy.buttons._howFast = 250;
+                    buttons._howDrunk = 0;
+                    buttons._howFast = 250;
 
                 } else if (drunkLevel === 'im-fine') {
-                    boozy.buttons._howDrunk = 2;
-                    boozy.buttons._howFast = 250;
+                    buttons._howDrunk = 2;
+                    buttons._howFast = 250;
 
                 } else if (drunkLevel === 'drunk') {
-                    boozy.buttons._howDrunk = 15;
-                    boozy.buttons._howFast = 250;
+                    buttons._howDrunk = 15;
+                    buttons._howFast = 250;
 
                 } else if (drunkLevel === 'wooo') {
-                    boozy.buttons._howDrunk = 25;
-                    boozy.buttons._howFast = 250;
+                    buttons._howDrunk = 25;
+                    buttons._howFast = 250;
 
                 } else if (drunkLevel === 'blackout') {
-                    boozy.buttons._howDrunk = 140;
-                    boozy.buttons._howFast = 350;
+                    buttons._howDrunk = 140;
+                    buttons._howFast = 350;
 
                 }
             },
-            _goHomeYoureDrunk: function() {
-                var $button = $(this),
-                    randSize = boozy.buttons._howDrunk,
+            _goHomeYoureDrunk: function(event) {
+                var buttons = event.data.buttons, 
+                    $button = $(this),
+                    randSize = buttons._howDrunk,
                     moveLeft = someMaths.randDirection(randSize),
                     moveTop = someMaths.randDirection(randSize),
                     animationOffset, animationTop, animationLeft;
@@ -341,7 +364,7 @@
                         "left": "+=" + moveLeft + "px", 
                         "top": "+=" + moveTop + "px", 
                     },{
-                        duration: boozy.buttons._howFast,
+                        duration: buttons._howFast,
                         complete: function() {
                             // if buttons leave the clickable region 
                             // of a page bounce 'em right back! (only top/left)
@@ -354,7 +377,7 @@
                                         "left": moveLeft + "px", 
                                         "top": "5px", 
                                     },{
-                                        duration: boozy.buttons._howFast
+                                        duration: buttons._howFast
                                     });
                             }
                             if(animationLeft < 0) {
@@ -363,15 +386,16 @@
                                         "left": "5px", 
                                         "top": moveTop + "px", 
                                     },{
-                                        duration: boozy.buttons._howFast
+                                        duration: buttons._howFast
                                     });
                             }
                         }
                     });
             },
             stop: function() {
-                $(boozy._buttonSelectors)
-                    .off(boozy.buttons._boozyNamespace);
+                var buttons = this;
+                $(buttons._selectors)
+                    .off(buttons._boozyNamespace);
             }
         }
     };
@@ -450,7 +474,6 @@
 
     $(document).ready(function() {
         window.BoozyBrowser = BoozyBrowser;     
-        window.SomeMaths = SomeMaths;     
     });
 
-})(jQuery);
+})(jQuery, someMaths);

@@ -15,21 +15,7 @@
 
 */
 
-// TODO: bust out into its own file (or something) mannnnn
-// utility functions 
-var someMaths = {
-    boundedRandomInterval: function(min, max) {
-        return Math.floor(Math.random()*(max-min+1)+min);
-    },
-    posNeg: function() {
-        return Math.random() < 0.555555 ? -1 : 1;
-    },
-    randDirection: function(randSize) { 
-        return this.posNeg() * Math.floor((Math.random()*randSize)+1);
-    }
-};
-
-(function($, someMaths){
+(function($){
 
     var BoozyBrowser = function() {
         this.setBooziness("sober"); 
@@ -42,6 +28,19 @@ var someMaths = {
             "replace": true 
         });
 
+    };
+
+    // utility functions 
+    BoozyBrowser.someMaths = {
+        boundedRandomInterval: function(min, max) {
+            return Math.floor(Math.random()*(max-min+1)+min);
+        },
+        posNeg: function() {
+            return Math.random() < 0.555555 ? -1 : 1;
+        },
+        randDirection: function(randSize) { 
+            return this.posNeg() * Math.floor((Math.random()*randSize)+1);
+        }
     };
 
     BoozyBrowser.prototype = {
@@ -205,32 +204,32 @@ var someMaths = {
                 if(drunkLevel === 'buzzed') {
                     focus._drunkClass = 'blur-2';
                     focus._drunkTransitionClass = 'buzzed-transition';
-                    focus._displayTimeout = someMaths.boundedRandomInterval(600, 900);
-                    focus._displayInterval = someMaths.boundedRandomInterval(10000, 60000);
+                    focus._displayTimeout = BoozyBrowser.someMaths.boundedRandomInterval(600, 900);
+                    focus._displayInterval = BoozyBrowser.someMaths.boundedRandomInterval(10000, 60000);
 
                 } else if (drunkLevel === 'im-fine') {
                     focus._drunkClass = 'blur-3';
                     focus._drunkTransitionClass = 'im-fine-transition';
-                    focus._displayTimeout = someMaths.boundedRandomInterval(600, 1100);
-                    focus._displayInterval = someMaths.boundedRandomInterval(10000, 40000);
+                    focus._displayTimeout = BoozyBrowser.someMaths.boundedRandomInterval(600, 1100);
+                    focus._displayInterval = BoozyBrowser.someMaths.boundedRandomInterval(10000, 40000);
 
                 } else if (drunkLevel === 'drunk') {
                     focus._drunkClass = 'blur-4';
                     focus._drunkTransitionClass = 'drunk-transition';
-                    focus._displayTimeout = someMaths.boundedRandomInterval(1500, 2000);
-                    focus._displayInterval = someMaths.boundedRandomInterval(8000, 10000);
+                    focus._displayTimeout = BoozyBrowser.someMaths.boundedRandomInterval(1500, 2000);
+                    focus._displayInterval = BoozyBrowser.someMaths.boundedRandomInterval(8000, 10000);
 
                 } else if (drunkLevel === 'wooo') {
                     focus._drunkClass = 'blur-5';
                     focus._drunkTransitionClass = 'wooo-transition';
-                    focus._displayTimeout = someMaths.boundedRandomInterval(2000, 3000);
-                    focus._displayInterval = someMaths.boundedRandomInterval(5000, 7000);
+                    focus._displayTimeout = BoozyBrowser.someMaths.boundedRandomInterval(2000, 3000);
+                    focus._displayInterval = BoozyBrowser.someMaths.boundedRandomInterval(5000, 7000);
 
                 } else if (drunkLevel === 'blackout') {
                     focus._drunkClass = 'blur-6';
                     focus._drunkTransitionClass = 'blackout-transition';
-                    focus._displayTimeout = someMaths.boundedRandomInterval(3000, 4000);
-                    focus._displayInterval = someMaths.boundedRandomInterval(4000, 6000);
+                    focus._displayTimeout = BoozyBrowser.someMaths.boundedRandomInterval(3000, 4000);
+                    focus._displayInterval = BoozyBrowser.someMaths.boundedRandomInterval(4000, 6000);
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
@@ -288,7 +287,7 @@ var someMaths = {
                 var keys = this;
 
                 // higher value == less drunk cause higher value lets you type more without type-o's
-                keys._randomInterval = someMaths.boundedRandomInterval(keys._howDrunk, keys._howSober);
+                keys._randomInterval = BoozyBrowser.someMaths.boundedRandomInterval(keys._howDrunk, keys._howSober);
             },
             _goHomeYoureDrunk: function(event) {
                 var keys = event.data.keys;
@@ -355,8 +354,8 @@ var someMaths = {
                 var buttons = event.data.buttons, 
                     $button = $(this),
                     randSize = buttons._howDrunk,
-                    moveLeft = someMaths.randDirection(randSize),
-                    moveTop = someMaths.randDirection(randSize),
+                    moveLeft = BoozyBrowser.someMaths.randDirection(randSize),
+                    moveTop = BoozyBrowser.someMaths.randDirection(randSize),
                     animationOffset, animationTop, animationLeft;
 
                 $button
@@ -476,4 +475,4 @@ var someMaths = {
         window.BoozyBrowser = BoozyBrowser;     
     });
 
-})(jQuery, someMaths);
+})(jQuery);

@@ -4,10 +4,6 @@
     ====
         BoozyBrowser: just sets booziness 
 
-        // wasn't sure how to organize but if I make an object for each I 
-        // should be able to inherit, as doing BoozyBrowser.prototype.keys.start() 
-        // is apparently bad practice in JS world... hmmmmm
-
         BoozyLean: does all lean stuffs, inherits booziness from BoozyBrowser
         BoozyFocus: does all focus stuffs, inherits booziness from BoozyBrowser
         BoozyKeys: does all keys stuffs, inherits booziness from BoozyBrowser
@@ -89,6 +85,7 @@
             if(boozyType) {
                 this[boozyType].stop();
             } else {
+                var boozyTypes = this.boozyTypes;
                 for(var i = 0, len = boozyTypes.length; i < len; i++) {
                     this[boozyTypes[i]].stop();
                 }
@@ -127,6 +124,7 @@
             },
             _setBooziness: function(drunkLevel) {
                 var lean = this;
+
                 if(drunkLevel === 'buzzed') {
                     lean._howDrunk = 1;
                     lean._howFast = 2000;
@@ -144,7 +142,7 @@
                     lean._howFast = 2000;
 
                 } else if (drunkLevel === 'blackout') {
-                    lean.lean._howDrunk = 5;
+                    lean._howDrunk = 5;
                     lean._howFast = 2000;
 
                 }
@@ -178,6 +176,7 @@
                 focus.stop();
                 focus._setBooziness(drunkLevel);
 
+                window.$page = $page;
 
                 if(!$page.hasClass(focus._transitionClass)) {
                     $page.addClass(focus._transitionClass);
@@ -233,13 +232,12 @@
                 }
             },
             _goHomeYoureDrunk: function($whatsThat) {
-                $whatsThat
-                    .removeClass(focus._soberClass)
-                    .addClass(focus._drunkClass);
+                var focus = this;
+
+                $whatsThat.addClass(focus._drunkClass);
+
                 focus._focusTimeoutId = setTimeout(function(){
-                    $whatsThat
-                        .removeClass(focus._drunkClass)
-                        .addClass(focus._soberClass);
+                    $whatsThat.removeClass(focus._drunkClass);
                 }, focus._displayTimeout);
             }
         },
@@ -426,19 +424,17 @@
         },
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
+        // TODO: this be where I'm gonna put boozy object handlin, but start with one for now
         _howDrunk: function(drunkObject) {
-            if(drunkObject) {
-                if(drunkObject.controlId === 'bulk') {
-                    // change them all
-                    $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
-                } else if(drunkObject.drunkLevel === boozy._notDrunk) {
-                    // be sober
-                    boozy[drunkObject.controlId].stop();
-                } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
-                    // be drunk
-                    boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
-                }
-                // I am god! (lol #ihtw)
+            if(drunkObject.controlId === 'bulk') {
+                // change them all
+                $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
+            } else if(drunkObject.drunkLevel === boozy._notDrunk) {
+                // be sober
+                boozy[drunkObject.controlId].stop();
+            } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
+                // be drunk
+                boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
             }
         },
         // menu control rendering/event handling

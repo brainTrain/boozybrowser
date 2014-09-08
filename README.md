@@ -31,8 +31,8 @@ bb.start();
 // stop all boozy functions
 bb.stop();
 // or start/stop individual functions
-bb.lean.stop();
-bb.lean.start();
+bb.stop('lean');
+bb.start('lean');
 ``` 
 
 ## drunk classifications 

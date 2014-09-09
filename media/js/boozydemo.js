@@ -2,7 +2,7 @@
     dis guy will consume the BoozyBrowser object to show how it's done
 */
 
-(function($){
+(function($, BoozyBrowser){
     var boozy = { 
         _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
         _buttonSelectors: '.button, button, .btn, [role="button"]',
@@ -30,7 +30,6 @@
         },
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
-        // TODO: this be where I'm gonna put boozy object handlin, but start with one for now
         _howDrunk: function(drunkObject) {
             if(!boozy.boozyObject) {
                 boozy.boozyObject = new BoozyBrowser();
@@ -40,10 +39,12 @@
                 $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
             } else if(drunkObject.drunkLevel === boozy._notDrunk) {
                 // be sober
-                boozy.boozyObject[drunkObject.controlId].stop();
+                boozy.boozyObject.setBooziness(drunkObject.drunkLevel);
+                boozy.boozyObject.stop(drunkObject.controlId);
             } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
                 // be drunk
-                boozy.boozyObject[drunkObject.controlId].start(drunkObject.drunkLevel);
+                boozy.boozyObject.setBooziness(drunkObject.drunkLevel);
+                boozy.boozyObject.start(drunkObject.controlId);
             }
         },
         // menu control rendering/event handling
@@ -80,4 +81,4 @@
         boozy.init();
     });
 
-})(jQuery);
+})(jQuery, window.BoozyBrowser);

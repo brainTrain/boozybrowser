@@ -19,11 +19,16 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 
-    usage example:
-    ==============
+    reqs:
+    =====
+        jQuery
+        boozybrowser.css
+
+    usage:
+    ======
         var bb = new BoozyBrowser();
 
-        bb.setBooziness("buzzed");
+        bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
 
         bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
 
@@ -209,8 +214,6 @@
                 focus.stop();
                 focus._setBooziness(drunkLevel);
 
-                window.$page = $page;
-
                 if(!$page.hasClass(focus._transitionClass)) {
                     $page.addClass(focus._transitionClass);
                 }
@@ -288,8 +291,8 @@
                 keys.stop();
                 keys._setBooziness(drunkLevel);
 
-                $(keys._selectors)
-                    .on(keys._boozySpace, {"keys": keys}, keys._goHomeYoureDrunk);
+                $('body')
+                    .on(keys._boozySpace, keys._selectors, {"keys": keys}, keys._goHomeYoureDrunk);
 
                 keys._setRandomInterval();
             },
@@ -358,8 +361,8 @@
                 buttons.stop();
                 buttons._setBooziness(drunkLevel);
 
-                $(buttons._selectors)
-                    .on(buttons._boozyNamespace, {"buttons": buttons}, buttons._goHomeYoureDrunk);
+                $('body')
+                    .on(buttons._boozyNamespace, buttons._selectors, {"buttons": buttons}, buttons._goHomeYoureDrunk);
             },
             _setBooziness: function(drunkLevel) {
                 var buttons = this;
@@ -391,8 +394,7 @@
                     $button = $(this),
                     randSize = buttons._howDrunk,
                     moveLeft = BoozyBrowser.someMaths.randDirection(randSize),
-                    moveTop = BoozyBrowser.someMaths.randDirection(randSize),
-                    animationOffset, animationTop, animationLeft;
+                    moveTop = BoozyBrowser.someMaths.randDirection(randSize);
 
                 $button
                     .animate({
@@ -403,9 +405,9 @@
                         complete: function() {
                             // if buttons leave the clickable region 
                             // of a page bounce 'em right back! (only top/left)
-                            animationOffset = $button.offset(); 
-                            animationTop = animationOffset.top;
-                            animationLeft = animationOffset.left;
+                            var animationOffset = $button.offset(),
+                                animationTop = animationOffset.top,
+                                animationLeft = animationOffset.left;
                             if(animationTop < 0) {
                                 $button
                                     .animate({

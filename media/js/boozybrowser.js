@@ -254,6 +254,7 @@
 
                 $(boozy._selectors)
                     .on(keys._boozySpace, {"keys": keys}, keys._goHomeYoureDrunk);
+                console.log('start your keyzzz');
                 keys._setRandomInterval();
             },
             _setBooziness: function(drunkLevel) {
@@ -289,9 +290,9 @@
             },
             _goHomeYoureDrunk: function(event) {
                 var keys = event.data.keys;
-
+                console.log('go type');
                 if(keys._keyCounter == keys._randomInterval){
-                    var $textField = $(keys),
+                    var $textField = $(this),
                         randomBurst = Math.floor((Math.random()*3)+1),
                         randomLetters = '',
                         boozyType = $textField.val();
@@ -309,7 +310,8 @@
                 keys._keyCounter ++;
             },
             stop: function() {
-                $(boozy._selectors).off(this._boozyNamespace);
+                var keys = this;
+                $(keys._selectors).off(keys._boozyNamespace);
             }
         },
         buttons: {
@@ -320,10 +322,10 @@
                 buttons.stop();
                 buttons._setBooziness(drunkLevel);
 
-                $(boozy._selectors)
+                $(buttons._selectors)
                     .on(buttons._boozyNamespace, {"buttons": buttons}, buttons._goHomeYoureDrunk);
             },
-        _setBooziness: function(drunkLevel) {
+            _setBooziness: function(drunkLevel) {
                 var buttons = this;
 
                 if(drunkLevel === 'buzzed') {

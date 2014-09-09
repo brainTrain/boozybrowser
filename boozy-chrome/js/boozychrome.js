@@ -1,5 +1,5 @@
 (function($, BoozyBrowser){
-    boozy = { 
+    var boozy = { 
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         init: function() {
@@ -27,8 +27,10 @@
                 boozy.boozyObject.setBooziness(drunkObject.drunkLevel);
                 boozy.boozyObject.stop(drunkObject.controlId);
             }
-        },
+        }
+    };
     // don't want document ready with content script
     boozy.init();     
 
 })(jQuery, window.BoozyBrowser);
+

@@ -7,7 +7,7 @@
         _sendChromeMessage: function(drunkObject) {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, drunkObject, function(response) {
-                    boozy._drunkLevel = response.howDrunk;
+                    //boozy._drunkLevel = response.howDrunk;
                 });
             });
         },

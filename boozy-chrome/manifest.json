@@ -12,6 +12,7 @@
             ],
             "css": ["/css/utils.css", "/css/boozychrome.css"],
             "js": ["/js/lib/jquery-2.1.0.min.js", "/js/lib/underscore-min.js", "/js/boozybrowser.js","/js/boozychrome.js"],
+            "web_accessible_resources": ['/js/lib/underscore-min.map'],
             "run_at": "document_end"
         }
     ],

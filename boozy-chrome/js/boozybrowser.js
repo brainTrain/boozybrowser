@@ -54,7 +54,7 @@
         this.setBooziness("sober"); 
         this.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
         this.setBoozySelectors({
-            "keys": "textarea, input, [role='input'], [role='textarea']",   
+            "keys": "textarea, input, [role='input'], [role='textarea'], .tweet-box",   
             "buttons": ".button, button, .btn, [role='button']",
             "lean": "body",
             "focus": "body",

@@ -1,5 +1,5 @@
-(function(window, document, $){
-    boozy = { 
+(function($){
+    boozy = {
         init: function() {
             // only initialize after the menu is loaded
             boozy._menu.init();
@@ -7,7 +7,7 @@
         _sendChromeMessage: function(drunkObject) {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.sendMessage(tabs[0].id, drunkObject, function(response) {
-                    console.log(response);
+                    boozy._drunkLevel = response.howDrunk;
                 });
             });
         },
@@ -16,9 +16,8 @@
             init: function() {
                 var $boozyMenu = $('.boozy-menu');
 
-                $('.drunk-level', $boozyMenu)
-                    .on('change', boozy._howDrunkHandler);
-            },
+                $('.drunk-level', $boozyMenu).on('change', boozy._howDrunkHandler);
+            }
         },
         _notDrunk: 'sober',
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
@@ -44,11 +43,11 @@
                     // send that message
                 } 
             }
-        },
-    }
+        }
+    };
 
     $(document).ready(function() {
         boozy.init();     
     });
 
-})(window, document, jQuery);
+})(jQuery);

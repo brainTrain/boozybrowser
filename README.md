@@ -2,20 +2,19 @@
 _This is just about teaching the internet how to drink._
 <a href="http://www.boozybrowser.com" target="_blank">Check Out The Demo</a>
 
-## fake usage, gonna start at a high level to determine how I wanna consume this guy 
+## example usage!! \o/ 
 ### (tech spec I guess)
 ``` JavaScript
 // init boozy object, brah!
 var bb = new BoozyBrowser();
 // choose a string to set booziness, default will be sober
-// NOTE: re-setting booziness will trigger a start/stop for all 
+// NOTE: re-setting booziness will trigger a start/stop for all (double NOTE: not yet!!)
 // boozy functions
 bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
-// pass in an array (or single string if you're just doin one, 
-// undefined/empty/falsy defaults to all
+// pass in an array (or single string if you're just doin one)
 bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
-// alternatively you can remove boozy types from the array after the fact
-// NOTE: removing boozy type will stop that functions boozy shenanigans
+// alternatively you can remove boozy types from the array after the fact (NOTE: not yet!!)
+// NOTE: removing boozy type will stop that functions boozy shenanigans (double NOTE: not yet!!!)
 bb.removeBoozyTypes(["lean", "focus", "keys", "buttons"]);
 // set selectors and whether they should be additive or just replace, 
 // below are the current default selectors

@@ -4,9 +4,8 @@
 
 (function($, BoozyBrowser){
     var boozy = { 
-        _typingSelectors: 'textarea, input, [role="input"], [role="textarea"]',
-        _buttonSelectors: '.button, button, .btn, [role="button"]',
-        _pageSelectors: 'body',
+        _notDrunk: 'sober',
+        _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         init: function() {
             // only initialize after the menu is loaded
             boozy._menu.init();
@@ -28,8 +27,6 @@
                 };
             boozy._howDrunk(drunkObject); 
         },
-        _notDrunk: 'sober',
-        _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         _howDrunk: function(drunkObject) {
             if(!boozy.boozyObject) {
                 boozy.boozyObject = new BoozyBrowser();
@@ -79,6 +76,7 @@
 
     $(document).ready(function() {
         boozy.init();
+        window.soBoozy = boozy;
     });
 
 })(jQuery, window.BoozyBrowser);

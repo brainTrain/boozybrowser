@@ -80,6 +80,16 @@
         constructor: BoozyBrowser,
         setBooziness: function(drunkLevel) {
             this.drunkLevel = drunkLevel; 
+            if(this.boozyTypes) {
+                // make sure we restart the currently active functions
+                for(var i = 0, len = this.boozyTypes.length; i < len; i++) {
+                    var boozyType = this.boozyTypes[i];
+
+                    if(this[boozyType]._active === true) {
+                        this.start(boozyType);
+                    }
+                }
+            }
         },
         setBoozyTypes: function(boozyTypes) {
             // allow people to pass in a single string if they like
@@ -90,6 +100,23 @@
             }
         },
         removeBoozyTypes: function(boozyTypes) {
+            if(Array.isArray(boozyTypes)) {
+                for(var i = 0, len = boozyTypes.length; i < len; i++) {
+                    this._removeBoozyType(boozyTypes[i]);
+                }
+            } else {
+                this._removeBoozyType(boozyTypes);
+            }
+        },
+        _removeBoozyType: function(boozyType) {
+            var index = this.boozyTypes.indexOf(boozyType);
+
+            if(index >= 0) {
+                this.boozyTypes.splice(index, 1); 
+            } 
+
+            this[boozyType].stop();
+
         },
         setBoozySelectors: function(selectorObject) {
             for(var key in selectorObject) {
@@ -129,6 +156,7 @@
             }
         },
         lean: {
+            _active: false,
             _leanIntervalId: undefined,
             _transitionClass: 'transition-ease-out',
             start: function(drunkLevel) {
@@ -137,6 +165,8 @@
 
                 // ensure we've cleaned up after ourselves before we start
                 lean.stop();
+                lean._active = true;
+
                 lean._setBooziness(drunkLevel);
 
                 if(!$page.hasClass(lean._transitionClass)) {
@@ -153,6 +183,8 @@
             },
             stop: function() {
                 var lean = this;
+                lean._active = false;
+
                 clearInterval(lean._leanIntervalId);
                 $(lean._selectors)
                     .removeClass('rotate-' + lean._howDrunk)
@@ -203,6 +235,7 @@
             }
         },
         focus: {
+            _active: false,
             _transitionClass: 'transition-ease-out',
             _soberClass: 'blur-0',
             _focusIntervalId: undefined,
@@ -212,6 +245,7 @@
                     $page = $(focus._selectors);
                 // ensure we've cleaned up after ourselves before we start 
                 focus.stop();
+                focus._active = true;
                 focus._setBooziness(drunkLevel);
 
                 if(!$page.hasClass(focus._transitionClass)) {
@@ -224,6 +258,7 @@
             },
             stop: function() {
                 var focus = this;
+                focus._active = false;
 
                 clearInterval(focus._focusIntervalId);
                 clearInterval(focus._focusTimeoutId);
@@ -281,6 +316,7 @@
             }
         },
         keys: {
+            _active: false,
             _abc: 'abcdefghijklmnopqrstuvwxyz'.split(''),
             _boozySpace: 'keyup.boozy-space',
             _keyCounter: 0,
@@ -289,6 +325,7 @@
                 var keys = this;
                 // ensure we've cleaned up after ourselves before we start
                 keys.stop();
+                keys._active = true;
                 keys._setBooziness(drunkLevel);
 
                 $('body')
@@ -350,15 +387,20 @@
             },
             stop: function() {
                 var keys = this;
+                keys._active = false;
+
                 $(keys._selectors).off(keys._boozyNamespace);
             }
         },
         buttons: {
+            _active: false,
             _boozyNamespace:'mouseover.boozy-space',
             start: function(drunkLevel) {
                 var buttons = this;
                 // ensure we've cleaned up after ourselves before we start
                 buttons.stop();
+                buttons._active = true;
+
                 buttons._setBooziness(drunkLevel);
 
                 $('body')
@@ -431,8 +473,9 @@
             },
             stop: function() {
                 var buttons = this;
-                $(buttons._selectors)
-                    .off(buttons._boozyNamespace);
+                buttons._active = false;
+
+                $(buttons._selectors).off(buttons._boozyNamespace);
             }
         }
     };

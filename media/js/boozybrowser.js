@@ -1,14 +1,28 @@
 /*
 
-    orgz:
+    usage:
     ====
-        BoozyBrowser: just sets booziness 
+        var bb = new BoozyBrowser();
 
-        BoozyLean: does all lean stuffs, inherits booziness from BoozyBrowser
-        BoozyFocus: does all focus stuffs, inherits booziness from BoozyBrowser
-        BoozyKeys: does all keys stuffs, inherits booziness from BoozyBrowser
-        BoozyButtons: does all buttons stuffs, inherits booziness from BoozyBrowser
+        bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
 
+        bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
+
+        bb.removeBoozyTypes(["lean", "focus", "keys", "buttons"]);
+
+        bb.setBoozySelectors({
+            "keys": "textarea, input, [role='input'], [role='textarea']",   
+            "buttons": ".button, button, .btn, [role='button']",
+            "lean": "body",
+            "focus": "body",
+            "replace": false | true // optional: replace current selectors, defautlts to false
+        });
+
+        bb.start();
+        bb.stop();
+
+        bb.stop('lean');
+        bb.start('lean');
 */
 
 (function($){

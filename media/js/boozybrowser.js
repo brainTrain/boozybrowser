@@ -167,6 +167,7 @@
         },
         focus: {
             _transitionClass: 'transition-ease-out',
+            _soberClass: 'blur-0',
             _focusIntervalId: undefined,
             _focusTimeoutId: undefined,
             start: function(drunkLevel) {
@@ -193,7 +194,6 @@
                 clearInterval(focus._focusTimeoutId);
 
                 $(focus._selectors)
-                    .removeClass(focus._transitionClass)
                     .removeClass(focus._soberClass)
                     .removeClass(focus._drunkClass);
             },
@@ -234,10 +234,14 @@
             _goHomeYoureDrunk: function($whatsThat) {
                 var focus = this;
 
-                $whatsThat.addClass(focus._drunkClass);
+                $whatsThat
+                    .removeClass(focus._soberClass)
+                    .addClass(focus._drunkClass);
 
                 focus._focusTimeoutId = setTimeout(function(){
-                    $whatsThat.removeClass(focus._drunkClass);
+                    $whatsThat
+                        .removeClass(focus._drunkClass)
+                        .addClass(focus._soberClass);
                 }, focus._displayTimeout);
             }
         },
@@ -428,15 +432,18 @@
         _drunkLevels: ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'],
         // TODO: this be where I'm gonna put boozy object handlin, but start with one for now
         _howDrunk: function(drunkObject) {
+            if(!boozy.boozyObject) {
+                boozy.boozyObject = new BoozyBrowser();
+            }
             if(drunkObject.controlId === 'bulk') {
                 // change them all
                 $('.boozy-menu .drunk-level.single-control').val(drunkObject.drunkLevel).change();
             } else if(drunkObject.drunkLevel === boozy._notDrunk) {
                 // be sober
-                boozy[drunkObject.controlId].stop();
+                boozy.boozyObject[drunkObject.controlId].stop();
             } else if(_.contains(boozy._drunkLevels, drunkObject.drunkLevel)) {
                 // be drunk
-                boozy[drunkObject.controlId].start(drunkObject.drunkLevel);
+                boozy.boozyObject[drunkObject.controlId].start(drunkObject.drunkLevel);
             }
         },
         // menu control rendering/event handling
@@ -471,6 +478,7 @@
 
     $(document).ready(function() {
         window.BoozyBrowser = BoozyBrowser;     
+        boozy.init();
     });
 
 })(jQuery);

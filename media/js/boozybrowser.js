@@ -341,7 +341,7 @@
                         randomLetters += keys._abc[randCount];
                     }
                     // val doesn't work for twitter's fake text boxes :'(
-                    $textField.text(boozyType + randomLetters);
+                    $textField.val(boozyType + randomLetters);
 
                     keys._setRandomInterval();
                     keys._keyCounter = 0;

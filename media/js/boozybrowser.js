@@ -252,9 +252,9 @@
                 keys.stop();
                 keys._setBooziness(drunkLevel);
 
-                $(boozy._selectors)
+                $(keys._selectors)
                     .on(keys._boozySpace, {"keys": keys}, keys._goHomeYoureDrunk);
-                console.log('start your keyzzz');
+
                 keys._setRandomInterval();
             },
             _setBooziness: function(drunkLevel) {
@@ -290,7 +290,7 @@
             },
             _goHomeYoureDrunk: function(event) {
                 var keys = event.data.keys;
-                console.log('go type');
+
                 if(keys._keyCounter == keys._randomInterval){
                     var $textField = $(this),
                         randomBurst = Math.floor((Math.random()*3)+1),

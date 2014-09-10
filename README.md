@@ -8,12 +8,12 @@ _This is just about teaching the internet how to drink._
 // init boozy object, brah!
 var bb = new BoozyBrowser();
 // choose a string to set booziness, default will be sober
-// NOTE: re-setting booziness will trigger a start/stop for all (double NOTE: not yet!!)
+// NOTE: re-setting booziness will trigger a start/stop for all 
 // boozy functions
 bb.setBooziness("sober | buzzed | drunk | wooo | blackout");
 // pass in an array (or single string if you're just doin one)
 bb.setBoozyTypes(["lean", "focus", "keys", "buttons"]);
-// alternatively you can remove boozy types from the array after the fact (NOTE: not yet!!)
+// alternatively you can remove boozy types from the array after the fact (NOTE: only for lean and focus ofr some reason :/)
 // NOTE: removing boozy type will stop that functions boozy shenanigans (double NOTE: not yet!!!)
 bb.removeBoozyTypes(["lean", "focus", "keys", "buttons"]);
 // set selectors and whether they should be additive or just replace, 

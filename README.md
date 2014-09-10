@@ -38,4 +38,4 @@ bb.start('lean');
 
 ### known issues (prolly more to come)
 * the keys function doesn't work in fake text boxes like seen on twitter, need to come up with a smart way to handle both normal and abnormal text input types
-* when removing keys and buttons using the .removeBoozyTypes() function the functionality isn't turning off for some reason
+* stopping is broken with buttons and keys for some reason :(

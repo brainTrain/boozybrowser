@@ -2,8 +2,8 @@
 _This is just about teaching the internet how to drink._
 <a href="http://www.boozybrowser.com" target="_blank">Check Out The Demo</a>
 
-## example usage!! \o/ 
-### (tech spec I guess)
+## (tech spec I guess)
+### example usage!! \o/ 
 ``` JavaScript
 // init boozy object, brah!
 var bb = new BoozyBrowser();

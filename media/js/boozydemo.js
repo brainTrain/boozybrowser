@@ -56,6 +56,8 @@
                     .on('click', boozy._menu.handleHideClicks);
                 $('.boozy-menu .show')
                     .on('click', boozy._menu.handleShowClicks);
+
+                boozy.drinks.init();
             },
             handleHideClicks: function(event) {
                 var $menu = $('.boozy-menu');
@@ -70,6 +72,16 @@
                 // TODO: these toggles suck, come up with something better
                 $('.hide', $menu).toggleClass('fade-out');
                 $('.show', $menu).toggleClass('fade-out');
+            }
+        },
+        drinks: {
+            init: function() {
+                boozy.drinks.setDraggableIcons();
+            },
+            setDraggableIcons: function() {
+                $('.so-drag').draggable({
+                    'containment': '.boozy-menu' 
+                });
             }
         }
     };

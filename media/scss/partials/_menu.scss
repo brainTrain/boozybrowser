@@ -1,19 +1,5 @@
 /* this is where the menu classes live */
 
-.boozy-menu {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    border: 1px solid #545450;
-    padding: 15px;
-    background-color: white;
-
-    -webkit-transition: all 1s ease-in-out;
-       -moz-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-         -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
-}
 .divider-top {
     border-top: 1px solid rgba(235, 235, 235, 0.6);
     
@@ -26,61 +12,81 @@
     border-top: 1px solid rgba(235, 235, 235, 0.6);
     border-bottom: 1px solid rgba(235, 235, 235, 0.6);
 }
-.boozy-menu .fade-out {
-    -webkit-opacity: 0;
-       -moz-opacity: 0;
-        -ms-opacity: 0;
-         -o-opacity: 0;
-            opacity: 0;
-
-    -webkit-transition: all 1s ease-in-out;
-       -moz-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-         -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
-}
-.boozy-menu .fade-in {
-    -webkit-opacity: 1;
-       -moz-opacity: 1;
-        -ms-opacity: 1;
-         -o-opacity: 1;
-            opacity: 1;
-
-    -webkit-transition: all 1s ease-in-out;
-       -moz-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-         -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
-}
-.boozy-menu .font {
-    font-family: helvetica;
-}
-.boozy-menu .title {
-    color: #545450;
-}
-.boozy-menu .switch {
-    padding: 5px;
-}
-.boozy-menu .switch .option {
-    width: 10px;
-    height: 10px;
-    border-radius: 20px;
-}
-.boozy-menu .switch .on {
-    background-color: green;
-}
-.boozy-menu .switch .off {
+.boozy-menu {
     background-color: red;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    border: 1px solid #545450;
+    padding: 15px;
+    background-color: white;
+
+    -webkit-transition: all 1s ease-in-out;
+       -moz-transition: all 1s ease-in-out;
+        -ms-transition: all 1s ease-in-out;
+         -o-transition: all 1s ease-in-out;
+            transition: all 1s ease-in-out;
+
+    .fade-out {
+        -webkit-opacity: 0;
+           -moz-opacity: 0;
+            -ms-opacity: 0;
+             -o-opacity: 0;
+                opacity: 0;
+
+        -webkit-transition: all 1s ease-in-out;
+           -moz-transition: all 1s ease-in-out;
+            -ms-transition: all 1s ease-in-out;
+             -o-transition: all 1s ease-in-out;
+                transition: all 1s ease-in-out;
+    }
+    .fade-in {
+        -webkit-opacity: 1;
+           -moz-opacity: 1;
+            -ms-opacity: 1;
+             -o-opacity: 1;
+                opacity: 1;
+
+        -webkit-transition: all 1s ease-in-out;
+           -moz-transition: all 1s ease-in-out;
+            -ms-transition: all 1s ease-in-out;
+             -o-transition: all 1s ease-in-out;
+                transition: all 1s ease-in-out;
+    }
+    .font {
+        font-family: helvetica;
+    }
+    .boozy-comptuer {
+        border: 1px solid #B4D455;
+        height: 40px;
+        width: 50px;
+    }
+    .title {
+        padding: 5px;
+        color: #545450;
+    }
+    .switch {
+        padding: 5px;
+    }
+    .option {
+        width: 10px;
+        height: 10px;
+        border-radius: 20px;
+    }
+    .on {
+        background-color: green;
+    }
+    .off {
+        background-color: red;
+    }
+    .deactivated {
+        background-color: #545450;
+    }
+    .control {
+        width: 172px;
+    }
 }
-.boozy-menu .switch .deactivated {
-    background-color: #545450;
-}
-.boozy-menu .control {
-    width: 172px;
-}
-.boozy-menu .control:hover {
-    background-color: #ECF1DA;
-}
+
 .boozy-menu.hide-menu {
     -webkit-transform:  translateY(-92%);
        -moz-transform:  translateY(-92%);

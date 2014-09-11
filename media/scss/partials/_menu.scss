@@ -1,12 +1,4 @@
 /* this is where the menu classes live */
-.fa {
-    @include breakpoint(small) { 
-        font-size: 40px;
-    }
-    @include breakpoint(medium) { 
-        font-size: 40px;
-    }
-}
 
 .divider-top {
     border-top: 1px solid rgba(235, 235, 235, 0.6);
@@ -34,6 +26,10 @@
         -ms-transition: all 1s ease-in-out;
          -o-transition: all 1s ease-in-out;
             transition: all 1s ease-in-out;
+
+    .drink {
+        font-size: 40px;
+    }
 
     .fade-out {
         -webkit-opacity: 0;

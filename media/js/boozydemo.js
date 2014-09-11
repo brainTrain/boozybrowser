@@ -80,12 +80,12 @@
                 boozy.drinks.setDroppableContainer();
             },
             setDraggableIcons: function() {
-                $('.so-drag').draggable({
+                $('.drink').draggable({
                     'containment': '.boozy-menu' 
                 });
             },
             setDroppableContainer: function() {
-                $('.so-drop').droppable({
+                $('.boozy-computer').droppable({
                     'hoverClass': 'drop-hover',
                     'drop': function(event, ui) {
                         console.log($(ui.draggable).attr('id'));

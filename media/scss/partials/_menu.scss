@@ -13,7 +13,6 @@
     border-bottom: 1px solid rgba(235, 235, 235, 0.6);
 }
 .boozy-menu {
-    background-color: red;
     position: fixed;
     right: 20px;
     top: 20px;
@@ -73,6 +72,12 @@
     }
     .title {
         padding: 5px;
+        color: #545450;
+    }
+    .nav {
+        color: #3498E7;
+    }
+    .active {
         color: #545450;
     }
     .switch {

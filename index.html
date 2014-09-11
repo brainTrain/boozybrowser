@@ -39,24 +39,24 @@
 <script type="text/tempalte" id="boozy-menu-template">
     <div class="boozy-menu">
         <div class="menu-header">
-            <h2 class="title font float-left">Boozy Browsin</h2>
+            <h2 id="bar" class="title nav active font float-left">Boozy Browsin</h2>
+            <h2 id="advanced" class="title nav font float-left cursor-pointer">advanced</h2>
             <div class="hide font float-right cursor-pointer">x</div>
-            <a class="title font float-right cursor-pointer">advanced</a>
             <div class="clear-both"></div>
         </div>
-        <div id="bar" class="menu-controls">
+        <div id="bar-menu" class="menu-controls">
             <div class="drink-container">
                 <div id="martini-koozie" class="drink-koozie">
-                    <i id="martini" class="drink fa fa-glass cursor-pointer float-left"></i>
+                    <i id="martini" class="drink booze fa fa-glass cursor-pointer float-left"></i>
                 </div>
                 <div id="coffee-koozie" class="drink-koozie">
-                    <i id="coffee" class="drink fa fa-coffee cursor-pointer float-left"></i>
+                    <i id="coffee" class="drink caffine fa fa-coffee cursor-pointer float-left"></i>
                 </div>
             </div>
             <div class="clear-both"></div>
             <div class="boozy-computer float-left"></div>
         </div>
-        <div id="settings" class="menu-controls display-none">
+        <div id="advanced-menu" class="menu-controls display-none">
             <div id="bulk" class="control cursor-pointer display-inline-block divider-bottom">
                 <div class="title font float-left">
                     Bulk
@@ -141,6 +141,10 @@
             </div>
         </div>
         <div class="clear-both"></div>
+        <div class="menu-footer">
+            <h2 class="pull-left">Drunkenness:</h2>
+            <p class="drunk-level"></p>
+        </div>
         <div class="show font float-right cursor-pointer fade-out">open</div>
     </div>
 </script>

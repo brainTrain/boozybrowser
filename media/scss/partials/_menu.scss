@@ -1,7 +1,9 @@
 /* this is where the menu classes live */
 .fa {
     @include breakpoint(small) { 
-        width: 84%; 
+        font-size: 40px;
+    }
+    @include breakpoint(medium) { 
         font-size: 40px;
     }
 }
@@ -69,7 +71,6 @@
     }
     .drink-container {
         width: 320px;
-        height: 17px;
     }
     .drop-hover {
         border: 5px solid black;

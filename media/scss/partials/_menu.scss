@@ -56,10 +56,17 @@
     .font {
         font-family: helvetica;
     }
-    .boozy-comptuer {
+    .boozy-computer {
         border: 1px solid #B4D455;
-        height: 40px;
-        width: 50px;
+        height: 100px;
+        width: 300px;
+    }
+    .drink-container {
+        width: 320px;
+        height: 17px;
+    }
+    .drop-hover {
+        border: 5px solid black;
     }
     .title {
         padding: 5px;

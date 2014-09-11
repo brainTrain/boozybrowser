@@ -77,10 +77,19 @@
         drinks: {
             init: function() {
                 boozy.drinks.setDraggableIcons();
+                boozy.drinks.setDroppableContainer();
             },
             setDraggableIcons: function() {
                 $('.so-drag').draggable({
                     'containment': '.boozy-menu' 
+                });
+            },
+            setDroppableContainer: function() {
+                $('.so-drop').droppable({
+                    'hoverClass': 'drop-hover',
+                    'drop': function(event, ui) {
+                        console.log($(ui.draggable).attr('id'));
+                    } 
                 });
             }
         }

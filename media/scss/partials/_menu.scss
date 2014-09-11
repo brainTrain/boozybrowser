@@ -1,4 +1,10 @@
 /* this is where the menu classes live */
+.fa {
+    @include breakpoint(small) { 
+        width: 84%; 
+        font-size: 40px;
+    }
+}
 
 .divider-top {
     border-top: 1px solid rgba(235, 235, 235, 0.6);
@@ -91,6 +97,9 @@
     }
     .control {
         width: 172px;
+    }
+    @include breakpoint(small) { 
+        width: 84%; 
     }
 }
 

@@ -104,7 +104,7 @@
         },
         drinks: {
             init: function() {
-                boozy.drinks.setDraggableIcons();
+                //boozy.drinks.setDraggableIcons();
                 boozy.drinks.setDroppableContainer();
             },
             setDraggableIcons: function() {

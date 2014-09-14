@@ -20,6 +20,8 @@
     <script type="text/javascript" src="media/js/boozydemo.js"></script>
     <!-- moar angualarz -->
     <script type="text/javascript" src="media/js/boozydemo/app.js"></script>
+    <!-- angualar plugins -->
+    <script type="text/javascript" src="media/js/boozydemo/ngDraggable.js"></script>
     <!-- bar stuffs -->
     <script type="text/javascript" src="media/js/boozydemo/bar/services.js"></script>
     <script type="text/javascript" src="media/js/boozydemo/bar/controllers.js"></script>
@@ -56,10 +58,24 @@
         <div id="bar-menu" class="menu-controls">
             <div class="drink-container">
                 <div id="martini-koozie" class="drink-koozie">
-                    <i id="martini" class="drink booze fa fa-glass cursor-pointer float-left"></i>
+                    <i 
+                        ng-drag="true" 
+                        ng-drag-data="{
+                            'name': 'martini', 
+                            'intoxicant': 'booze'
+                        }"
+                        id="martini" 
+                        class="drink booze fa fa-glass cursor-pointer float-left"></i>
                 </div>
                 <div id="coffee-koozie" class="drink-koozie">
-                    <i id="coffee" class="drink caffine fa fa-coffee cursor-pointer float-left"></i>
+                    <i 
+                        ng-drag="true" 
+                        ng-drag-data="{
+                            'name': 'coffee', 
+                            'intoxicant': 'caffine'
+                        }" 
+                        id="coffee" 
+                        class="drink caffine fa fa-coffee cursor-pointer float-left"></i>
                 </div>
             </div>
             <div class="clear-both"></div>

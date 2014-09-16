@@ -53,25 +53,25 @@
             <div class="hide font float-right cursor-pointer">x</div>
             <div class="clear-both"></div>
         </div>
-        <div id="bar-menu" class="menu-controls">
+        <div id="bar-menu" class="menu-controls" ng-controller="bar">
             <div class="drink-container">
                 <div id="martini-koozie" class="drink-koozie">
                     <drink
                         class="drink booze fa fa-glass cursor-pointer float-left"
-                        ng-drink-data="{
-                            'name': 'martini', 
-                            'intoxicant': 'booze'
-                        }"
+                        data-drink='{
+                            "name": "martini", 
+                            "intoxicant": "booze"
+                        }'
                         id="martini" 
                         ></drink>
                 </div>
                 <div id="coffee-koozie" class="drink-koozie">
                     <drink 
                         class="drink caffine fa fa-coffee cursor-pointer float-left"
-                        ng-drink-data="{
-                            'name': 'coffee', 
-                            'intoxicant': 'caffine'
-                        }" 
+                        data-drink='{
+                            "name": "coffee", 
+                            "intoxicant": "caffine"
+                        }'
                         id="coffee" 
                         ></drink>
                 </div>

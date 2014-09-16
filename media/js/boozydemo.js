@@ -67,6 +67,8 @@
                 $('.boozy-menu .nav')
                     .on('click', boozy._menu.handleTitleClicks);
 
+                // init teh angularz by hand! 
+                angular.bootstrap($('.boozy-menu'), ['boozyDemo'])
                 boozy.drinks.init();
             },
             handleHideClicks: function(event) {
@@ -105,7 +107,7 @@
         drinks: {
             init: function() {
                 //boozy.drinks.setDraggableIcons();
-                boozy.drinks.setDroppableContainer();
+                //boozy.drinks.setDroppableContainer();
             },
             setDraggableIcons: function() {
                 $('.drink').draggable({

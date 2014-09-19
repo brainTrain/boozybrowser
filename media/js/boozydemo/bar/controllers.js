@@ -1,7 +1,8 @@
 angular.module('bar.controllers', [])
     .controller('bar', function($scope){ 
-        // init dat drunk object if we don't already have it
         window.$scope = $scope;
+
+        // init dat drunk object if we don't already have it
         $scope.boozyObject = new BoozyBrowser();
 
         $scope.selectTypes = angular.copy($scope.boozyObject.boozyTypes);
@@ -12,12 +13,14 @@ angular.module('bar.controllers', [])
 
         $scope.currentDrunkLevel = {};
         angular.forEach($scope.selectTypes, function(value, index){
-            $scope.currentDrunkLevel[value] = $scope.boozyObject.drunkLevel;
+            var modelName = value;
+            $scope[modelName] = $scope.boozyObject.drunkLevel;
+            //$scope.currentDrunkLevel[value] = $scope.boozyObject.drunkLevel;
         });
 
         // sets bulk or individual drunken states from advanced menu (select drop downs)
         $scope.changeDropDown = function(selectType, currentDrunkLevel){
-            $scope.howDrunk({
+            $scope.intoxicate({
                 'controlId': selectType,
                 'drunkLevel': currentDrunkLevel
             });
@@ -27,7 +30,7 @@ angular.module('bar.controllers', [])
             if(drink.intoxicant === 'booze') {
                 var currentIndex = $scope.browserStates.indexOf($scope.currentDrunkLevel['bulk']), 
                     nextLevel = currentIndex + 1 >= $scope.browserStates.length ? 'blackout' : $scope.browserStates[currentIndex + 1];
-                $scope.howDrunk({
+                $scope.intoxicate({
                     'controlId': 'bulk',
                     'drunkLevel': nextLevel 
                 });
@@ -35,7 +38,7 @@ angular.module('bar.controllers', [])
                 var currentIndex = $scope.browserStates.indexOf($scope.currentDrunkLevel['bulk']), 
                     nextLevel = currentIndex <= 0 ? 'sober' : $scope.browserStates[currentIndex - 1];
 
-                $scope.howDrunk({
+                $scope.intoxicate({
                     'controlId': 'bulk',
                     'drunkLevel': nextLevel
                 });
@@ -44,11 +47,11 @@ angular.module('bar.controllers', [])
 
         };
 
-        $scope.howDrunk = function(drunkObject) {
+        $scope.intoxicate = function(drunkObject) {
             if(drunkObject.controlId === 'bulk') {
                 // change them all
                 angular.forEach($scope.boozyObject.boozyTypes, function(value, index){
-                    $scope.howDrunk({
+                    $scope.intoxicate({
                         'controlId': value,
                         'drunkLevel': drunkObject.drunkLevel
                     });
@@ -67,5 +70,9 @@ angular.module('bar.controllers', [])
                 //$scope.$apply();
             }
             $scope.currentDrunkLevel[drunkObject.controlId] = drunkObject.drunkLevel;
+            console.log('$scope.currentDrunkLevel');
+            console.log($scope.currentDrunkLevel);
+            console.log('drunkObject');
+            console.log(drunkObject);
         };
     });

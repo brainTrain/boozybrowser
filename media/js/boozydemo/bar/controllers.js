@@ -17,10 +17,6 @@ angular.module('bar.controllers', [])
 
         // sets bulk or individual drunken states from advanced menu (select drop downs)
         $scope.changeDropDown = function(selectType, currentDrunkLevel){
-            console.log('selectType');
-            console.log(selectType);
-            console.log('currentDrunkLevel');
-            console.log(currentDrunkLevel);
             $scope.howDrunk({
                 'controlId': selectType,
                 'drunkLevel': currentDrunkLevel
@@ -68,8 +64,6 @@ angular.module('bar.controllers', [])
                     $scope.boozyObject.start(drunkObject.controlId);
                 }
                 // updates view for currentDrunkLevel
-                console.log('drunkObject');
-                console.log(drunkObject);
                 //$scope.$apply();
             }
             $scope.currentDrunkLevel[drunkObject.controlId] = drunkObject.drunkLevel;

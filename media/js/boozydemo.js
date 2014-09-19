@@ -10,7 +10,6 @@
         init: function() {
             // only initialize after the menu is loaded
             boozy._menu.init();
-            boozy._paintDrunkLevel();
 
             $('.button').click(function() {
                 $('.button').removeClass('pressed');
@@ -31,8 +30,7 @@
         },
         _howDrunk: function(drunkObject) {
             boozy._currentDrunkLevel = drunkObject.drunkLevel;
-            boozy._paintDrunkLevel();
-            $('.boozy-menu .menu-footer .drunk-level')
+
             if(!boozy.boozyObject) {
                 boozy.boozyObject = new BoozyBrowser();
             }
@@ -49,9 +47,6 @@
                 boozy.boozyObject.start(drunkObject.controlId);
             }
         },
-        _paintDrunkLevel: function() {
-            $('.boozy-menu .menu-footer .drunk-level').html(boozy._currentDrunkLevel);
-        },
         // menu control rendering/event handling
         _menu: {
             init: function() {
@@ -60,95 +55,11 @@
 
                 $('.boozy-menu .drunk-level')
                     .on('change', boozy._howDrunkHandler);
-                $('.boozy-menu .hide')
-                    .on('click', boozy._menu.handleHideClicks);
-                $('.boozy-menu .show')
-                    .on('click', boozy._menu.handleShowClicks);
-                $('.boozy-menu .nav')
-                    .on('click', boozy._menu.handleTitleClicks);
 
                 // init teh angularz by hand! 
                 angular.bootstrap($('.boozy-menu'), ['boozyDemo'])
-                boozy.drinks.init();
-            },
-            handleHideClicks: function(event) {
-                var $menu = $('.boozy-menu');
-                $menu.addClass('hide-menu');
-                // TODO: these toggles suck, come up with something better
-                $('.hide', $menu).toggleClass('fade-out');
-                $('.show', $menu).toggleClass('fade-out');
-            },
-            handleShowClicks: function(event) {
-                var $menu = $('.boozy-menu');
-                $menu.removeClass('hide-menu');
-                // TODO: these toggles suck, come up with something better
-                $('.hide', $menu).toggleClass('fade-out');
-                $('.show', $menu).toggleClass('fade-out');
-            },
-            handleTitleClicks: function(event) {
-                var $menuContainer = $('.boozy-menu'), 
-                    $menu = $(this),
-                    id = $menu.attr('id');
-
-                if(!$menu.hasClass('active')) {
-                    $('.nav', $menuContainer)
-                        .addClass('cursor-pointer')
-                        .removeClass('active');
-                    $('#' + id, $menuContainer)
-                        .removeClass('cursor-pointer')
-                        .addClass('active');
-
-                    $('.menu-controls', $menuContainer).fadeOut(function(){
-                        $('#' + id + '-menu', $menuContainer).fadeIn('slow');
-                    });
-                }
             }
         },
-        drinks: {
-            init: function() {
-                //boozy.drinks.setDraggableIcons();
-                //boozy.drinks.setDroppableContainer();
-            },
-            setDraggableIcons: function() {
-                $('.drink').draggable({
-                    'containment': '.boozy-menu',
-                    'revert': true,
-                    'revertDuration': 0
-                });
-            },
-            setDroppableContainer: function() {
-                $('.boozy-computer').droppable({
-                    'hoverClass': 'drop-hover',
-                    'drop': function(event, ui) {
-                        var $drink = $(ui.draggable);
-                        boozy.drinks.bottomsUp($drink);
-                        $drink.fadeOut(function(){
-                            $(this).show();
-                        });
-                    } 
-                });
-            },
-            bottomsUp: function($drink) {
-                if($drink.hasClass('booze')) {
-                    var currentIndex = boozy._drunkLevels.indexOf(boozy._currentDrunkLevel), 
-                        nextLevel = currentIndex + 1 >= boozy._drunkLevels.length ? 'blackout' : boozy._drunkLevels[currentIndex + 1];
-                    console.log(currentIndex);
-                    boozy._howDrunk({
-                        'controlId': 'bulk',
-                        'drunkLevel': nextLevel 
-                    });
-                } else if($drink.hasClass('caffine')) {
-                    var currentIndex = boozy._drunkLevels.indexOf(boozy._currentDrunkLevel), 
-                        nextLevel = currentIndex <= 0 ? 'sober' : boozy._drunkLevels[currentIndex - 1];
-                    console.log(currentIndex);
-                    boozy._howDrunk({
-                        'controlId': 'bulk',
-                        'drunkLevel': nextLevel
-                    });
-
-                }
-            }
-        }
     };
 
     $(document).ready(function() {

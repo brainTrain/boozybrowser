@@ -53,9 +53,6 @@
                 var $boozyMenuTemplate = $('#boozy-menu-template');
                 $('html').append($boozyMenuTemplate.html());
 
-                $('.boozy-menu .drunk-level')
-                    .on('change', boozy._howDrunkHandler);
-
                 // init teh angularz by hand! 
                 angular.bootstrap($('.boozy-menu'), ['boozyDemo'])
             }

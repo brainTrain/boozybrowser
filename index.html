@@ -48,12 +48,12 @@
 <script type="text/tempalte" id="boozy-menu-template">
     <div class="boozy-menu-wrapper"  ng-app="boozyDemo">
         <div class="boozy-menu" ng-controller="bar" ng-class="{'hide-menu': hideMenu == true}">
-            <div class="menu-header" ng-init="currentMenu = 'browser'">
+            <div class="menu-header" ng-init="currentMenu = 'bar'">
                 <h2 
                     id="bar" 
                     class="title nav font float-left cursor-pointer" 
-                    ng-class="{'active': currentMenu == 'browser'}" 
-                    ng-click="currentMenu = 'browser'"
+                    ng-class="{'active': currentMenu == 'bar'}" 
+                    ng-click="currentMenu = 'bar'"
                 >Boozy Browsin</h2>
                 <h2 
                     id="advanced" 
@@ -64,7 +64,7 @@
                 <div class="hide font float-right cursor-pointer" ng-click="hideMenu = true">x</div>
                 <div class="clear-both"></div>
             </div>
-            <div id="bar-menu" class="menu-controls" ng-show="currentMenu == 'browser'">
+            <div id="bar-menu" class="menu-controls" ng-show="currentMenu == 'bar'">
                 <div class="drink-container">
                     <div id="martini-koozie" class="drink-koozie">
                         <drink
@@ -101,9 +101,9 @@
                     <div class="switch float-right">
                         <select 
                             class="drunk-level float-left" 
-                            ng-model="currentDrunkLevel" 
+                            ng-model="currentDrunkLevel['{{ selectType }}']" 
                             ng-options="browserState for browserState in browserStates track by browserState"
-                            ng-change="changeDropDown('{{ selectType }}')"
+                            ng-change="changeDropDown('{{ selectType }}', currentDrunkLevel['{{ selectType }}'])"
                         >
                             <option>--</option>
                         </select>
@@ -114,7 +114,8 @@
             <div class="clear-both"></div>
             <div class="menu-footer">
                 <h2 class="float-left">Drunkenness: </h2>
-                <p class="float-left">{{ currentDrunkLevel }}</p>
+                <p class="float-left" ng-hide="currentMenu == 'advanced'">{{ currentDrunkLevel['bulk'] }}</p>
+                <p class="float-left" ng-hide="currentMenu == 'bar'">{{ currentDrunkLevel }}</p>
             </div>
             <div class="font float-right cursor-pointer" ng-show="hideMenu == true" ng-click="hideMenu = false">open</div>
         </div>

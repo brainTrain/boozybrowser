@@ -1,9 +1,20 @@
 angular.module('bar.controllers', [])
     .controller('bar', function($scope){ 
+        // init dat drunk object if we don't already have it
+        window.$scope = $scope;
+        $scope.boozyObject = new BoozyBrowser();
 
-        $scope.currentDrunkLevel = 'sober';
+        $scope.selectTypes = angular.copy($scope.boozyObject.boozyTypes);
+        $scope.selectTypes.unshift('bulk');
+
+        $scope.currentDrunkLevel = $scope.boozyObject.drunkLevel;
         $scope.browserStates = ['sober', 'buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'];
         $scope.boozyStates = ['buzzed', 'im-fine', 'drunk', 'wooo', 'blackout'];
+
+        $scope.changeDropDown = function(selectType){
+            console.log('selectType');
+            console.log(selectType);
+        };
 
         $scope.drinkUp = function(drink) {
             if(drink.intoxicant === 'booze') {
@@ -27,9 +38,6 @@ angular.module('bar.controllers', [])
         };
 
         $scope.howDrunk = function(drunkObject) {
-            if(!$scope.boozyObject) {
-                $scope.boozyObject = new BoozyBrowser();
-            }
             if(drunkObject.controlId === 'bulk') {
                 // change them all
                 angular.forEach($scope.boozyObject.boozyTypes, function(value, index){
@@ -38,17 +46,16 @@ angular.module('bar.controllers', [])
                         'drunkLevel': drunkObject.drunkLevel
                     });
                 });
-            } else if(drunkObject.drunkLevel === 'sober') {
-                // be sober
-                $scope.boozyObject.setBooziness(drunkObject.drunkLevel);
-                $scope.boozyObject.stop(drunkObject.controlId);
-                // updates view for currentDrunkLevel
-                $scope.currentDrunkLevel = drunkObject.drunkLevel;
-                $scope.$apply();
-            } else if(_.contains($scope.boozyStates, drunkObject.drunkLevel)) {
-                // be drunk
-                $scope.boozyObject.setBooziness(drunkObject.drunkLevel);
-                $scope.boozyObject.start(drunkObject.controlId);
+            } else {
+                if(drunkObject.drunkLevel === 'sober') {
+                    // be sober
+                    $scope.boozyObject.setBooziness(drunkObject.drunkLevel);
+                    $scope.boozyObject.stop(drunkObject.controlId);
+                } else if(_.contains($scope.boozyStates, drunkObject.drunkLevel)) {
+                    // be drunk
+                    $scope.boozyObject.setBooziness(drunkObject.drunkLevel);
+                    $scope.boozyObject.start(drunkObject.controlId);
+                }
                 // updates view for currentDrunkLevel
                 $scope.currentDrunkLevel = drunkObject.drunkLevel;
                 $scope.$apply();

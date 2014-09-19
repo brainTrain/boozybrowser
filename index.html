@@ -49,8 +49,18 @@
     <div class="boozy-menu-wrapper"  ng-app="boozyDemo">
         <div class="boozy-menu" ng-controller="bar" ng-class="{'hide-menu': hideMenu == true}">
             <div class="menu-header" ng-init="currentMenu = 'browser'">
-                <h2 id="bar" class="title nav font float-left cursor-pointer" ng-class="{'active': currentMenu == 'browser'}" ng-click="currentMenu = 'browser'">Boozy Browsin</h2>
-                <h2 id="advanced" class="title nav font float-left cursor-pointer" ng-class="{'active': currentMenu == 'advanced'}"  ng-click="currentMenu = 'advanced'">advanced</h2>
+                <h2 
+                    id="bar" 
+                    class="title nav font float-left cursor-pointer" 
+                    ng-class="{'active': currentMenu == 'browser'}" 
+                    ng-click="currentMenu = 'browser'"
+                >Boozy Browsin</h2>
+                <h2 
+                    id="advanced" 
+                    class="title nav font float-left cursor-pointer" 
+                    ng-class="{'active': currentMenu == 'advanced'}"  
+                    ng-click="currentMenu = 'advanced'"
+                >advanced</h2>
                 <div class="hide font float-right cursor-pointer" ng-click="hideMenu = true">x</div>
                 <div class="clear-both"></div>
             </div>
@@ -81,88 +91,25 @@
                 <browser class="boozy-computer float-left">drag here to drink</browser>
             </div>
             <div id="advanced-menu" class="menu-controls" ng-show="currentMenu == 'advanced'">
-                <div id="bulk" class="control cursor-pointer display-inline-block divider-bottom">
-                    <div class="title font float-left">
-                        Bulk
-                    </div>
+                <div 
+                    id="{{ selectType }}" 
+                    class="control cursor-pointer display-inline-block"
+                    ng-class="{'divider-bottom': selectType == 'bulk'}" 
+                    ng-repeat-start="selectType in selectTypes" 
+                >
+                    <div class="title font float-left"> {{ selectType }} </div>
                     <div class="switch float-right">
-                        <select class="drunk-level float-left">
-                            <option value="sober">sober</option>
-                            <option value="buzzed">buzzed</option>
-                            <option value="im-fine">I'm fine</option>
-                            <option value="drunk">drunk</option>
-                            <option value="wooo">wooo!</option>
-                            <option value="blackout">blackout</option> 
+                        <select 
+                            class="drunk-level float-left" 
+                            ng-model="currentDrunkLevel" 
+                            ng-options="browserState for browserState in browserStates track by browserState"
+                            ng-change="changeDropDown('{{ selectType }}')"
+                        >
+                            <option>--</option>
                         </select>
                     </div>
                 </div>
-                <div class="clear-both"></div>
-                <div class="controls-container display-inline-block divider-top">
-                    <div id="lean" class="control cursor-pointer display-inline-block">
-                        <div class="title font float-left">
-                            Lean
-                        </div>
-                        <div class="switch float-right">
-                            <select class="drunk-level single-control float-left">
-                                <option value="sober">sober</option>
-                                <option value="buzzed">buzzed</option>
-                                <option value="im-fine">I'm fine</option>
-                                <option value="drunk">drunk</option>
-                                <option value="wooo">wooo!</option>
-                                <option value="blackout">blackout</option> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="clear-both"></div>
-                    <div id="focus" class="control cursor-pointer display-inline-block">
-                        <div class="title font float-left">
-                            Focus
-                        </div>
-                        <div class="switch float-right">
-                            <select class="drunk-level single-control float-left">
-                                <option value="sober">sober</option>
-                                <option value="buzzed">buzzed</option>
-                                <option value="im-fine">I'm fine</option>
-                                <option value="drunk">drunk</option>
-                                <option value="wooo">wooo!</option>
-                                <option value="blackout">blackout</option> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="clear-both"></div>
-                    <div id="buttons" class="control cursor-pointer display-inline-block">
-                        <div class="title font float-left">
-                            Buttons
-                        </div>
-                        <div class="switch float-right">
-                            <select class="drunk-level single-control float-left">
-                                <option value="sober">sober</option>
-                                <option value="buzzed">buzzed</option>
-                                <option value="im-fine">I'm fine</option>
-                                <option value="drunk">drunk</option>
-                                <option value="wooo">wooo!</option>
-                                <option value="blackout">blackout</option> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="clear-both"></div>
-                    <div id="keys" class="control cursor-pointer display-inline-block">
-                        <div class="title font float-left">
-                            Keys
-                        </div>
-                        <div class="switch float-right">
-                            <select class="drunk-level single-control float-left">
-                                <option value="sober">sober</option>
-                                <option value="buzzed">buzzed</option>
-                                <option value="im-fine">I'm fine</option>
-                                <option value="drunk">drunk</option>
-                                <option value="wooo">wooo!</option>
-                                <option value="blackout">blackout</option> 
-                            </select>
-                        </div>
-                    </div>
-                    <div class="clear-both"></div>
-                </div>
+                <div class="clear-both" ng-repeat-end></div>
             </div>
             <div class="clear-both"></div>
             <div class="menu-footer">

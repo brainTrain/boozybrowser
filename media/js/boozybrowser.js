@@ -22,6 +22,7 @@
     reqs:
     =====
         jQuery
+        jQueryUI
         boozybrowser.css
 
     usage:

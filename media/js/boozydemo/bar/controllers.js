@@ -13,8 +13,6 @@ angular.module('bar.controllers', [])
 
         $scope.currentDrunkLevel = {};
         angular.forEach($scope.selectTypes, function(value, index){
-            //var modelName = value;
-            //$scope[modelName] = $scope.boozyObject.drunkLevel;
             $scope.currentDrunkLevel[value] = $scope.boozyObject.drunkLevel;
         });
 
@@ -66,12 +64,9 @@ angular.module('bar.controllers', [])
                     $scope.boozyObject.setBooziness(drunkObject.drunkLevel);
                     $scope.boozyObject.start(drunkObject.controlId);
                 }
-                // updates view for currentDrunkLevel
-                //$scope.$apply();
             }
+            // updates view for currentDrunkLevel
             $scope.currentDrunkLevel[drunkObject.controlId] = drunkObject.drunkLevel;
-            
-            console.log('drunkObject');
-            console.log(drunkObject);
+            $scope.$apply();
         };
     });

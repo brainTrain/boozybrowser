@@ -13,9 +13,9 @@ angular.module('bar.controllers', [])
 
         $scope.currentDrunkLevel = {};
         angular.forEach($scope.selectTypes, function(value, index){
-            var modelName = value;
-            $scope[modelName] = $scope.boozyObject.drunkLevel;
-            //$scope.currentDrunkLevel[value] = $scope.boozyObject.drunkLevel;
+            //var modelName = value;
+            //$scope[modelName] = $scope.boozyObject.drunkLevel;
+            $scope.currentDrunkLevel[value] = $scope.boozyObject.drunkLevel;
         });
 
         // sets bulk or individual drunken states from advanced menu (select drop downs)
@@ -70,8 +70,7 @@ angular.module('bar.controllers', [])
                 //$scope.$apply();
             }
             $scope.currentDrunkLevel[drunkObject.controlId] = drunkObject.drunkLevel;
-            console.log('$scope.currentDrunkLevel');
-            console.log($scope.currentDrunkLevel);
+            
             console.log('drunkObject');
             console.log(drunkObject);
         };

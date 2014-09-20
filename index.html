@@ -101,9 +101,9 @@
                     <div class="switch float-right">
                         <select 
                             class="drunk-level float-left" 
-                            ng-model="{{ selectType }}" 
+                            ng-model="currentDrunkLevel['{{ selectType }}']" 
                             ng-options="browserState for browserState in browserStates track by browserState"
-                            ng-change="changeDropDown('{{ selectType }}', {{ selectType }})"
+                            ng-change="changeDropDown('{{ selectType }}', currentDrunkLevel['{{ selectType }}'])"
                         >
                             <option>--</option>
                         </select>

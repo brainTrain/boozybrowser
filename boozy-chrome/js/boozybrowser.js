@@ -22,6 +22,7 @@
     reqs:
     =====
         jQuery
+        jQueryUI
         boozybrowser.css
 
     usage:
@@ -389,7 +390,8 @@
                 var keys = this;
                 keys._active = false;
 
-                $(keys._selectors).off(keys._boozyNamespace);
+                $('body')
+                    .off(keys._boozyNamespace, keys._selectors, keys._goHomeYoureDrunk);
             }
         },
         buttons: {
@@ -475,7 +477,8 @@
                 var buttons = this;
                 buttons._active = false;
 
-                $(buttons._selectors).off(buttons._boozyNamespace);
+                $('body')
+                    .off(buttons._boozyNamespace, buttons._selectors, buttons._goHomeYoureDrunk);
             }
         }
     };

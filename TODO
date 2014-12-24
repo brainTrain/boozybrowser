@@ -1,0 +1,18 @@
+TODO's and shit, so's I can get started again:
+---------------------------------------------
+
+- figure out for like.. the millionth time why this chrome plugin is busted and fix it... again. but commit it this time!
+    - (might be fixed on chromebook)
+
+- determine if I wanna add logic for different amounts of booze/ingredients in drinks (essentially add ingredients and prolly have 3 designations, super hard (bacardi 151 etc), hard (vodka etc), almost hard(triple sec etc), semi hard (beer, wine), not hard (juice etc), negative hard (coffee etc)
+
+- work on better names for all that hard shit ^
+
+- detemine if I wanna add logic for waiting to get drunk/sobering up
+    - while I'm at it, see if there's an easy way to set datetimes for peeps to schedule
+
+- see if there's a way to remove the jQuery dependence from boozybrowser.js
+
+- spend some serious time nerding out on CSS animations and see if I can't make that shit super amazing... think like... wobbling paper amazing
+
+- fix readme when this shit's alll over

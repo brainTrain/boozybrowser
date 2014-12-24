@@ -33,4 +33,3 @@
     boozy.init();     
 
 })(jQuery, window.BoozyBrowser);
-

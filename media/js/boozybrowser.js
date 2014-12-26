@@ -76,11 +76,42 @@
             return this.posNeg() * Math.floor((Math.random()*randSize)+1);
         }
     };
-
+    /*
+    drink = {
+        name: 'moscow mule',
+        strength: 2
+    }
+    drink = {
+        name: 'manhattan',
+        strength: 4
+    }
+    drink = {
+        name: 'vodka',
+        strength: 2
+    }
+    drink = {
+        name: 'fernet branca',
+        strength: 2
+    }
+    drink = {
+        name: 'coffee',
+        strength: -1
+    }
+    */
     BoozyBrowser.prototype = {
         constructor: BoozyBrowser,
+        BAC: 0,
+        drinkHistory: [],
+        drunkLevel: 'sober',
         drinkUp: function(drink) {
-                
+            this.BAC += drink.strength;
+            this.drinkHistory.push(drink.name);
+            this._handleNewDrink();
+        },
+        _handleNewDrink: function() {
+            if(this.BAC) {
+                // set booziness
+            }
         },
         setBooziness: function(drunkLevel) {
             this.drunkLevel = drunkLevel;

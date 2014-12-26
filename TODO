@@ -1,5 +1,8 @@
 TODO's and shit, so's I can get started again:
 ---------------------------------------------
+- source of truth for drink consumptio logic
+
+- refactor demo code and boozybrowser.js logic to be more modular/play nice with advanced(manual) vs regular mode
 
 - ingredient strengths:
     (3) tough booze (bacardi 151 etc)

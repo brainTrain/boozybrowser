@@ -1,15 +1,12 @@
 TODO's and shit, so's I can get started again:
 ---------------------------------------------
 
-- determine if I wanna add logic for different amounts of booze/ingredients in drinks (essentially add ingredients and prolly have a bunch of designations: 
-    (4) super hard (bacardi 151 etc), 
-    (3) hard (vodka etc), 
-    (2) almost hard(triple sec etc), 
-    (1) semi hard (beer, wine), 
-    (0) not hard (juice etc), 
-    (-1) negative hard (coffee etc)
-
-- work on better names for all that hard shit ^
+- ingredient strengths:
+    (3) tough booze (bacardi 151 etc)
+    (2) hard booze (vodka etc)
+    (1) booze (beer, wine)
+    (0) not booze (juice etc)
+    (-1) negative booze (coffee etc)
 
 - detemine if I wanna add logic for waiting to get drunk/sobering up
     - while I'm at it, see if there's an easy way to set datetimes for peeps to schedule

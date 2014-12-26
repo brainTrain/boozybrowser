@@ -79,8 +79,11 @@
 
     BoozyBrowser.prototype = {
         constructor: BoozyBrowser,
+        drinkUp: function(drink) {
+                
+        },
         setBooziness: function(drunkLevel) {
-            this.drunkLevel = drunkLevel; 
+            this.drunkLevel = drunkLevel;
             if(this.boozyTypes) {
                 // make sure we restart the currently active functions
                 for(var i = 0, len = this.boozyTypes.length; i < len; i++) {

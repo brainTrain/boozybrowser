@@ -8,6 +8,13 @@ TODO's and shit, so's I can get started again:
     (0) not booze (juice etc)
     (-1) negative booze (coffee etc)
 
+- drink consumption logic
+    buzzed: 1
+    im-fine: 4
+    drunk: 7
+    wooo: 10
+    blackout: 13+
+
 - detemine if I wanna add logic for waiting to get drunk/sobering up
     - while I'm at it, see if there's an easy way to set datetimes for peeps to schedule
 
@@ -16,3 +23,16 @@ TODO's and shit, so's I can get started again:
 - spend some serious time nerding out on CSS animations and see if I can't make that shit super amazing... think like... wobbling paper amazing
 
 - fix readme when this shit's alll over
+
+========================================
+thoughts on architecture:
+~ currently everything is being handled in boozybrowser.js, thinking of breaking this up, but not sure how yet. ~
+
+- boozybrowser.js
+    * sets booziness of browser, has tiers set for boozy levels
+    * sets type of booziness, focus, keys etc
+    * sets what gets boozy, body, buttons etc
+    ----------
+    * handles drink input and enforces setting of boozy levels
+    * handles setting interval for getting drunk/sobering up the "natural" way
+    * handles setting preset drunk levels on your browser via scheduling/time of day

@@ -9,6 +9,7 @@ TODO's and shit, so's I can get started again:
     (-1) negative booze (coffee etc)
 
 - drink consumption logic
+    sober: 0 (obvi)
     buzzed: 1
     im-fine: 4
     drunk: 7

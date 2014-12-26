@@ -103,15 +103,38 @@
         BAC: 0,
         drinkHistory: [],
         drunkLevel: 'sober',
+        // requires drink to have strength and name
         drinkUp: function(drink) {
             this.BAC += drink.strength;
+            // no need to be negative dude!
+            if (this.BAC < 0) this.BAC = 0;
             this.drinkHistory.push(drink.name);
             this._handleNewDrink();
         },
         _handleNewDrink: function() {
-            if(this.BAC) {
-                // set booziness
-            }
+            var currentBAC = this.BAC;
+            // set booziness
+            // TODO: don't use hella if/else's for this 
+            //  -(opportunity to make a truth object for drunk level to BAC definition here)
+            //  - crap, might need to go top down in order to do that without special case.. hmm
+            if(currentBAC < 1) {
+                this.setBooziness('sober');
+
+            } else if(currentBAC < 4 ) {
+                this.setBooziness('buzzed');
+
+            } else if(currentBAC < 7) {
+                this.setBooziness('im-fine');
+
+            } else if(currentBAC < 10) {
+                this.setBooziness('drunk');
+
+            } else if(currentBAC < 13) {
+                this.setBooziness('wooo');
+
+            } else if(currentBAC >= 13) { // TODO: easter egg if you've got a super big number! \o/
+                this.setBooziness('blackout');
+            } 
         },
         setBooziness: function(drunkLevel) {
             this.drunkLevel = drunkLevel;

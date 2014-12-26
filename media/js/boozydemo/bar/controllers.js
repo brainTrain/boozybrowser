@@ -25,24 +25,8 @@ angular.module('bar.controllers', [])
         };
         // set bulk drunk states from bar menu (click/drag drink icons)
         $scope.drinkUp = function(drink) {
-            if(drink.intoxicant === 'booze') {
-                var currentIndex = $scope.browserStates.indexOf($scope.currentDrunkLevel['bulk']), 
-                    nextLevel = currentIndex + 1 >= $scope.browserStates.length ? 'blackout' : $scope.browserStates[currentIndex + 1];
-                $scope.intoxicate({
-                    'controlId': 'bulk',
-                    'drunkLevel': nextLevel 
-                });
-            } else if(drink.intoxicant === 'caffine') {
-                var currentIndex = $scope.browserStates.indexOf($scope.currentDrunkLevel['bulk']), 
-                    nextLevel = currentIndex <= 0 ? 'sober' : $scope.browserStates[currentIndex - 1];
-
-                $scope.intoxicate({
-                    'controlId': 'bulk',
-                    'drunkLevel': nextLevel
-                });
-
-            }
-
+            $scope.boozyObject.drinkUp(drink);
+            $scope.boozyObject.start();
         };
 
         $scope.intoxicate = function(drunkObject) {

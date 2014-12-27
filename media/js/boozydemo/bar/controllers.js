@@ -26,7 +26,6 @@ angular.module('bar.controllers', [])
         // set bulk drunk states from bar menu (click/drag drink icons)
         $scope.drinkUp = function(drink) {
             $scope.boozyObject.drinkUp(drink);
-            $scope.boozyObject.start();
         };
 
         $scope.intoxicate = function(drunkObject) {

@@ -117,24 +117,31 @@
             // TODO: don't use hella if/else's for this 
             //  -(opportunity to make a truth object for drunk level to BAC definition here)
             //  - crap, might need to go top down in order to do that without special case.. hmm
+            // TODO: get rid of this awful start/stop logic and replace it was something wayyyy better
             if(currentBAC < 1) {
-                this.setBooziness('sober');
+                //this.setBooziness('sober');
+                this.stop();
 
             } else if(currentBAC < 4 ) {
                 this.setBooziness('buzzed');
+                this.start();
 
             } else if(currentBAC < 7) {
                 this.setBooziness('im-fine');
+                this.start();
 
             } else if(currentBAC < 10) {
                 this.setBooziness('drunk');
+                this.start();
 
             } else if(currentBAC < 13) {
                 this.setBooziness('wooo');
+                this.start();
 
             } else if(currentBAC >= 13) { // TODO: easter egg if you've got a super big number! \o/
                 this.setBooziness('blackout');
-            } 
+                this.start();
+            }
         },
         setBooziness: function(drunkLevel) {
             this.drunkLevel = drunkLevel;

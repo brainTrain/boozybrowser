@@ -1,5 +1,12 @@
 TODO's and shit, so's I can get started again:
----------------------------------------------
+--------------------------------------------
+- build drink menu
+    - have gear icon for settings/advanced
+    - have menu icon for drink menu
+    - put like.. a few drinks in there
+
+- investigate click/drag outside of box for chrome plugin (maybe just have 'browser' box for now)
+
 - source of truth for drink consumptio logic
 
 - refactor demo code and boozybrowser.js logic to be more modular/play nice with advanced(manual) vs regular mode

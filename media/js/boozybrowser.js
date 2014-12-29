@@ -138,7 +138,7 @@
                 this.setBooziness('wooo');
                 this.start();
 
-            } else if(currentBAC >= 13) { // TODO: easter egg if you've got a super big number! \o/
+            } else if(currentBAC >= 13) { // TODO: easter egg if you've got a super big number! \o/  (over 9,000?)
                 this.setBooziness('blackout');
                 this.start();
             }

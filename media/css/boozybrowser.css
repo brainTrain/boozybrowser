@@ -76,9 +76,10 @@
 }
 /* line 29, ../scss/partials/_menu.scss */
 .boozy-menu .drink {
-  font-size: 40px;
+  font-size: 15px;
+  padding: 5px;
 }
-/* line 33, ../scss/partials/_menu.scss */
+/* line 34, ../scss/partials/_menu.scss */
 .boozy-menu .fade-out {
   -webkit-opacity: 0;
   -moz-opacity: 0;
@@ -91,7 +92,7 @@
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
-/* line 46, ../scss/partials/_menu.scss */
+/* line 47, ../scss/partials/_menu.scss */
 .boozy-menu .fade-in {
   -webkit-opacity: 1;
   -moz-opacity: 1;
@@ -104,61 +105,61 @@
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
-/* line 59, ../scss/partials/_menu.scss */
+/* line 60, ../scss/partials/_menu.scss */
 .boozy-menu .font {
   font-family: helvetica;
 }
-/* line 62, ../scss/partials/_menu.scss */
+/* line 63, ../scss/partials/_menu.scss */
 .boozy-menu .boozy-computer {
   border: 1px solid #B4D455;
   height: 100px;
   width: 300px;
 }
-/* line 67, ../scss/partials/_menu.scss */
+/* line 68, ../scss/partials/_menu.scss */
 .boozy-menu .drink-container {
   width: 320px;
 }
-/* line 70, ../scss/partials/_menu.scss */
+/* line 71, ../scss/partials/_menu.scss */
 .boozy-menu .drop-hover {
   border: 5px solid black;
 }
-/* line 73, ../scss/partials/_menu.scss */
+/* line 74, ../scss/partials/_menu.scss */
 .boozy-menu .title {
   padding: 5px;
   color: #545450;
 }
-/* line 77, ../scss/partials/_menu.scss */
+/* line 78, ../scss/partials/_menu.scss */
 .boozy-menu .nav {
   color: #3498E7;
 }
-/* line 80, ../scss/partials/_menu.scss */
+/* line 81, ../scss/partials/_menu.scss */
 .boozy-menu .active {
   color: #545450;
   cursor: default;
 }
-/* line 84, ../scss/partials/_menu.scss */
+/* line 85, ../scss/partials/_menu.scss */
 .boozy-menu .switch {
   padding: 5px;
 }
-/* line 87, ../scss/partials/_menu.scss */
+/* line 88, ../scss/partials/_menu.scss */
 .boozy-menu .option {
   width: 10px;
   height: 10px;
   border-radius: 20px;
 }
-/* line 92, ../scss/partials/_menu.scss */
+/* line 93, ../scss/partials/_menu.scss */
 .boozy-menu .on {
   background-color: green;
 }
-/* line 95, ../scss/partials/_menu.scss */
+/* line 96, ../scss/partials/_menu.scss */
 .boozy-menu .off {
   background-color: red;
 }
-/* line 98, ../scss/partials/_menu.scss */
+/* line 99, ../scss/partials/_menu.scss */
 .boozy-menu .deactivated {
   background-color: #545450;
 }
-/* line 101, ../scss/partials/_menu.scss */
+/* line 102, ../scss/partials/_menu.scss */
 .boozy-menu .control {
   width: 172px;
 }
@@ -169,7 +170,7 @@
   }
 }
 
-/* line 109, ../scss/partials/_menu.scss */
+/* line 110, ../scss/partials/_menu.scss */
 .boozy-menu.hide-menu {
   -webkit-transform: translateY(-92%);
   -moz-transform: translateY(-92%);

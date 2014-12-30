@@ -1,17 +1,29 @@
 <div id="bar-menu" class="menu-controls" ng-show="currentMenu == 'bar'">
     <div class="drink-container">
-        <div id="martini-koozie" class="drink-koozie">
-            <drink
-                class="drink booze fa fa-glass cursor-pointer float-left"
-                data-drink='{ "name": "martini", "strength": 2 }'
-            ></drink>
-        </div>
-        <div id="coffee-koozie" class="drink-koozie">
-            <drink 
-                class="drink caffine fa fa-coffee cursor-pointer float-left"
-                data-drink='{ "name": "coffee", "strength": -1 }'
-            ></drink>
-        </div>
+        <drink
+            class="drink booze fa fa-glass cursor-pointer float-left"
+            data-drink='{ "name": "vodka-martini", "strength": 2 }'
+        >Vodka Martini</drink>
+        <drink
+            class="drink booze fa fa-glass cursor-pointer float-left"
+            data-drink='{ "name": "manhattan", "strength": 2 }'
+        >Manhattan</drink>
+        <drink
+            class="drink booze fa fa-glass cursor-pointer float-left"
+            data-drink='{ "name": "lagunitas-ipa", "strength": 1 }'
+        >Lagunitas IPA</drink>
+        <drink
+            class="drink booze fa fa-glass cursor-pointer float-left"
+            data-drink='{ "name": "russian-river-pinot-noir", "strength": 1 }'
+        >Russian River Pinot Noir</drink>
+        <drink
+            class="drink booze fa fa-glass cursor-pointer float-left"
+            data-drink='{ "name": "fernet-branca", "strength": 2 }'
+        >Fernet Branca</drink>
+        <drink 
+            class="drink caffine fa fa-coffee cursor-pointer float-left"
+            data-drink='{ "name": "coffee", "strength": -1 }'
+        >Coffee</drink>
     </div>
     <div class="clear-both"></div>
     <browser class="boozy-computer float-left">drag here to drink</browser>

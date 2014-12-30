@@ -5,6 +5,8 @@ angular.module('bar.directives', [])
             link: function(scope, element, attrs) {
                 element.draggable({
                     'containment': '.boozy-menu',
+                    'helper': 'clone',
+                    'opacity': 0.7,
                     'revert': true,
                     'revertDuration': 0
                 });

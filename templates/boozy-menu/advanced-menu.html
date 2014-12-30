@@ -1,0 +1,21 @@
+<div id="advanced-menu" class="menu-controls" ng-show="currentMenu == 'advanced'">
+    <div 
+        id="{{ selectType }}" 
+        class="control cursor-pointer display-inline-block"
+        ng-class="{'divider-bottom': selectType == 'bulk'}" 
+        ng-repeat-start="selectType in selectTypes" 
+    >
+        <div class="title font float-left"> {{ selectType }} </div>
+        <div class="switch float-right">
+            <select 
+                class="drunk-level float-left" 
+                ng-model="currentDrunkLevel[selectType]" 
+                ng-options="browserState for browserState in browserStates track by browserState"
+                ng-change="changeDropDown('{{ selectType }}', currentDrunkLevel['{{ selectType }}'])"
+            >
+                <option>--</option>
+            </select>
+        </div>
+    </div>
+    <div class="clear-both" ng-repeat-end></div>
+</div>

@@ -1,6 +1,7 @@
 angular.module('bar.controllers', [])
     .controller('bar', function($scope){ 
         window.$scope = $scope;
+        $scope.currentMenu = 'bar';
 
         // init dat drunk object if we don't already have it
         $scope.boozyObject = new BoozyBrowser();

@@ -1,0 +1,16 @@
+<div class="menu-header" ng-init="currentMenu = 'bar'">
+    <h2 
+        id="bar" 
+        class="title nav font float-left cursor-pointer" 
+        ng-class="{'active': currentMenu == 'bar'}" 
+        ng-click="currentMenu = 'bar'"
+    >Boozy Browsin</h2>
+    <h2 
+        id="advanced" 
+        class="title nav font float-left cursor-pointer" 
+        ng-class="{'active': currentMenu == 'advanced'}"  
+        ng-click="currentMenu = 'advanced'"
+    >advanced</h2>
+    <div class="hide font float-right cursor-pointer" ng-click="hideMenu = true">x</div>
+    <div class="clear-both"></div>
+</div>

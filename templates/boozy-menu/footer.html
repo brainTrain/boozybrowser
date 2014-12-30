@@ -1,0 +1,6 @@
+<div class="menu-footer">
+    <h2 class="float-left">Drunkenness: </h2>
+    <p class="float-left" ng-hide="currentMenu == 'advanced'">{{ currentDrunkLevel['bulk'] }}</p>
+    <p class="float-left" ng-hide="currentMenu == 'bar'">{{ currentDrunkLevel }}</p>
+</div>
+<div class="font float-right cursor-pointer" ng-show="hideMenu == true" ng-click="hideMenu = false">open</div>

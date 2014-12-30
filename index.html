@@ -1,32 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
-<head> 
-    <title>Boozy Browser -- for broozy browsing</title>
+    <head> 
+        <title>Boozy Browser -- for broozy browsing</title>
 
-    <link type="text/css" rel="stylesheet" href="media/css/screen.css">
-    <link type="text/css" rel="stylesheet" href="media/css/utils.css">
-    <link type="text/css" rel="stylesheet" href="media/font-awesome/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet" href="media/css/boozybrowser.css">
+        <link type="text/css" rel="stylesheet" href="media/css/screen.css">
+        <link type="text/css" rel="stylesheet" href="media/css/utils.css">
+        <link type="text/css" rel="stylesheet" href="media/font-awesome/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="media/css/boozybrowser.css">
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <!-- alright, time for some angualarz -->
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <!-- alright, time for some angualarz -->
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
 
-    <script type="text/javascript" src="media/js/lib/jquery-ui-1.11.1.custom/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="media/js/lib/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="media/js/lib/underscore-min.js"></script>
+        <script type="text/javascript" src="media/js/lib/jquery-ui-1.11.1.custom/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="media/js/lib/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="media/js/lib/underscore-min.js"></script>
 
-    <script type="text/javascript" src="media/js/boozybrowser.js"></script>
-    <script type="text/javascript" src="media/js/boozybutt.js"></script>
-    <!-- moar angualarz -->
-    <script type="text/javascript" src="media/js/boozydemo/app.js"></script>
-    <!-- bar stuffs -->
-    <script type="text/javascript" src="media/js/boozydemo/bar/services.js"></script>
-    <script type="text/javascript" src="media/js/boozydemo/bar/controllers.js"></script>
-    <script type="text/javascript" src="media/js/boozydemo/bar/directives.js"></script>
+        <script type="text/javascript" src="media/js/boozybrowser.js"></script>
+        <script type="text/javascript" src="media/js/boozybutt.js"></script>
+        <!-- moar angualarz -->
+        <script type="text/javascript" src="media/js/boozydemo/app.js"></script>
+        <!-- bar stuffs -->
+        <script type="text/javascript" src="media/js/boozydemo/bar/services.js"></script>
+        <script type="text/javascript" src="media/js/boozydemo/bar/controllers.js"></script>
+        <script type="text/javascript" src="media/js/boozydemo/bar/directives.js"></script>
 
-</head>
-<html>
+    </head>
     <body>
         <div class="outer-container">
             <h1 class="float-left">Boozy browser</h1>
@@ -44,72 +43,12 @@
        </div>
     </body>
 </html>
-<!-- keep this menu outside of html so it can stay sober -->
+<!--
+    // kinda haxky logic, cause ng-include won't let you include outside of the 
+    // body for some reason we don't want the menu getting drunk
+-->
 <script type="text/tempalte" id="boozy-menu-template">
-    <div class="boozy-menu-wrapper"  ng-app="boozyDemo">
-        <div class="boozy-menu" ng-controller="bar" ng-class="{'hide-menu': hideMenu == true}">
-            <div class="menu-header" ng-init="currentMenu = 'bar'">
-                <h2 
-                    id="bar" 
-                    class="title nav font float-left cursor-pointer" 
-                    ng-class="{'active': currentMenu == 'bar'}" 
-                    ng-click="currentMenu = 'bar'"
-                >Boozy Browsin</h2>
-                <h2 
-                    id="advanced" 
-                    class="title nav font float-left cursor-pointer" 
-                    ng-class="{'active': currentMenu == 'advanced'}"  
-                    ng-click="currentMenu = 'advanced'"
-                >advanced</h2>
-                <div class="hide font float-right cursor-pointer" ng-click="hideMenu = true">x</div>
-                <div class="clear-both"></div>
-            </div>
-            <div id="bar-menu" class="menu-controls" ng-show="currentMenu == 'bar'">
-                <div class="drink-container">
-                    <div id="martini-koozie" class="drink-koozie">
-                        <drink
-                            class="drink booze fa fa-glass cursor-pointer float-left"
-                            data-drink='{ "name": "martini", "strength": 2 }'
-                        ></drink>
-                    </div>
-                    <div id="coffee-koozie" class="drink-koozie">
-                        <drink 
-                            class="drink caffine fa fa-coffee cursor-pointer float-left"
-                            data-drink='{ "name": "coffee", "strength": -1 }'
-                        ></drink>
-                    </div>
-                </div>
-                <div class="clear-both"></div>
-                <browser class="boozy-computer float-left">drag here to drink</browser>
-            </div>
-            <div id="advanced-menu" class="menu-controls" ng-show="currentMenu == 'advanced'">
-                <div 
-                    id="{{ selectType }}" 
-                    class="control cursor-pointer display-inline-block"
-                    ng-class="{'divider-bottom': selectType == 'bulk'}" 
-                    ng-repeat-start="selectType in selectTypes" 
-                >
-                    <div class="title font float-left"> {{ selectType }} </div>
-                    <div class="switch float-right">
-                        <select 
-                            class="drunk-level float-left" 
-                            ng-model="currentDrunkLevel[selectType]" 
-                            ng-options="browserState for browserState in browserStates track by browserState"
-                            ng-change="changeDropDown('{{ selectType }}', currentDrunkLevel['{{ selectType }}'])"
-                        >
-                            <option>--</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="clear-both" ng-repeat-end></div>
-            </div>
-            <div class="clear-both"></div>
-            <div class="menu-footer">
-                <h2 class="float-left">Drunkenness: </h2>
-                <p class="float-left" ng-hide="currentMenu == 'advanced'">{{ currentDrunkLevel['bulk'] }}</p>
-                <p class="float-left" ng-hide="currentMenu == 'bar'">{{ currentDrunkLevel }}</p>
-            </div>
-            <div class="font float-right cursor-pointer" ng-show="hideMenu == true" ng-click="hideMenu = false">open</div>
-        </div>
+    <div class="boozy-menu-wrapper">
+        <div ng-include="'templates/boozy-menu/menu.html'"></div>
     </div>
 </script>

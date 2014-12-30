@@ -16,11 +16,13 @@
         // menu control rendering/event handling
         menu: {
             init: function() {
+                // kinda haxky logic, cause ng-include won't let you include outside of the 
+                // body for some reason we don't want the menu getting drunk
                 var $boozyMenuTemplate = $('#boozy-menu-template');
                 $('html').append($boozyMenuTemplate.html());
 
                 // init teh angularz by hand! 
-                angular.bootstrap($('.boozy-menu'), ['boozyDemo'])
+                angular.bootstrap($('.boozy-menu-wrapper'), ['boozyDemo'])
             }
         }
     };

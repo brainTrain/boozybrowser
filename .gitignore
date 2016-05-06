@@ -1,1 +1,8 @@
-.*
+*.DS_Store
+*.swp
+*.pyc
+*.map
+.sass-cache
+node_modules/
+build/
+app/js/**/*.templates.js

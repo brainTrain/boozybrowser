@@ -1,15 +1,12 @@
 /* this is where the buttons classes live */
-/* line 2, ../scss/partials/_demo.scss */
 .button-container {
   position: relative;
   width: auto;
   background-color: #333;
   padding: 15px;
   border-radius: 5px;
-  margin: 15px;
-}
+  margin: 15px; }
 
-/* line 10, ../scss/partials/_demo.scss */
 .button {
   display: inline-block;
   position: relative;
@@ -21,42 +18,30 @@
   padding: 5px;
   margin: 8px;
   cursor: pointer;
-  background-color: #DDD;
-}
+  background-color: #DDD; }
 
-/* line 23, ../scss/partials/_demo.scss */
 .pressed {
   border: 2px solid #CCC;
   -webkit-box-shadow: inset 3px 3px 8px #333;
   -moz-box-shadow: inset 3px 3px 8px #333;
-  box-shadow: inset 3px 3px 8px #333;
-}
+  box-shadow: inset 3px 3px 8px #333; }
 
 /* this is where the typing classes live */
-/* line 31, ../scss/partials/_demo.scss */
 .typin {
   background-color: #DDD;
-  margin: 15px;
-}
+  margin: 15px; }
 
 /* this is where the menu classes live */
-/* line 3, ../scss/partials/_menu.scss */
 .divider-top {
-  border-top: 1px solid rgba(235, 235, 235, 0.6);
-}
+  border-top: 1px solid rgba(235, 235, 235, 0.6); }
 
-/* line 7, ../scss/partials/_menu.scss */
 .divider-bottom {
-  border-bottom: 1px solid rgba(235, 235, 235, 0.6);
-}
+  border-bottom: 1px solid rgba(235, 235, 235, 0.6); }
 
-/* line 11, ../scss/partials/_menu.scss */
 .divider-both {
   border-top: 1px solid rgba(235, 235, 235, 0.6);
-  border-bottom: 1px solid rgba(235, 235, 235, 0.6);
-}
+  border-bottom: 1px solid rgba(235, 235, 235, 0.6); }
 
-/* line 15, ../scss/partials/_menu.scss */
 .boozy-menu {
   position: fixed;
   right: 20px;
@@ -70,114 +55,76 @@
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   /*  
-      Lovingly lifted from the following:
-      http://css-tricks.com/media-queries-sass-3-2-and-codekit/
-  */
-}
-/* line 29, ../scss/partials/_menu.scss */
-.boozy-menu .drink {
-  font-size: 15px;
-  padding: 5px;
-}
-/* line 34, ../scss/partials/_menu.scss */
-.boozy-menu .fade-out {
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-  -ms-opacity: 0;
-  -o-opacity: 0;
-  opacity: 0;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-}
-/* line 47, ../scss/partials/_menu.scss */
-.boozy-menu .fade-in {
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  -ms-opacity: 1;
-  -o-opacity: 1;
-  opacity: 1;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-}
-/* line 60, ../scss/partials/_menu.scss */
-.boozy-menu .font {
-  font-family: helvetica;
-}
-/* line 63, ../scss/partials/_menu.scss */
-.boozy-menu .boozy-computer {
-  border: 1px solid #B4D455;
-  height: 100px;
-  width: 300px;
-}
-/* line 68, ../scss/partials/_menu.scss */
-.boozy-menu .drink-container {
-  width: 320px;
-}
-/* line 71, ../scss/partials/_menu.scss */
-.boozy-menu .drop-hover {
-  border: 5px solid black;
-}
-/* line 74, ../scss/partials/_menu.scss */
-.boozy-menu .title {
-  padding: 5px;
-  color: #545450;
-}
-/* line 78, ../scss/partials/_menu.scss */
-.boozy-menu .nav {
-  color: #3498E7;
-}
-/* line 81, ../scss/partials/_menu.scss */
-.boozy-menu .active {
-  color: #545450;
-  cursor: default;
-}
-/* line 85, ../scss/partials/_menu.scss */
-.boozy-menu .switch {
-  padding: 5px;
-}
-/* line 88, ../scss/partials/_menu.scss */
-.boozy-menu .option {
-  width: 10px;
-  height: 10px;
-  border-radius: 20px;
-}
-/* line 93, ../scss/partials/_menu.scss */
-.boozy-menu .on {
-  background-color: green;
-}
-/* line 96, ../scss/partials/_menu.scss */
-.boozy-menu .off {
-  background-color: red;
-}
-/* line 99, ../scss/partials/_menu.scss */
-.boozy-menu .deactivated {
-  background-color: #545450;
-}
-/* line 102, ../scss/partials/_menu.scss */
-.boozy-menu .control {
-  width: 172px;
-}
-@media (max-width: 650px) {
-  /* line 15, ../scss/partials/_menu.scss */
-  .boozy-menu {
-    width: 84%;
-  }
-}
+        Lovingly lifted from the following:
+        http://css-tricks.com/media-queries-sass-3-2-and-codekit/
+    */ }
+  .boozy-menu .drink {
+    font-size: 15px;
+    padding: 5px; }
+  .boozy-menu .fade-out {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -ms-opacity: 0;
+    -o-opacity: 0;
+    opacity: 0;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+  .boozy-menu .fade-in {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    -ms-opacity: 1;
+    -o-opacity: 1;
+    opacity: 1;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out; }
+  .boozy-menu .font {
+    font-family: helvetica; }
+  .boozy-menu .boozy-computer {
+    border: 1px solid #B4D455;
+    height: 100px;
+    width: 300px; }
+  .boozy-menu .drink-container {
+    width: 320px; }
+  .boozy-menu .drop-hover {
+    border: 5px solid black; }
+  .boozy-menu .title {
+    padding: 5px;
+    color: #545450; }
+  .boozy-menu .nav {
+    color: #3498E7; }
+  .boozy-menu .active {
+    color: #545450;
+    cursor: default; }
+  .boozy-menu .switch {
+    padding: 5px; }
+  .boozy-menu .option {
+    width: 10px;
+    height: 10px;
+    border-radius: 20px; }
+  .boozy-menu .on {
+    background-color: green; }
+  .boozy-menu .off {
+    background-color: red; }
+  .boozy-menu .deactivated {
+    background-color: #545450; }
+  .boozy-menu .control {
+    width: 172px; }
+  @media (max-width: 650px) {
+    .boozy-menu {
+      width: 84%; } }
 
-/* line 110, ../scss/partials/_menu.scss */
 .boozy-menu.hide-menu {
   -webkit-transform: translateY(-92%);
   -moz-transform: translateY(-92%);
   -ms-transform: translateY(-92%);
   -o-transform: translateY(-92%);
-  transform: translateY(-92%);
-}
+  transform: translateY(-92%); }
 
 /* 
     Somewhat Functional Section:
@@ -185,192 +132,5 @@
         at the moment they should either represent boolean actions or incremental 
         numbered actions
 */
-/* line 7, ../scss/partials/_functions.scss */
-.buzzed-transition {
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-
-/* line 10, ../scss/partials/_functions.scss */
-.im-fine-transition {
-  -moz-transition: all 0.35s ease-in-out;
-  -o-transition: all 0.35s ease-in-out;
-  -webkit-transition: all 0.35s ease-in-out;
-  transition: all 0.35s ease-in-out;
-}
-
-/* line 13, ../scss/partials/_functions.scss */
-.drunk-transition {
-  -moz-transition: all 2s ease-in-out;
-  -o-transition: all 2s ease-in-out;
-  -webkit-transition: all 2s ease-in-out;
-  transition: all 2s ease-in-out;
-}
-
-/* line 16, ../scss/partials/_functions.scss */
-.wooo-transition {
-  -moz-transition: all 3s ease-in-out;
-  -o-transition: all 3s ease-in-out;
-  -webkit-transition: all 3s ease-in-out;
-  transition: all 3s ease-in-out;
-}
-
-/* line 19, ../scss/partials/_functions.scss */
-.blackout-transition {
-  -moz-transition: all 5s ease-in-out;
-  -o-transition: all 5s ease-in-out;
-  -webkit-transition: all 5s ease-in-out;
-  transition: all 5s ease-in-out;
-}
-
-/* line 22, ../scss/partials/_functions.scss */
-.transition-ease-out {
-  -moz-transition: all 2s ease-out;
-  -o-transition: all 2s ease-out;
-  -webkit-transition: all 2s ease-out;
-  transition: all 2s ease-out;
-}
-
-/* line 25, ../scss/partials/_functions.scss */
-.hardware-acceleration {
-  -moz-backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-perspective: 1000;
-  -webkit-perspective: 1000;
-  perspective: 1000;
-}
-
 /* boozy focus section */
-/* line 30, ../scss/partials/_functions.scss */
-.blur-6 {
-  -webkit-filter: blur(6px);
-  filter: blur(6px);
-}
-
-/* line 33, ../scss/partials/_functions.scss */
-.blur-5 {
-  -webkit-filter: blur(5px);
-  filter: blur(5px);
-}
-
-/* line 36, ../scss/partials/_functions.scss */
-.blur-4 {
-  -webkit-filter: blur(4px);
-  filter: blur(4px);
-}
-
-/* line 39, ../scss/partials/_functions.scss */
-.blur-3 {
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
-}
-
-/* line 42, ../scss/partials/_functions.scss */
-.blur-2 {
-  -webkit-filter: blur(2px);
-  filter: blur(2px);
-}
-
-/* line 45, ../scss/partials/_functions.scss */
-.blur-1 {
-  -webkit-filter: blur(1px);
-  filter: blur(1px);
-}
-
-/* line 48, ../scss/partials/_functions.scss */
-.blur-0 {
-  -webkit-filter: blur(0px);
-  filter: blur(0px);
-}
-
 /* boozy lean section */
-/* line 53, ../scss/partials/_functions.scss */
-.rotate-5 {
-  -moz-transform: rotate(5deg);
-  -ms-transform: rotate(5deg);
-  -webkit-transform: rotate(5deg);
-  transform: rotate(5deg);
-}
-
-/* line 56, ../scss/partials/_functions.scss */
-.rotate-4 {
-  -moz-transform: rotate(4deg);
-  -ms-transform: rotate(4deg);
-  -webkit-transform: rotate(4deg);
-  transform: rotate(4deg);
-}
-
-/* line 59, ../scss/partials/_functions.scss */
-.rotate-3 {
-  -moz-transform: rotate(3deg);
-  -ms-transform: rotate(3deg);
-  -webkit-transform: rotate(3deg);
-  transform: rotate(3deg);
-}
-
-/* line 62, ../scss/partials/_functions.scss */
-.rotate-2 {
-  -moz-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  -webkit-transform: rotate(2deg);
-  transform: rotate(2deg);
-}
-
-/* line 65, ../scss/partials/_functions.scss */
-.rotate-1 {
-  -moz-transform: rotate(1deg);
-  -ms-transform: rotate(1deg);
-  -webkit-transform: rotate(1deg);
-  transform: rotate(1deg);
-}
-
-/* line 68, ../scss/partials/_functions.scss */
-.rotate-0 {
-  -moz-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  -webkit-transform: rotate(0deg);
-  transform: rotate(0deg);
-}
-
-/* line 71, ../scss/partials/_functions.scss */
-.rotate-neg-1 {
-  -moz-transform: rotate(-1deg);
-  -ms-transform: rotate(-1deg);
-  -webkit-transform: rotate(-1deg);
-  transform: rotate(-1deg);
-}
-
-/* line 74, ../scss/partials/_functions.scss */
-.rotate-neg-2 {
-  -moz-transform: rotate(-2deg);
-  -ms-transform: rotate(-2deg);
-  -webkit-transform: rotate(-2deg);
-  transform: rotate(-2deg);
-}
-
-/* line 77, ../scss/partials/_functions.scss */
-.rotate-neg-3 {
-  -moz-transform: rotate(-3deg);
-  -ms-transform: rotate(-3deg);
-  -webkit-transform: rotate(-3deg);
-  transform: rotate(-3deg);
-}
-
-/* line 80, ../scss/partials/_functions.scss */
-.rotate-neg-4 {
-  -moz-transform: rotate(-4deg);
-  -ms-transform: rotate(-4deg);
-  -webkit-transform: rotate(-4deg);
-  transform: rotate(-4deg);
-}
-
-/* line 83, ../scss/partials/_functions.scss */
-.rotate-neg-5 {
-  -moz-transform: rotate(-5deg);
-  -ms-transform: rotate(-5deg);
-  -webkit-transform: rotate(-5deg);
-  transform: rotate(-5deg);
-}

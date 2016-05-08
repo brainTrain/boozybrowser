@@ -5,81 +5,81 @@
         numbered actions
 */
 .buzzed-transition {
-    @include transition(all 0.25s ease-in-out);
+    //@include transition(all 0.25s ease-in-out);
 } 
 .im-fine-transition {
-    @include transition(all 0.35s ease-in-out);
+    //@include transition(all 0.35s ease-in-out);
 } 
 .drunk-transition {
-    @include transition(all 2s ease-in-out);
+    //@include transition(all 2s ease-in-out);
 } 
 .wooo-transition {
-    @include transition(all 3s ease-in-out);
+    //@include transition(all 3s ease-in-out);
 } 
 .blackout-transition {
-    @include transition(all 5s ease-in-out);
+    //@include transition(all 5s ease-in-out);
 } 
 .transition-ease-out {
-    @include transition(all 2s ease-out);
+    //@include transition(all 2s ease-out);
 } 
 .hardware-acceleration {
-    @include backface-visibility(hidden);
-    @include perspective(1000);
+    //@include backface-visibility(hidden);
+    //@include perspective(1000);
 }
 /* boozy focus section */
 .blur-6 {
-    @include filter(blur(6px));
+    //@include filter(blur(6px));
 }
 .blur-5 {
-    @include filter(blur(5px));
+    //@include filter(blur(5px));
 }
 .blur-4 {
-    @include filter(blur(4px));
+    //@include filter(blur(4px));
 }
 .blur-3 {
-    @include filter(blur(3px));
+    //@include filter(blur(3px));
 }
 .blur-2 {
-    @include filter(blur(2px));
+    //@include filter(blur(2px));
 }
 .blur-1 {
-    @include filter(blur(1px));
+    //@include filter(blur(1px));
 }
 .blur-0 {
-    @include filter(blur(0px));
+    //@include filter(blur(0px));
 }
 
 /* boozy lean section */
 .rotate-5 {
-    @include transform(rotate(5deg));
+    //@include transform(rotate(5deg));
 }
 .rotate-4 {
-    @include transform(rotate(4deg));
+    //@include transform(rotate(4deg));
 }
 .rotate-3 {
-    @include transform(rotate(3deg));
+    //@include transform(rotate(3deg));
 }
 .rotate-2 {
-    @include transform(rotate(2deg));
+    //@include transform(rotate(2deg));
 }
 .rotate-1 {
-    @include transform(rotate(1deg));
+    //@include transform(rotate(1deg));
 }
 .rotate-0 {
-    @include transform(rotate(0deg));
+    //@include transform(rotate(0deg));
 }
 .rotate-neg-1 {
-    @include transform(rotate(-1deg));
+    //@include transform(rotate(-1deg));
 }
 .rotate-neg-2 {
-    @include transform(rotate(-2deg));
+    //@include transform(rotate(-2deg));
 }
 .rotate-neg-3 {
-    @include transform(rotate(-3deg));
+    //@include transform(rotate(-3deg));
 }
 .rotate-neg-4 {
-    @include transform(rotate(-4deg));
+    //@include transform(rotate(-4deg));
 }
 .rotate-neg-5 {
-    @include transform(rotate(-5deg));
+    //@include transform(rotate(-5deg));
 }

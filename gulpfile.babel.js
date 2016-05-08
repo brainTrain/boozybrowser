@@ -2,7 +2,24 @@
 
 import gulp from 'gulp';
 import gutil from 'gulp-util';
+import jshint from 'gulp-jshint';
+import sass from 'gulp-sass';
 
-gulp.task('default', function() {
-    return gutil.log('Gulp is running!')
+gulp.task('default', ['watch']);
+
+gulp.task('jshint', function() {
+    return gulp.src('media/js/**/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('css', function() {
+    return gulp.src('media/scss/**/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('media/css'));
+});
+
+gulp.task('watch', function() {
+    gulp.watch('media/js/**/*.js', ['jshint']);
+    gulp.watch('media/scss/**/*.scss', ['css']);
 });

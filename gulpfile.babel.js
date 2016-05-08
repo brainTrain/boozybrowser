@@ -8,20 +8,20 @@ import autoprefixer from 'gulp-autoprefixer';
 
 gulp.task('default', ['watch']);
 
-gulp.task('jshint', function() {
+gulp.task('jshint', () => {
     return gulp.src('media/js/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('css', function() {
+gulp.task('css', () => {
     return gulp.src('media/scss/**/*.scss')
         .pipe(sass())
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
         .pipe(gulp.dest('media/css'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     gulp.watch('media/js/**/*.js', ['jshint']);
     gulp.watch('media/scss/**/*.scss', ['css']);
 });

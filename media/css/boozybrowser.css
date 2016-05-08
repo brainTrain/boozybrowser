@@ -10,8 +10,6 @@
 .button {
   display: inline-block;
   position: relative;
-  -webkit-box-shadow: 1px 1px 3px #CCC;
-  -moz-box-shadow: 1px 1px 3px #CCC;
   box-shadow: 1px 1px 3px #CCC;
   border-radius: 5px;
   border: 2px solid #CCC;
@@ -22,8 +20,6 @@
 
 .pressed {
   border: 2px solid #CCC;
-  -webkit-box-shadow: inset 3px 3px 8px #333;
-  -moz-box-shadow: inset 3px 3px 8px #333;
   box-shadow: inset 3px 3px 8px #333; }
 
 /* this is where the typing classes live */
@@ -49,10 +45,6 @@
   border: 1px solid #545450;
   padding: 15px;
   background-color: white;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
   /*  
         Lovingly lifted from the following:
@@ -62,26 +54,10 @@
     font-size: 15px;
     padding: 5px; }
   .boozy-menu .fade-out {
-    -webkit-opacity: 0;
-    -moz-opacity: 0;
-    -ms-opacity: 0;
-    -o-opacity: 0;
     opacity: 0;
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
   .boozy-menu .fade-in {
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-    -ms-opacity: 1;
-    -o-opacity: 1;
     opacity: 1;
-    -webkit-transition: all 1s ease-in-out;
-    -moz-transition: all 1s ease-in-out;
-    -ms-transition: all 1s ease-in-out;
-    -o-transition: all 1s ease-in-out;
     transition: all 1s ease-in-out; }
   .boozy-menu .font {
     font-family: helvetica; }
@@ -121,10 +97,7 @@
 
 .boozy-menu.hide-menu {
   -webkit-transform: translateY(-92%);
-  -moz-transform: translateY(-92%);
-  -ms-transform: translateY(-92%);
-  -o-transform: translateY(-92%);
-  transform: translateY(-92%); }
+          transform: translateY(-92%); }
 
 /* 
     Somewhat Functional Section:
@@ -132,5 +105,100 @@
         at the moment they should either represent boolean actions or incremental 
         numbered actions
 */
+.buzzed-transition {
+  transition: all 0.25s ease-in-out; }
+
+.im-fine-transition {
+  transition: all 0.35s ease-in-out; }
+
+.drunk-transition {
+  transition: all 2s ease-in-out; }
+
+.wooo-transition {
+  transition: all 3s ease-in-out; }
+
+.blackout-transition {
+  transition: all 5s ease-in-out; }
+
+.transition-ease-out {
+  transition: all 2s ease-out; }
+
+.hardware-acceleration {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000;
+          perspective: 1000; }
+
 /* boozy focus section */
+.blur-6 {
+  -webkit-filter: blur(6px);
+          filter: blur(6px); }
+
+.blur-5 {
+  -webkit-filter: blur(5px);
+          filter: blur(5px); }
+
+.blur-4 {
+  -webkit-filter: blur(4px);
+          filter: blur(4px); }
+
+.blur-3 {
+  -webkit-filter: blur(3px);
+          filter: blur(3px); }
+
+.blur-2 {
+  -webkit-filter: blur(2px);
+          filter: blur(2px); }
+
+.blur-1 {
+  -webkit-filter: blur(1px);
+          filter: blur(1px); }
+
+.blur-0 {
+  -webkit-filter: blur(0px);
+          filter: blur(0px); }
+
 /* boozy lean section */
+.rotate-5 {
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg); }
+
+.rotate-4 {
+  -webkit-transform: rotate(4deg);
+          transform: rotate(4deg); }
+
+.rotate-3 {
+  -webkit-transform: rotate(3deg);
+          transform: rotate(3deg); }
+
+.rotate-2 {
+  -webkit-transform: rotate(2deg);
+          transform: rotate(2deg); }
+
+.rotate-1 {
+  -webkit-transform: rotate(1deg);
+          transform: rotate(1deg); }
+
+.rotate-0 {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg); }
+
+.rotate-neg-1 {
+  -webkit-transform: rotate(-1deg);
+          transform: rotate(-1deg); }
+
+.rotate-neg-2 {
+  -webkit-transform: rotate(-2deg);
+          transform: rotate(-2deg); }
+
+.rotate-neg-3 {
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg); }
+
+.rotate-neg-4 {
+  -webkit-transform: rotate(-4deg);
+          transform: rotate(-4deg); }
+
+.rotate-neg-5 {
+  -webkit-transform: rotate(-5deg);
+          transform: rotate(-5deg); }

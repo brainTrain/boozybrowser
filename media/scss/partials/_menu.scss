@@ -20,11 +20,7 @@
     padding: 15px;
     background-color: white;
 
-    -webkit-transition: all 1s ease-in-out;
-       -moz-transition: all 1s ease-in-out;
-        -ms-transition: all 1s ease-in-out;
-         -o-transition: all 1s ease-in-out;
-            transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 
     .drink {
         font-size: 15px;
@@ -32,30 +28,12 @@
     }
 
     .fade-out {
-        -webkit-opacity: 0;
-           -moz-opacity: 0;
-            -ms-opacity: 0;
-             -o-opacity: 0;
-                opacity: 0;
-
-        -webkit-transition: all 1s ease-in-out;
-           -moz-transition: all 1s ease-in-out;
-            -ms-transition: all 1s ease-in-out;
-             -o-transition: all 1s ease-in-out;
-                transition: all 1s ease-in-out;
+        opacity: 0;
+        transition: all 1s ease-in-out;
     }
     .fade-in {
-        -webkit-opacity: 1;
-           -moz-opacity: 1;
-            -ms-opacity: 1;
-             -o-opacity: 1;
-                opacity: 1;
-
-        -webkit-transition: all 1s ease-in-out;
-           -moz-transition: all 1s ease-in-out;
-            -ms-transition: all 1s ease-in-out;
-             -o-transition: all 1s ease-in-out;
-                transition: all 1s ease-in-out;
+        opacity: 1;
+        transition: all 1s ease-in-out;
     }
     .font {
         font-family: helvetica;
@@ -108,9 +86,5 @@
 }
 
 .boozy-menu.hide-menu {
-    -webkit-transform:  translateY(-92%);
-       -moz-transform:  translateY(-92%);
-        -ms-transform:  translateY(-92%);
-         -o-transform:  translateY(-92%);
-            transform:  translateY(-92%);
+    transform: translateY(-92%);
 }

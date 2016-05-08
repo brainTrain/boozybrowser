@@ -23,5 +23,5 @@ gulp.task('sass', () => {
 
 gulp.task('watch', () => {
     gulp.watch('media/js/**/*.js', ['jshint']);
-    gulp.watch('media/scss/**/*.scss', ['css']);
+    gulp.watch('media/scss/**/*.scss', ['sass']);
 });

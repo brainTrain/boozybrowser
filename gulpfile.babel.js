@@ -14,7 +14,7 @@ gulp.task('jshint', () => {
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('css', () => {
+gulp.task('sass', () => {
     return gulp.src('media/scss/**/*.scss')
         .pipe(sass())
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))

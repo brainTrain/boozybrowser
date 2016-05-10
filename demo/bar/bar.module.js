@@ -1,10 +1,10 @@
 'use strict';
 
 import angular from 'angular';
-import './bar.templates';
+//import './bar.templates';
 
 const requires = [
-    'bar.templates'
+    //'bar.templates'
 ];
 
 export default angular.module('app.bar', requires)

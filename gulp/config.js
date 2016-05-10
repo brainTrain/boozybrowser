@@ -11,9 +11,21 @@ export default {
         dest: 'public/js/'
     },
     sass: {
-        src: '/media/scss/**/*.scss',
-        dest: '/media/css'
+        src: 'media/scss/**/*.scss',
+        dest: 'public/css'
     },
-    sourceDir: './media/',
-    buildDir: './public/'
+    views: {
+        index: 'demo/index.html',
+        watch: [
+            'demo/*.html'
+        ],
+        dest: 'public/',
+        src: 'demo/**/*.js'
+    },
+    templates: {
+        watch: [
+            'demo/**/*.html'
+        ],
+        src: 'public/js/'
+    }
 };

@@ -4,5 +4,5 @@
 *.map
 .sass-cache
 node_modules/
-build/
-app/js/**/*.templates.js
+public/
+demo/**/*.templates.js

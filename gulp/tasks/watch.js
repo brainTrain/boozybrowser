@@ -1,8 +1,9 @@
 'use strict';
 
 import gulp from 'gulp';
+import config from '../config';
 
-gulp.task('watch', ['browserSync', 'server'], () => {
-    gulp.watch('media/js/**/*.js', ['jshint']);
-    gulp.watch('media/scss/**/*.scss', ['sass']);
+gulp.task('watch', () => {
+    gulp.watch(config.scripts.src, ['jshint']);
+    gulp.watch(config.scripts.sass, ['sass']);
 });

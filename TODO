@@ -47,3 +47,11 @@ thoughts on architecture:
     * handles drink input and enforces setting of boozy levels
     * handles setting interval for getting drunk/sobering up the "natural" way
     * handles setting preset drunk levels on your browser via scheduling/time of day
+
+========================================
+~ resources ~
+https://omarfouad.com/
+https://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
+http://www.sketchappsources.com/blog/post/how-to-make-a-simple-settings-icon-in-sketch
+
+

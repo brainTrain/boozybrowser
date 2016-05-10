@@ -1,16 +1,13 @@
 'use strict';
 
 export default {
-    browserPort: 3000,
-    UIPort: 3001,
-    serverPort: 3002,
-    root: 'build',
     port: 4000,
+    buildDir: 'public/',
     scripts: {
         src: 'demo/**/*.js',
         dest: 'public/js/'
     },
-    sass: {
+    styles: {
         src: 'media/scss/**/*.scss',
         dest: 'public/css'
     },

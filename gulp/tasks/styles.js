@@ -5,9 +5,9 @@ import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
 import config from '../config';
 
-gulp.task('sass', () => {
-    return gulp.src(config.sass.src)
+gulp.task('styles', () => {
+    return gulp.src(config.styles.src)
         .pipe(sass())
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
-        .pipe(gulp.dest(config.sass.dest));
+        .pipe(gulp.dest(config.styles.dest));
 });

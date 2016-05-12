@@ -12,12 +12,8 @@ export default {
         dest: 'public/css'
     },
     views: {
-        index: 'demo/index.html',
-        watch: [
-            'demo/*.html'
-        ],
-        dest: 'public/',
-        src: 'demo/**/*.js'
+        src: 'demo/index.html',
+        dest: 'public/'
     },
     templates: {
         watch: [

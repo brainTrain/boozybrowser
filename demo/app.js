@@ -12,5 +12,5 @@ const requires = [
 window.app = angular.module('app', requires);
 
 app.controller('MainController', ($scope) => {
-    $scope.message = 'Angular Works!'
+    $scope.message = 'Angularzzzzz Works!'
 });

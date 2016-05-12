@@ -6,6 +6,7 @@ import config from '../config';
 
 gulp.task('connect', function () {
     connect.server({
+        livereload: true,
         root: config.buildDir,
         port: config.port
     });

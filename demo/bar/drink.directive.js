@@ -5,12 +5,14 @@ function drink() {
 
     return {
         restrict: 'E',
+        replace: true,
         templateUrl: 'bar/drink.html',
         scope: {
             drink: '='
         },
         link: ($scope, element, attrs) => {
             // don't forget the $scope.drink.strength
+            /*
             element.draggable({
                 'containment': '.boozy-menu',
                 'helper': 'clone',
@@ -18,6 +20,7 @@ function drink() {
                 'revert': true,
                 'revertDuration': 0
             });
+            */
         }
     };
 }

@@ -16,9 +16,7 @@ export default {
         dest: 'public/'
     },
     templates: {
-        watch: [
-            'demo/**/*.html'
-        ],
-        src: 'public/js/'
+        watch: 'demo/**/*.html',
+        src: 'demo/'
     }
 };

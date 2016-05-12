@@ -6,10 +6,10 @@ import drink from './drink.directive';
 import browser from './browser.directive';
 import barMenu from './bar-menu.directive';
 
-//import './bar.templates';
+import './bar.templates';
 
 const requires = [
-    //'bar.templates'
+    'bar.templates'
 ];
 
 export default angular.module('app.bar', requires)

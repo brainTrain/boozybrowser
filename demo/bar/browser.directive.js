@@ -5,8 +5,10 @@ function browser() {
 
     return {
         restrict: 'E',
+        replace: true,
         templateUrl: 'bar/browser.html',
         link: ($scope, element, attrs) => {
+            /*
             element.droppable({
                 'hoverClass': 'drop-hover',
                 'drop': function(event, ui) {
@@ -18,6 +20,7 @@ function browser() {
                     });
                 } 
             });
+            */
         }
     };
 }

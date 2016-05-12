@@ -3,10 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>My App</title>
+        <link type="text/css" rel="stylesheet" href="/css/utils.css">
+        <link type="text/css" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+        <link type="text/css" rel="stylesheet" href="/css/boozybrowser.css">
+
+        <script type="text/javascript" src="media/js/lib/jquery-ui-1.11.1.custom/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="media/js/lib/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="media/js/lib/underscore-min.js"></script>
     </head>
     <body>
-        <div ng-controller="MainController">
-            <h1>{{ message }}</h1>
+        <div class="outer-container">
+            <a href="https://github.com/brainTrain/boozybrowser" target="_blank">Fork</a>
+            <h1>Boozy browser</h1>
+            <span class="typin select-none float-left" id="top" >
+                <textarea rows="5" cols="33"></textarea>
+            </span>
+            <span class="button-container float-left  select-none">
+                <span class="button float-left select-none" id="whatevz" click-message="Whatever, duuuude...">whatever</span>
+                <span class="button float-left select-none" id="submit" click-message="YESSSS you got the submit! Finally!!!">submit</span>
+                <span class="button float-left select-none" id="lawl" click-message="lololololol">lawlz</span>
+            </span>
+        </div>
+        <div class="boozy-menu-wrapper">
+            <bar-menu></bar-menu>
+            <browser></browser>
+            <drink drink="{ 'name': 'Vodka Martini', 'strength': 2, 'class': 'fa-glass' }"></drink>
         </div>
         <script type="application/javascript" src="/js/main.js"></script>
     </body>

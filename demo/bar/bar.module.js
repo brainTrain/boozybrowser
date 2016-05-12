@@ -1,6 +1,11 @@
 'use strict';
 
 import angular from 'angular';
+
+import drink from './drink.directive';
+import browser from './browser.directive';
+import barMenu from './bar-menu.directive';
+
 //import './bar.templates';
 
 const requires = [

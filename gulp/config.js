@@ -4,7 +4,7 @@ export default {
     port: 4000,
     buildDir: 'public/',
     scripts: {
-        src: 'demo/**/*.js',
+        src: './demo/**/*.js',
         dest: 'public/js/'
     },
     styles: {

@@ -8,7 +8,7 @@ import babelify from 'babelify';
 
 gulp.task('browserify', function() {
     // Grabs the app.js file
-    return browserify('./demo/app.js')
+    return browserify('demo/app.js')
         .transform(babelify)
         // bundles it and creates a file called main.js
         .bundle()

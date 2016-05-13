@@ -8,22 +8,22 @@ import fs from 'fs';
 import path from 'path';
 import rename from 'gulp-rename';
 
+// builds a list of all folders in the directory
 function getFolders(dir) {
     let folders = [];
     fs.readdirSync(dir)
         .filter(file => fs.statSync(path.join(dir, file)).isDirectory())
-        .map(f => {
-            let subfolders = getFolders(dir + f + '/');
-            if (subfolders.length > 0){
-                subfolders.map(sf => folders.push(f + '/' + sf))
+        .map(module => {
+            let subfolders = getFolders(dir + module + '/');
+            if (subfolders.length > 0) {
+                subfolders.map(subFolder => folders.push(module + '/' + subFolder))
             } else {
-                folders.push(f);
+                folders.push(module);
             }
         });
     return folders;
 }
 
-// Templates task
 gulp.task('templates', function() {
     // Process the template files inside app/js
     const scriptsPath = config.templates.src;
@@ -33,10 +33,6 @@ gulp.task('templates', function() {
         let names = folder.split('/');
         let moduleName = names.join('.') + '.templates';
         let fileName = moduleName + '.js';
-        if (names.length > 1){
-            names.splice(0, 1);
-            fileName = names.join('.') + '.templates.js';
-        }
         
         return gulp.src(scriptsPath + folder + '/*.html')
             .pipe(htmlclean())
@@ -49,6 +45,4 @@ gulp.task('templates', function() {
             .pipe(rename(fileName))
             .pipe(gulp.dest(scriptsPath + folder));
     });
-
 });
-

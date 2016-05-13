@@ -6,7 +6,7 @@ import browserify from 'browserify';
 import source from 'vinyl-source-stream';
 import babelify from 'babelify';
 
-gulp.task('browserify', function() {
+gulp.task('browserify', () => {
     // Grabs the app.js file
     return browserify('demo/app.js')
         .transform(babelify)

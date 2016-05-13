@@ -24,7 +24,7 @@ function getFolders(dir) {
     return folders;
 }
 
-gulp.task('templates', function() {
+gulp.task('templates', () => {
     // Process the template files inside app/js
     const scriptsPath = config.templates.src;
     const folders = getFolders(scriptsPath);

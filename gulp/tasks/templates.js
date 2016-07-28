@@ -1,3 +1,5 @@
+/*
+TODO: determine if I need this (think may not)
 'use strict';
 
 import config from '../config';
@@ -23,7 +25,6 @@ function getFolders(dir) {
         });
     return folders;
 }
-
 gulp.task('templates', () => {
     // Process the template files inside app/js
     const scriptsPath = config.templates.src;
@@ -46,3 +47,4 @@ gulp.task('templates', () => {
             .pipe(gulp.dest(scriptsPath + folder));
     });
 });
+*/

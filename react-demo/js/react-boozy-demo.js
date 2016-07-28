@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Heya from './heya';
+
 ReactDOM.render(
-    <h1>Dawgz!</h1>,
-    document.getElementById('example')
+    <Heya name="dood" />,
+    document.getElementById('react-app')
 );

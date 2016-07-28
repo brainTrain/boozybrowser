@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Heya from './heya';
+import Buttons from './buttons';
 
 ReactDOM.render(
-    <Heya name="dood" />,
+    <Buttons />,
     document.getElementById('react-app')
 );

@@ -4,7 +4,8 @@ export default {
     port: 4000,
     buildDir: 'public/',
     scripts: {
-        src: './demo/**/*.js',
+        appSrc: './react-demo/js/react-boozy-demo.js',
+        src: './react-demo/**/*.js',
         dest: 'public/js/'
     },
     styles: {
@@ -12,11 +13,11 @@ export default {
         dest: 'public/css'
     },
     views: {
-        src: 'demo/index.html',
+        src: 'react-demo/index.html',
         dest: 'public/'
     },
     templates: {
-        watch: 'demo/**/*.html',
+        watch: 'react-demo/**/*.html',
         src: 'demo/'
     }
 };

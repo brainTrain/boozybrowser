@@ -5,6 +5,6 @@ import config from '../config';
 
 // Views task
 gulp.task('views', () => {
-    return gulp.src('demo/*.html')
+    return gulp.src(config.views.src)
                 .pipe(gulp.dest(config.views.dest));
 });

@@ -8,22 +8,88 @@
         <link type="text/css" rel="stylesheet" href="/css/boozybrowser.css">
     </head>
     <body>
-        <h1>React Stuffs</h1>
-            <div id="react-app"></div>
-        <h1>/React Stuffs</h1>
-
-        <div class="outer-container">
-            <a href="https://github.com/brainTrain/boozybrowser" target="_blank">Fork</a>
-            <h1>Boozy browser</h1>
-            <span class="typin select-none float-left" id="top" >
+        <Header>
+            <div class="logo"></div>
+            <a href="https://github.com/brainTrain/boozybrowser" target="_blank" rel="noopener noreferrer">Github</a>
+        </Header>
+        <Hero>
+            <h1>Boozy Browser</h1>
+            <button>Demo</button>
+        </Hero>
+        <About>
+            <h2>About Boozy Browser</h2>
+            <p>Hey man there are things and stuff whateverrrr...............</p>
+        </About>
+        <Demo>
+            <LeanDemo>
+                <h3>Lean</h3>
+                <iframe width="100%" height="500px" src="http://www.radiohead.com"></iframe>
+                <DrunkControl type="lean">
+                    <label>Lean
+                        <select>
+                            <option value="sober">sober</option>
+                            <option value="buzzed">buzzed</option>
+                            <option value="im-fine">I'm fine</option>
+                            <option value="drunk">drunk</option>
+                            <option value="wooo">wooo!</option>
+                            <option value="blackout">blackout</option> 
+                        </select>
+                    </label>
+                </DrunkControl>
+            </LeanDemo>
+            <BlurDemo>
+                <h3>Blur</h3>
+                <iframe width="100%" height="500px" src="http://www.radiohead.com"></iframe>
+                <DrunkControl type="blur">
+                    <label>Blur
+                        <select>
+                            <option value="sober">sober</option>
+                            <option value="buzzed">buzzed</option>
+                            <option value="im-fine">I'm fine</option>
+                            <option value="drunk">drunk</option>
+                            <option value="wooo">wooo!</option>
+                            <option value="blackout">blackout</option> 
+                        </select>
+                    </label>
+                </DrunkControl>
+            </BlurDemo>
+            <KeysDemo>
+                <h3>Keys</h3>
                 <textarea rows="5" cols="33"></textarea>
-            </span>
-            <span class="button-container float-left  select-none">
-                <span class="button float-left select-none" id="whatevz" click-message="Whatever, duuuude...">whatever</span>
-                <span class="button float-left select-none" id="submit" click-message="YESSSS you got the submit! Finally!!!">submit</span>
-                <span class="button float-left select-none" id="lawl" click-message="lololololol">lawlz</span>
-            </span>
-        </div>
+                <DrunkControl type="keys">
+                    <label>Keys
+                        <select>
+                            <option value="sober">sober</option>
+                            <option value="buzzed">buzzed</option>
+                            <option value="im-fine">I'm fine</option>
+                            <option value="drunk">drunk</option>
+                            <option value="wooo">wooo!</option>
+                            <option value="blackout">blackout</option> 
+                        </select>
+                    </label>
+                </DrunkControl>
+            </KeysDemo>
+            <ButtonsDemo>
+                <h3>Buttons</h3>
+                <div id="buttons-container"></div>
+                <DrunkControl type="buttons">
+                    <label>Buttons
+                        <select>
+                            <option value="sober">sober</option>
+                            <option value="buzzed">buzzed</option>
+                            <option value="im-fine">I'm fine</option>
+                            <option value="drunk">drunk</option>
+                            <option value="wooo">wooo!</option>
+                            <option value="blackout">blackout</option> 
+                        </select>
+                    </label>
+                </DrunkControl>
+            </ButtonsDemo>
+        </Demo>
+        <Footer>
+            <a href="https://twitter.com/generic_brian" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://github.com/brainTrain/boozybrowser" target="_blank" rel="noopener noreferrer">Github</a>
+        </Footer>
         <div class="boozy-menu-wrapper">
             <bar-menu></bar-menu>
             <browser></browser>

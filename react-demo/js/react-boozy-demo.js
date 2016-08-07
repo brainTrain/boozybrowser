@@ -5,5 +5,5 @@ import Buttons from './buttons';
 
 ReactDOM.render(
     <Buttons />,
-    document.getElementById('react-app')
+    document.getElementById('buttons-container')
 );

@@ -6,6 +6,7 @@ export default {
     scripts: {
         appSrc: './react-demo/js/react-boozy-demo.js',
         src: './react-demo/**/*.js',
+        boozySrc: './media/js/boozy-browser.js',
         dest: 'public/js/'
     },
     styles: {
